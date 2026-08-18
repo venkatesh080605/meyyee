@@ -13,18 +13,21 @@
         }
 
         body {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-            overflow: hidden;
             color: #ffffff;
+            padding: 20px;
+            overflow-y: auto;
         }
 
         /* Galaxy Background Animation */
         .galaxy-bg {
-            position: absolute;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             background: 
@@ -46,6 +49,8 @@
             align-items: center;
             text-align: center;
             gap: 12px;
+            max-width: 600px;
+            width: 100%;
         }
 
         /* Thick Title */
@@ -64,13 +69,14 @@
             letter-spacing: 3px;
             color: #d1d5db;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         /* Cloud-Shaped Search Container */
         .cloud-search-wrapper {
             position: relative;
-            width: 400px;
+            width: 100%;
+            max-width: 450px;
             height: 70px;
             display: flex;
             align-items: center;
@@ -89,7 +95,7 @@
         .search-bar {
             position: relative;
             z-index: 2;
-            width: 75%;
+            width: 65%;
             height: 40px;
             border: none;
             outline: none;
@@ -102,6 +108,62 @@
 
         .search-bar::placeholder {
             color: #64748b;
+        }
+
+        .search-btn {
+            position: relative;
+            z-index: 3;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 5px;
+            transition: 0.3s;
+        }
+
+        .search-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* Result Display Card */
+        .result-card {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            display: none;
+            margin-top: 10px;
+        }
+
+        .truth-badge {
+            background: #10b981;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .result-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #38bdf8;
+            margin-bottom: 8px;
+        }
+
+        .result-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #f1f5f9;
         }
 
         /* Character Container */
@@ -152,7 +214,15 @@
             <svg class="cloud-svg-bg" viewBox="0 0 400 70" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M50 45 C30 45 15 35 25 20 C35 5 60 10 75 20 C90 5 130 5 145 20 C160 5 200 5 215 20 C230 5 270 5 285 20 C300 5 330 10 345 20 C360 5 385 20 375 40 C385 55 360 65 340 60 C320 65 80 65 50 45 Z" fill="#ffffff" opacity="0.95"/>
             </svg>
-            <input type="text" class="search-bar" placeholder="Search the truth...">
+            <input type="text" id="userInput" class="search-bar" placeholder="Search the truth..." onkeypress="handleKeyPress(event)">
+            <button class="search-btn" onclick="executeSearch()">Search</button>
+        </div>
+
+        <!-- Result Card Section -->
+        <div id="resultCard" class="result-card">
+            <span class="truth-badge">✔ MEYYEE VERIFIED DATA</span>
+            <div id="resTitle" class="result-title"></div>
+            <div id="resAnswer" class="result-text"></div>
         </div>
 
         <!-- Animated Boy (Vanakkam & Head Bowing) -->
@@ -188,5 +258,55 @@
         <div class="welcome-text">WELCOME</div>
     </div>
 
+    <script>
+        // Meyyee Local Knowledge Database
+        const meyyeeDatabase = [
+            {
+                keys: ["meyyee", "meaning", "porul", "what"],
+                title: "Meyyee - Definition",
+                answer: "Meyyee endral 'Unmai Koduthal' endru porul. Idhu unmaiyaana thagavalgalaip pagirum swadhandhira search engine."
+            },
+            {
+                keys: ["earth", "boomi", "shape", "vadivam"],
+                title: "Boomiyin Vadivam",
+                answer: "Boomi mulu urundai illai, adhu 'Oblate Spheroid' (dhuruva pagudhigalil konjam thattaiyaana) vadivam kondadhu."
+            },
+            {
+                keys: ["sun", "sooriyan", "light", "time"],
+                title: "Sooriya Oli Boomiyai Adaiya Kaelvi",
+                answer: "Sooriya oli boomiyai adaiya thoraayamaaga 8 nimidam 20 vinadigal (500 seconds) aagum."
+            }
+        ];
+
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') executeSearch();
+        }
+
+        function executeSearch() {
+            const query = document.getElementById('userInput').value.toLowerCase().trim();
+            const resultCard = document.getElementById('resultCard');
+            const resTitle = document.getElementById('resTitle');
+            const resAnswer = document.getElementById('resAnswer');
+
+            if (!query) {
+                resultCard.style.display = "none";
+                return;
+            }
+
+            const found = meyyeeDatabase.find(item => 
+                item.keys.some(k => query.includes(k))
+            );
+
+            resultCard.style.display = "block";
+
+            if (found) {
+                resTitle.innerText = found.title;
+                resAnswer.innerText = found.answer;
+            } else {
+                resTitle.innerText = "Meyyee Knowledge Engine";
+                resAnswer.innerText = `"${query}" patriya verified thagaval Meyyee database-il ipodhaiku illai. Database update seidhadhum unmaiyaana badhil kidaikkum.`;
+            }
+        }
+    </script>
 </body>
 </html>
