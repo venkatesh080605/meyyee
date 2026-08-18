@@ -214,4 +214,195 @@
     </div>
 
 </body>
+</html><!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meyyee - Only Truth Here</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+            overflow: hidden;
+            color: #ffffff;
+        }
+
+        /* Galaxy Background Animation */
+        .galaxy-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(1px 1px at 10px 10px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 20px 50px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 30px 100px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 40px 150px, #fff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            opacity: 0.8;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+        }
+
+        /* Thick Title */
+        .title {
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Tagline */
+        .subtitle {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: #d1d5db;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        /* Cloud-Shaped Search Container */
+        .cloud-search-wrapper {
+            position: relative;
+            width: 400px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cloud-svg-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0px 8px 15px rgba(255, 255, 255, 0.3));
+        }
+
+        .search-bar {
+            position: relative;
+            z-index: 2;
+            width: 75%;
+            height: 40px;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1e293b;
+            text-align: center;
+        }
+
+        .search-bar::placeholder {
+            color: #64748b;
+        }
+
+        /* Character Container */
+        .boy-wrapper {
+            width: 140px;
+            height: 180px;
+            margin-top: 10px;
+        }
+
+        /* Bowing & Namaste Animation */
+        #boy-head {
+            transform-origin: 100px 115px;
+            animation: bowAnimation 3s infinite ease-in-out;
+        }
+
+        @keyframes bowAnimation {
+            0%, 100% {
+                transform: rotate(0deg) translateY(0px);
+            }
+            50% {
+                transform: rotate(12deg) translateY(6px);
+            }
+        }
+
+        /* Welcome Text */
+        .welcome-text {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="galaxy-bg"></div>
+
+    <div class="container">
+        <!-- Title -->
+        <h1 class="title">MEYYEE</h1>
+
+        <!-- Subtitle -->
+        <p class="subtitle">ONLY TRUTH HERE</p>
+
+        <!-- Cloud Search Bar -->
+        <div class="cloud-search-wrapper">
+            <svg class="cloud-svg-bg" viewBox="0 0 400 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 45 C30 45 15 35 25 20 C35 5 60 10 75 20 C90 5 130 5 145 20 C160 5 200 5 215 20 C230 5 270 5 285 20 C300 5 330 10 345 20 C360 5 385 20 375 40 C385 55 360 65 340 60 C320 65 80 65 50 45 Z" fill="#ffffff" opacity="0.95"/>
+            </svg>
+            <input type="text" class="search-bar" placeholder="Search the truth...">
+        </div>
+
+        <!-- Animated Boy (Vanakkam & Head Bowing) -->
+        <div class="boy-wrapper">
+            <svg viewBox="0 0 200 240" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <!-- Body & Clothes -->
+                <path d="M70 140 L130 140 L135 210 L65 210 Z" fill="#2563eb" /> <!-- Shirt -->
+                <path d="M75 210 L95 210 L95 240 L75 240 Z" fill="#1e293b" /> <!-- Left Leg -->
+                <path d="M105 210 L125 210 L125 240 L105 240 Z" fill="#1e293b" /> <!-- Right Leg -->
+
+                <!-- Namaste Hands -->
+                <path d="M85 150 L100 130 L115 150 L105 170 L95 170 Z" fill="#fca5a5" /> 
+                <path d="M98 130 L102 130 L102 155 L98 155 Z" fill="#f87171" /> <!-- Hand Fold Line -->
+
+                <!-- Animated Head Group -->
+                <g id="boy-head">
+                    <!-- Neck -->
+                    <rect x="92" y="105" width="16" height="15" fill="#fca5a5" />
+                    <!-- Face -->
+                    <circle cx="100" cy="80" r="30" fill="#fca5a5" />
+                    <!-- Hair -->
+                    <path d="M70 75 C70 45 130 45 130 75 C120 55 80 55 70 75 Z" fill="#1c1917" />
+                    <!-- Eyes -->
+                    <circle cx="90" cy="80" r="3" fill="#000" />
+                    <circle cx="110" cy="80" r="3" fill="#000" />
+                    <!-- Smile -->
+                    <path d="M92 92 Q100 100 108 92" stroke="#000" stroke-width="2" fill="none" />
+                </g>
+            </svg>
+        </div>
+
+        <!-- Welcome Text -->
+        <div class="welcome-text">WELCOME</div>
+    </div>
+
+</body>
 </html>
