@@ -214,7 +214,7 @@
             <svg class="cloud-svg-bg" viewBox="0 0 400 70" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M50 45 C30 45 15 35 25 20 C35 5 60 10 75 20 C90 5 130 5 145 20 C160 5 200 5 215 20 C230 5 270 5 285 20 C300 5 330 10 345 20 C360 5 385 20 375 40 C385 55 360 65 340 60 C320 65 80 65 50 45 Z" fill="#ffffff" opacity="0.95"/>
             </svg>
-            <input type="text" id="userInput" class="search-bar" placeholder="Search the truth..." onkeypress="handleKeyPress(event)">
+            <input type="text" id="userInput" class="search-bar" placeholder="Search science facts..." onkeypress="handleKeyPress(event)">
             <button class="search-btn" onclick="executeSearch()">Search</button>
         </div>
 
@@ -229,26 +229,21 @@
         <div class="boy-wrapper">
             <svg viewBox="0 0 200 240" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
                 <!-- Body & Clothes -->
-                <path d="M70 140 L130 140 L135 210 L65 210 Z" fill="#2563eb" /> <!-- Shirt -->
-                <path d="M75 210 L95 210 L95 240 L75 240 Z" fill="#1e293b" /> <!-- Left Leg -->
-                <path d="M105 210 L125 210 L125 240 L105 240 Z" fill="#1e293b" /> <!-- Right Leg -->
+                <path d="M70 140 L130 140 L135 210 L65 210 Z" fill="#2563eb" />
+                <path d="M75 210 L95 210 L95 240 L75 240 Z" fill="#1e293b" />
+                <path d="M105 210 L125 210 L125 240 L105 240 Z" fill="#1e293b" />
 
                 <!-- Namaste Hands -->
                 <path d="M85 150 L100 130 L115 150 L105 170 L95 170 Z" fill="#fca5a5" /> 
-                <path d="M98 130 L102 130 L102 155 L98 155 Z" fill="#f87171" /> <!-- Hand Fold Line -->
+                <path d="M98 130 L102 130 L102 155 L98 155 Z" fill="#f87171" />
 
                 <!-- Animated Head Group -->
                 <g id="boy-head">
-                    <!-- Neck -->
                     <rect x="92" y="105" width="16" height="15" fill="#fca5a5" />
-                    <!-- Face -->
                     <circle cx="100" cy="80" r="30" fill="#fca5a5" />
-                    <!-- Hair -->
                     <path d="M70 75 C70 45 130 45 130 75 C120 55 80 55 70 75 Z" fill="#1c1917" />
-                    <!-- Eyes -->
                     <circle cx="90" cy="80" r="3" fill="#000" />
                     <circle cx="110" cy="80" r="3" fill="#000" />
-                    <!-- Smile -->
                     <path d="M92 92 Q100 100 108 92" stroke="#000" stroke-width="2" fill="none" />
                 </g>
             </svg>
@@ -259,7 +254,7 @@
     </div>
 
     <script>
-        // Meyyee Local Knowledge Database
+        // Meyyee Science & Truth Database
         const meyyeeDatabase = [
             {
                 keys: ["meyyee", "meaning", "porul", "what"],
@@ -275,6 +270,51 @@
                 keys: ["sun", "sooriyan", "light", "time"],
                 title: "Sooriya Oli Boomiyai Adaiya Kaelvi",
                 answer: "Sooriya oli boomiyai adaiya thoraayamaaga 8 nimidam 20 vinadigal (500 seconds) aagum."
+            },
+            {
+                keys: ["water", "thaneer", "h2o", "formula"],
+                title: "Thaneerin Vedhiyial Formula",
+                answer: "Thaneerin vedhiyial peyar H2O (2 Hydrogen atoms + 1 Oxygen atom)."
+            },
+            {
+                keys: ["speed of light", "oli vegam", "light speed"],
+                title: "Oliyin Vegam (Speed of Light)",
+                answer: "Oli oru vinadiku 300,000 kilometer (3,000,000 km/s) vegam payanam seyyum. Prapanjathil idhudhaan migavum vegamaagak koodiyadhu."
+            },
+            {
+                keys: ["gravity", "eeppu visai", "newton"],
+                title: "Eerppu Visai (Gravity)",
+                answer: "Boomiyin eerppu visai acceleration 9.8 m/s² aagum. Idhu Isaac Newton enbavaraal kandupidikkappattadhu."
+            },
+            {
+                keys: ["dna", "genetics", "gene"],
+                title: "DNA - Uyirin Varaipadam",
+                answer: "DNA enbadhu Deoxyribonucleic Acid. Idhu dhaan ellaa uyirinagalukusum uruvam matrum panbugalai thirumanikkum jeneetic code."
+            },
+            {
+                keys: ["oxygen", "katru", "air", "breath"],
+                title: "Wathil உள்ள Oxygen Alavu",
+                answer: "Nammudaiya vana veliyil (Atmosphere) thoraayamaaga 21% Oxygen matrum 78% Nitrogen vayu irukku."
+            },
+            {
+                keys: ["sound", "sabtham", "sound speed"],
+                title: "Sabthathin Vegam (Speed of Sound)",
+                answer: "Kaatrilae sabthathin vegam thoraayamaaga vinadiku 343 meter (1,235 km/h) payanam seyyum."
+            },
+            {
+                keys: ["moon", "chandiran", "nilavu"],
+                title: "Nilavu Patriya Unmai",
+                answer: "Nilavil eerppu visai boomiyai vida 6 madangu kuraivu. Boomiyil 60kg iruppavar nilavil 10kg dhaan iruppaar."
+            },
+            {
+                keys: ["mars", "sevvai", "red planet"],
+                title: "Mars - Sevvai Grahama",
+                answer: "Mars graham 'Red Planet' endru azhaikkappadugiradhu, eanendral adhin tharaiyil Iron Oxide (Irumbu Thurupidithal) adhigamaaga irukku."
+            },
+            {
+                keys: ["human body", "bones", "elumbu"],
+                title: "Manitha Udambin Elumbugal",
+                answer: "Oru valarndha manidhana udambil 206 elumbugal irukkum. Aanaal pirandha kuzhandhaiyin udambil thoraayamaaga 300 elumbugal irukkum."
             }
         ];
 
