@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meyyee - Only Truth Here</title>
+    <title>Meyyee - Independent Truth Engine</title>
     <style>
         * {
             margin: 0;
@@ -23,7 +23,6 @@
             overflow-y: auto;
         }
 
-        /* Galaxy Background Animation */
         .galaxy-bg {
             position: fixed;
             top: 0;
@@ -49,22 +48,20 @@
             align-items: center;
             text-align: center;
             gap: 12px;
-            max-width: 600px;
+            max-width: 650px;
             width: 100%;
         }
 
-        /* Thick Title */
         .title {
-            font-size: 4rem;
+            font-size: 3.8rem;
             font-weight: 900;
             letter-spacing: 5px;
             text-transform: uppercase;
             text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
         }
 
-        /* Tagline */
         .subtitle {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             letter-spacing: 3px;
             color: #d1d5db;
@@ -72,11 +69,10 @@
             margin-bottom: 5px;
         }
 
-        /* Cloud-Shaped Search Container */
         .cloud-search-wrapper {
             position: relative;
             width: 100%;
-            max-width: 450px;
+            max-width: 480px;
             height: 70px;
             display: flex;
             align-items: center;
@@ -106,17 +102,13 @@
             text-align: center;
         }
 
-        .search-bar::placeholder {
-            color: #64748b;
-        }
-
         .search-btn {
             position: relative;
             z-index: 3;
             background: #2563eb;
             color: white;
             border: none;
-            padding: 8px 16px;
+            padding: 8px 18px;
             border-radius: 20px;
             font-weight: bold;
             cursor: pointer;
@@ -128,7 +120,6 @@
             background: #1d4ed8;
         }
 
-        /* Result Display Card */
         .result-card {
             width: 100%;
             background: rgba(255, 255, 255, 0.1);
@@ -166,35 +157,37 @@
             color: #f1f5f9;
         }
 
-        /* Character Container */
+        .category-tag {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            border: 1px solid #475569;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
         .boy-wrapper {
-            width: 140px;
-            height: 180px;
+            width: 130px;
+            height: 160px;
             margin-top: 10px;
         }
 
-        /* Bowing & Namaste Animation */
         #boy-head {
             transform-origin: 100px 115px;
             animation: bowAnimation 3s infinite ease-in-out;
         }
 
         @keyframes bowAnimation {
-            0%, 100% {
-                transform: rotate(0deg) translateY(0px);
-            }
-            50% {
-                transform: rotate(12deg) translateY(6px);
-            }
+            0%, 100% { transform: rotate(0deg) translateY(0px); }
+            50% { transform: rotate(12deg) translateY(6px); }
         }
 
-        /* Welcome Text */
         .welcome-text {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 800;
             letter-spacing: 4px;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
-            margin-top: 5px;
         }
     </style>
 </head>
@@ -203,41 +196,31 @@
     <div class="galaxy-bg"></div>
 
     <div class="container">
-        <!-- Title -->
         <h1 class="title">MEYYEE</h1>
+        <p class="subtitle">INDEPENDENT TRUTH ENGINE</p>
 
-        <!-- Subtitle -->
-        <p class="subtitle">ONLY TRUTH HERE</p>
-
-        <!-- Cloud Search Bar -->
         <div class="cloud-search-wrapper">
             <svg class="cloud-svg-bg" viewBox="0 0 400 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M50 45 C30 45 15 35 25 20 C35 5 60 10 75 20 C90 5 130 5 145 20 C160 5 200 5 215 20 C230 5 270 5 285 20 C300 5 330 10 345 20 C360 5 385 20 375 40 C385 55 360 65 340 60 C320 65 80 65 50 45 Z" fill="#ffffff" opacity="0.95"/>
+                <path d="M50 45 C30 45 15 35 25 20 C35 5 60 10 75 20 C90 5 130 5 145 20 C230 5 270 5 285 20 C300 5 330 10 345 20 C360 5 385 20 375 40 C385 55 360 65 340 60 C320 65 80 65 50 45 Z" fill="#ffffff" opacity="0.95"/>
             </svg>
-            <input type="text" id="userInput" class="search-bar" placeholder="Search science facts..." onkeypress="handleKeyPress(event)">
+            <input type="text" id="userInput" class="search-bar" placeholder="Kelvi ketka (Eg: Meyyee, Earth, Sun)..." onkeypress="handleKeyPress(event)">
             <button class="search-btn" onclick="executeSearch()">Search</button>
         </div>
 
-        <!-- Result Card Section -->
         <div id="resultCard" class="result-card">
-            <span class="truth-badge">✔ MEYYEE VERIFIED DATA</span>
+            <span id="badge" class="truth-badge">✔ MEYYEE INDEPENDENT DATA</span>
             <div id="resTitle" class="result-title"></div>
             <div id="resAnswer" class="result-text"></div>
+            <div id="resCategory" class="category-tag"></div>
         </div>
 
-        <!-- Animated Boy (Vanakkam & Head Bowing) -->
         <div class="boy-wrapper">
             <svg viewBox="0 0 200 240" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                <!-- Body & Clothes -->
                 <path d="M70 140 L130 140 L135 210 L65 210 Z" fill="#2563eb" />
                 <path d="M75 210 L95 210 L95 240 L75 240 Z" fill="#1e293b" />
                 <path d="M105 210 L125 210 L125 240 L105 240 Z" fill="#1e293b" />
-
-                <!-- Namaste Hands -->
                 <path d="M85 150 L100 130 L115 150 L105 170 L95 170 Z" fill="#fca5a5" /> 
                 <path d="M98 130 L102 130 L102 155 L98 155 Z" fill="#f87171" />
-
-                <!-- Animated Head Group -->
                 <g id="boy-head">
                     <rect x="92" y="105" width="16" height="15" fill="#fca5a5" />
                     <circle cx="100" cy="80" r="30" fill="#fca5a5" />
@@ -249,72 +232,47 @@
             </svg>
         </div>
 
-        <!-- Welcome Text -->
         <div class="welcome-text">WELCOME</div>
     </div>
 
     <script>
-        // Meyyee Science & Truth Database
+        // Meyyee Local Knowledge Database
         const meyyeeDatabase = [
             {
-                keys: ["meyyee", "meaning", "porul", "what"],
+                keys: ["meyyee", "meaning", "porul", "about"],
                 title: "Meyyee - Definition",
-                answer: "Meyyee endral 'Unmai Koduthal' endru porul. Idhu unmaiyaana thagavalgalaip pagirum swadhandhira search engine."
+                answer: "Meyyee endral 'Unmai Koduthal' (Truth Engine) endru porul. Idhu purely independent-aagavae seyalpadum.",
+                category: "Core Identity"
             },
             {
-                keys: ["earth", "boomi", "shape", "vadivam"],
+                keys: ["earth", "boomi", "shape", "geoid"],
                 title: "Boomiyin Vadivam",
-                answer: "Boomi mulu urundai illai, adhu 'Oblate Spheroid' (dhuruva pagudhigalil konjam thattaiyaana) vadivam kondadhu."
+                answer: "Boomi muzhu urundai illai, adhu 'Oblate Spheroid' (Geoid) vadivam kondadhu.",
+                category: "Science & Astronomy"
             },
             {
-                keys: ["sun", "sooriyan", "light", "time"],
-                title: "Sooriya Oli Boomiyai Adaiya Kaelvi",
-                answer: "Sooriya oli boomiyai adaiya thoraayamaaga 8 nimidam 20 vinadigal (500 seconds) aagum."
+                keys: ["sun", "sooriyan", "light"],
+                title: "Sooriya Oli",
+                answer: "Sooryanilirundhu purappadum oli boomiyai adaiya thoraayamaaga 8 nimidam 20 vinadigal aagum.",
+                category: "Astronomy"
             },
             {
-                keys: ["water", "thaneer", "h2o", "formula"],
-                title: "Thaneerin Vedhiyial Formula",
-                answer: "Thaneerin vedhiyial peyar H2O (2 Hydrogen atoms + 1 Oxygen atom)."
+                keys: ["water", "theer", "tanneer", "h2o"],
+                title: "Thanneer (Water) Formula",
+                answer: "Thanneerukku 'H2O' enru peyar. Irandu Hydrogen matrum oru Oxygen anukkal serndhadhu.",
+                category: "Chemistry"
             },
             {
-                keys: ["speed of light", "oli vegam", "light speed"],
-                title: "Oliyin Vegam (Speed of Light)",
-                answer: "Oli oru vinadiku 300,000 kilometer (3,000,000 km/s) vegam payanam seyyum. Prapanjathil idhudhaan migavum vegamaagak koodiyadhu."
+                keys: ["tamil", "mozhi", "language"],
+                title: "Tamil Language",
+                answer: "Tamil ulagin mighavum tholmanamana matrum ippodhum vaazhum dravida mozhigalil ondru.",
+                category: "Culture & Language"
             },
             {
-                keys: ["gravity", "eeppu visai", "newton"],
-                title: "Eerppu Visai (Gravity)",
-                answer: "Boomiyin eerppu visai acceleration 9.8 m/s² aagum. Idhu Isaac Newton enbavaraal kandupidikkappattadhu."
-            },
-            {
-                keys: ["dna", "genetics", "gene"],
-                title: "DNA - Uyirin Varaipadam",
-                answer: "DNA enbadhu Deoxyribonucleic Acid. Idhu dhaan ellaa uyirinagalukusum uruvam matrum panbugalai thirumanikkum jeneetic code."
-            },
-            {
-                keys: ["oxygen", "katru", "air", "breath"],
-                title: "Wathil உள்ள Oxygen Alavu",
-                answer: "Nammudaiya vana veliyil (Atmosphere) thoraayamaaga 21% Oxygen matrum 78% Nitrogen vayu irukku."
-            },
-            {
-                keys: ["sound", "sabtham", "sound speed"],
-                title: "Sabthathin Vegam (Speed of Sound)",
-                answer: "Kaatrilae sabthathin vegam thoraayamaaga vinadiku 343 meter (1,235 km/h) payanam seyyum."
-            },
-            {
-                keys: ["moon", "chandiran", "nilavu"],
-                title: "Nilavu Patriya Unmai",
-                answer: "Nilavil eerppu visai boomiyai vida 6 madangu kuraivu. Boomiyil 60kg iruppavar nilavil 10kg dhaan iruppaar."
-            },
-            {
-                keys: ["mars", "sevvai", "red planet"],
-                title: "Mars - Sevvai Grahama",
-                answer: "Mars graham 'Red Planet' endru azhaikkappadugiradhu, eanendral adhin tharaiyil Iron Oxide (Irumbu Thurupidithal) adhigamaaga irukku."
-            },
-            {
-                keys: ["human body", "bones", "elumbu"],
-                title: "Manitha Udambin Elumbugal",
-                answer: "Oru valarndha manidhana udambil 206 elumbugal irukkum. Aanaal pirandha kuzhandhaiyin udambil thoraayamaaga 300 elumbugal irukkum."
+                keys: ["thirukkural", "kural", "thiruvalluvar"],
+                title: "Thirukkural",
+                answer: "Thirukkuralil மொத்தம் 1330 குறள்கள், 133 அதிகாரங்கள் உள்ளன. Ezhudhiyavar Thiruvalluvar.",
+                category: "Literature"
             }
         ];
 
@@ -327,12 +285,14 @@
             const resultCard = document.getElementById('resultCard');
             const resTitle = document.getElementById('resTitle');
             const resAnswer = document.getElementById('resAnswer');
+            const resCategory = document.getElementById('resCategory');
 
             if (!query) {
                 resultCard.style.display = "none";
                 return;
             }
 
+            // Keyword Matching Algorithm
             const found = meyyeeDatabase.find(item => 
                 item.keys.some(k => query.includes(k))
             );
@@ -342,9 +302,11 @@
             if (found) {
                 resTitle.innerText = found.title;
                 resAnswer.innerText = found.answer;
+                resCategory.innerText = "Category: " + found.category;
             } else {
-                resTitle.innerText = "Meyyee Knowledge Engine";
-                resAnswer.innerText = `"${query}" patriya verified thagaval Meyyee database-il ipodhaiku illai. Database update seidhadhum unmaiyaana badhil kidaikkum.`;
+                resTitle.innerText = "Meyyee Offline Engine";
+                resAnswer.innerText = `"${query}" patriya unmai thagaval Meyyee-in சொந்த Database-il ippodhu illai. Pudhiya thagavalgalai database-il add panni Meyyee-ai innum valarchiyadaiya seiyalaam.`;
+                resCategory.innerText = "Category: Database Missing";
             }
         }
     </script>
