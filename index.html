@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meyyee - Truth Search Engine</title>
+    <title>Meyyee - Universal AI Truth Engine</title>
     <style>
         * {
             margin: 0;
@@ -167,83 +167,29 @@
             border-radius: 4px;
         }
 
-        .btn-group {
-            display: flex;
-            gap: 10px;
-            margin-top: 5px;
-        }
-
-        .toggle-admin-btn {
-            background: rgba(255, 255, 255, 0.15);
-            color: #cbd5e1;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 6px 14px;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .reset-btn {
-            background: rgba(239, 68, 68, 0.2);
-            color: #fca5a5;
-            border: 1px solid rgba(239, 68, 68, 0.4);
-            padding: 6px 14px;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            cursor: pointer;
-        }
-
-        .admin-card {
-            display: none;
-            width: 100%;
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(12px);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: left;
-            border: 1px solid rgba(56, 189, 248, 0.4);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-            margin-top: 10px;
-        }
-
-        .admin-input {
-            width: 100%;
-            padding: 8px 12px;
-            margin-bottom: 10px;
-            border-radius: 6px;
-            border: 1px solid #475569;
-            background: #1e293b;
-            color: white;
-            font-size: 0.9rem;
-            outline: none;
-        }
-
-        .save-btn {
-            background: #10b981;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-        }
-
+        /* Custom Boy Character Styling */
         .boy-wrapper {
-            width: 130px;
-            height: 160px;
+            width: 150px;
+            height: auto;
             margin-top: 10px;
         }
 
-        #boy-head {
-            transform-origin: 100px 115px;
-            animation: bowAnimation 3s infinite ease-in-out;
+        .boy-img {
+            width: 100%;
+            height: auto;
+            max-height: 190px;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.5));
+            animation: gentleWave 2.5s infinite ease-in-out;
         }
 
-        @keyframes bowAnimation {
-            0%, 100% { transform: rotate(0deg) translateY(0px); }
-            50% { transform: rotate(12deg) translateY(6px); }
+        @keyframes gentleWave {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-8px) rotate(2deg);
+            }
         }
 
         .welcome-text {
@@ -260,62 +206,35 @@
 
     <div class="container">
         <h1 class="title">MEYYEE</h1>
-        <p class="subtitle">INDEPENDENT TRUTH ENGINE</p>
+        <p class="subtitle">UNIVERSAL TRUTH ENGINE</p>
 
         <div class="cloud-search-wrapper">
             <svg class="cloud-svg-bg" viewBox="0 0 400 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M50 45 C30 45 15 35 25 20 C35 5 60 10 75 20 C90 5 130 5 145 20 C230 5 270 5 285 20 C300 5 330 10 345 20 C360 5 385 20 375 40 C385 55 360 65 340 60 C320 65 80 65 50 45 Z" fill="#ffffff" opacity="0.95"/>
+                <path d="M50 45 C30 45 15 35 25 20 C35 5 60 10 75 20 C160 5 200 5 215 20 C230 5 270 5 285 20 C300 5 330 10 345 20 C360 5 385 20 375 40 C385 55 360 65 340 60 C320 65 80 65 50 45 Z" fill="#ffffff" opacity="0.95"/>
             </svg>
-            <input type="text" id="userInput" class="search-bar" placeholder="Kelvi ketka (Eg: meyyee, earth)..." onkeydown="if(event.key === 'Enter') executeSearch()">
+            <input type="text" id="userInput" class="search-bar" placeholder="Ask anything in the world..." onkeydown="if(event.key === 'Enter') executeSearch()">
             <button class="search-btn" onclick="executeSearch()">Search</button>
         </div>
 
         <div id="resultCard" class="result-card">
-            <span id="badge" class="truth-badge">✔ MEYYEE INDEPENDENT DATA</span>
+            <span id="badge" class="truth-badge">✔ MEYYEE KNOWLEDGE ENGINE</span>
             <div id="resTitle" class="result-title"></div>
             <div id="resAnswer" class="result-text"></div>
             <div id="resCategory" class="category-tag"></div>
         </div>
 
-        <div class="btn-group">
-            <button class="toggle-admin-btn" onclick="toggleAdminPanel()">⚙️ Admin Panel</button>
-            <button class="reset-btn" onclick="resetDatabase()">🔄 Reset Fix Data</button>
-        </div>
-
-        <div id="adminCard" class="admin-card">
-            <h3>➕ Add Truth to Meyyee Database</h3>
-            <input type="text" id="newKeys" class="admin-input" placeholder="Search Keywords (comma separated)">
-            <input type="text" id="newTitle" class="admin-input" placeholder="Result Title">
-            <textarea id="newAnswer" class="admin-input" rows="3" placeholder="Verified Answer Details"></textarea>
-            <input type="text" id="newCategory" class="admin-input" placeholder="Category">
-            <button class="save-btn" onclick="addTruth()">Save to Meyyee Engine</button>
-        </div>
-
+        <!-- Custom Boy Character Image -->
         <div class="boy-wrapper">
-            <svg viewBox="0 0 200 240" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                <path d="M70 140 L130 140 L135 210 L65 210 Z" fill="#2563eb" />
-                <path d="M75 210 L95 210 L95 240 L75 240 Z" fill="#1e293b" />
-                <path d="M105 210 L125 210 L125 240 L105 240 Z" fill="#1e293b" />
-                <path d="M85 150 L100 130 L115 150 L105 170 L95 170 Z" fill="#fca5a5" /> 
-                <path d="M98 130 L102 130 L102 155 L98 155 Z" fill="#f87171" />
-                <g id="boy-head">
-                    <rect x="92" y="105" width="16" height="15" fill="#fca5a5" />
-                    <circle cx="100" cy="80" r="30" fill="#fca5a5" />
-                    <path d="M70 75 C70 45 130 45 130 75 C120 55 80 55 70 75 Z" fill="#1c1917" />
-                    <circle cx="90" cy="80" r="3" fill="#000" />
-                    <circle cx="110" cy="80" r="3" fill="#000" />
-                    <path d="M92 92 Q100 100 108 92" stroke="#000" stroke-width="2" fill="none" />
-                </g>
-            </svg>
+            <img src="boy-8643450_1280.jpg" alt="Meyyee Vanakkam Boy" class="boy-img">
         </div>
 
         <div class="welcome-text">WELCOME</div>
     </div>
 
     <script>
-        const defaultData = [
+        const localDatabase = [
             {
-                keys: ["meyyee", "meaning", "porul", "what"],
+                keys: ["meyyee", "meaning", "porul"],
                 title: "Meyyee - Definition",
                 answer: "Meyyee endral 'Unmai Koduthal' (Truth Engine) endru porul.",
                 category: "Core Identity"
@@ -325,26 +244,11 @@
                 title: "Boomiyin Vadivam",
                 answer: "Boomi 'Oblate Spheroid' (Geoid) vadivam kondadhu.",
                 category: "Science"
-            },
-            {
-                keys: ["sun", "sooriyan", "light"],
-                title: "Sooriya Oli",
-                answer: "Sooriya oli boomiyai adaiya thoraayamaaga 8 nimidam 20 vinadigal aagum.",
-                category: "Astronomy"
             }
         ];
 
-        let meyyeeDatabase;
-
-        try {
-            const saved = localStorage.getItem('meyyee_data');
-            meyyeeDatabase = saved ? JSON.parse(saved) : defaultData;
-        } catch (e) {
-            meyyeeDatabase = defaultData;
-        }
-
-        function executeSearch() {
-            const query = document.getElementById('userInput').value.toLowerCase().trim();
+        async function executeSearch() {
+            const query = document.getElementById('userInput').value.trim();
             const resultCard = document.getElementById('resultCard');
             const resTitle = document.getElementById('resTitle');
             const resAnswer = document.getElementById('resAnswer');
@@ -355,57 +259,43 @@
                 return;
             }
 
-            // Enhanced Smart Search Logic
-            const found = meyyeeDatabase.find(item => 
-                item.keys.some(k => query.includes(k.toLowerCase()) || k.toLowerCase().includes(query))
+            resultCard.style.display = "block";
+            resTitle.innerText = "Searching Meyyee Engine...";
+            resAnswer.innerText = "Searching global knowledge database...";
+            resCategory.innerText = "Status: Fetching Truth";
+
+            // 1. Local Database Match Check
+            const foundLocal = localDatabase.find(item => 
+                item.keys.some(k => query.toLowerCase().includes(k))
             );
 
-            resultCard.style.display = "block";
-
-            if (found) {
-                resTitle.innerText = found.title;
-                resAnswer.innerText = found.answer;
-                resCategory.innerText = "Category: " + (found.category || "General");
-            } else {
-                resTitle.innerText = "Meyyee Search Engine";
-                resAnswer.innerText = `"${query}" patriya unmai thagaval Meyyee Database-il illai. Admin panel moolam dhagavalai serkalam.`;
-                resCategory.innerText = "Category: Not Found";
-            }
-        }
-
-        function toggleAdminPanel() {
-            const adminCard = document.getElementById('adminCard');
-            adminCard.style.display = (adminCard.style.display === 'block') ? 'none' : 'block';
-        }
-
-        function addTruth() {
-            const rawKeys = document.getElementById('newKeys').value.trim();
-            const title = document.getElementById('newTitle').value.trim();
-            const answer = document.getElementById('newAnswer').value.trim();
-            const category = document.getElementById('newCategory').value.trim() || "General";
-
-            if (!rawKeys || !title || !answer) {
-                alert("Dayavu seidhu ellaa fieldgaliyum nirappungal!");
+            if (foundLocal) {
+                resTitle.innerText = foundLocal.title;
+                resAnswer.innerText = foundLocal.answer;
+                resCategory.innerText = "Source: Meyyee Local Core (" + foundLocal.category + ")";
                 return;
             }
 
-            const keys = rawKeys.split(',').map(k => k.trim().toLowerCase());
-            meyyeeDatabase.push({ keys, title, answer, category });
+            // 2. Fetch Live Global Knowledge (Wikipedia Universal REST API)
+            try {
+                const response = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.extract) {
+                        resTitle.innerText = data.title;
+                        resAnswer.innerText = data.extract;
+                        resCategory.innerText = "Source: Meyyee Global Knowledge Engine";
+                        return;
+                    }
+                }
+            } catch (err) {
+                console.log("Global fetch error:", err);
+            }
 
-            localStorage.setItem('meyyee_data', JSON.stringify(meyyeeDatabase));
-            alert("✅ Pudhiya thagaval Meyyee Engine-il serkkappattadhu!");
-
-            document.getElementById('newKeys').value = '';
-            document.getElementById('newTitle').value = '';
-            document.getElementById('newAnswer').value = '';
-            document.getElementById('newCategory').value = '';
-            toggleAdminPanel();
-        }
-
-        function resetDatabase() {
-            localStorage.removeItem('meyyee_data');
-            meyyeeDatabase = defaultData;
-            alert("🔄 Database Fix panna pattadhu! Ippodhu 'meyyee' alladhu 'earth' endru type seidhu search panni paarungal.");
+            // Fallback response
+            resTitle.innerText = `Search Query: "${query}"`;
+            resAnswer.innerText = `"${query}" patriya spastamaana thagaval Meyyee-il illai. Sariyana keyword type seidhu search seiyavum.`;
+            resCategory.innerText = "Source: Meyyee Search";
         }
     </script>
 </body>
