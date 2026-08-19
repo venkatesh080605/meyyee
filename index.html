@@ -69,7 +69,7 @@
             margin-bottom: 5px;
         }
 
-        /* Pill Cloud Search Bar */
+        /* Clean Pill Search Bar */
         .cloud-search-wrapper {
             position: relative;
             width: 100%;
@@ -157,40 +157,39 @@
             border-radius: 4px;
         }
 
-        /* Pure Transparent Boy - NO WHITE BOX AT ALL */
+        /* Avatar Container Box */
         .boy-wrapper {
-            width: 180px;
-            height: 220px;
+            width: 190px;
+            height: 200px;
             margin-top: 10px;
-            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #ffffff;
+            border: 3px solid rgba(56, 189, 248, 0.8);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
+        /* Vertical Bowing Only - No Shake / No Tilt */
         .boy-img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            /* Removes white background completely */
-            filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.8));
-            transform-origin: 30% 20%;
-            animation: handWave 2s infinite ease-in-out;
+            object-fit: cover;
+            transform-origin: bottom center;
+            animation: verticalHeadBow 3s infinite ease-in-out;
         }
 
-        /* Real Hand Waving / Nodding Animation */
-        @keyframes handWave {
+        @keyframes verticalHeadBow {
             0%, 100% {
-                transform: rotate(0deg) scale(1);
+                transform: translateY(0px) scaleY(1); /* Straight Pose */
             }
-            25% {
-                transform: rotate(-6deg) scale(1.02); /* Waving hand move left */
+            40% {
+                transform: translateY(14px) scaleY(0.94); /* Head & Body Bowing Down directly */
             }
-            50% {
-                transform: rotate(4deg) scale(1.01); /* Waving hand move right */
-            }
-            75% {
-                transform: rotate(-4deg) scale(1.02);
+            60% {
+                transform: translateY(14px) scaleY(0.94); /* Pause at Bow */
             }
         }
 
@@ -222,9 +221,9 @@
             <div id="resCategory" class="category-tag"></div>
         </div>
 
-        <!-- Boy Character without White Container Box -->
+        <!-- Vanakkam Character Frame -->
         <div class="boy-wrapper">
-            <img src=https://i.pinimg.com/736x/ca/66/41/ca66419a8c8fd3f2a7425b29fce1e648.jpg alt="Meyyee Vanakkam Boy" class="boy-img">
+            <img src=https://i.pinimg.com/736x/ca/66/41/ca66419a8c8fd3f2a7425b29fce1e648.jpg alt="Meyyee Vanakkam Character" class="boy-img">
         </div>
 
         <div class="welcome-text">WELCOME</div>
