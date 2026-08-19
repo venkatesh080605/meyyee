@@ -50,6 +50,7 @@
             gap: 15px;
             max-width: 650px;
             width: 100%;
+            perspective: 800px; /* Perspective added for 3D forward bowing */
         }
 
         .title {
@@ -157,7 +158,7 @@
             border-radius: 4px;
         }
 
-        /* Avatar Container Box */
+        /* Outer Frame Card */
         .boy-wrapper {
             width: 190px;
             height: 200px;
@@ -170,26 +171,24 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            perspective: 600px;
         }
 
-        /* Vertical Bowing Only - No Shake / No Tilt */
+        /* 3D Realistic Head & Spine Forward Bow Animation */
         .boy-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transform-origin: bottom center;
-            animation: verticalHeadBow 3s infinite ease-in-out;
+            animation: forwardNamasteBow 3.2s infinite cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        @keyframes verticalHeadBow {
+        @keyframes forwardNamasteBow {
             0%, 100% {
-                transform: translateY(0px) scaleY(1); /* Straight Pose */
+                transform: rotateX(0deg) translateY(0px) scale(1); /* Straight pose */
             }
-            40% {
-                transform: translateY(14px) scaleY(0.94); /* Head & Body Bowing Down directly */
-            }
-            60% {
-                transform: translateY(14px) scaleY(0.94); /* Pause at Bow */
+            35%, 60% {
+                transform: rotateX(28deg) translateY(12px) scale(0.96); /* Bowing head and upper body forward */
             }
         }
 
@@ -221,7 +220,6 @@
             <div id="resCategory" class="category-tag"></div>
         </div>
 
-        <!-- Vanakkam Character Frame -->
         <div class="boy-wrapper">
             <img src=https://i.pinimg.com/736x/ca/66/41/ca66419a8c8fd3f2a7425b29fce1e648.jpg alt="Meyyee Vanakkam Character" class="boy-img">
         </div>
