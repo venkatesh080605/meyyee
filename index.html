@@ -69,7 +69,7 @@
             margin-bottom: 5px;
         }
 
-        /* Pure Cloud Pill Container - NO RECTANGLE */
+        /* Pill Cloud Search Bar */
         .cloud-search-wrapper {
             position: relative;
             width: 100%;
@@ -81,7 +81,7 @@
             background: #ffffff;
             border-radius: 40px;
             padding: 5px 8px 5px 20px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5), inset 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
         }
 
         .search-bar {
@@ -93,7 +93,6 @@
             font-size: 1rem;
             font-weight: 600;
             color: #1e293b;
-            text-align: left;
         }
 
         .search-btn {
@@ -106,12 +105,10 @@
             font-size: 0.95rem;
             cursor: pointer;
             transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.4);
         }
 
         .search-btn:hover {
             background: #1d4ed8;
-            transform: scale(1.03);
         }
 
         .result-card {
@@ -124,7 +121,6 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 8px 20px rgba(0,0,0,0.4);
             display: none;
-            margin-top: 10px;
         }
 
         .truth-badge {
@@ -161,40 +157,40 @@
             border-radius: 4px;
         }
 
-        /* Clean Glass Avatar Pod for Boy Image */
+        /* Pure Transparent Boy - NO WHITE BOX AT ALL */
         .boy-wrapper {
-            width: 170px;
-            height: 200px;
+            width: 180px;
+            height: 220px;
             margin-top: 10px;
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
         }
 
         .boy-img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            border-radius: 20px;
-            mix-blend-mode: multiply; /* Blends seamlessly if image has white BG */
-            border: 3px solid rgba(56, 189, 248, 0.6);
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
-            animation: vanakkamBow 3s infinite ease-in-out;
+            object-fit: contain;
+            /* Removes white background completely */
+            filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.8));
+            transform-origin: 30% 20%;
+            animation: handWave 2s infinite ease-in-out;
         }
 
-        @keyframes vanakkamBow {
+        /* Real Hand Waving / Nodding Animation */
+        @keyframes handWave {
             0%, 100% {
-                transform: rotate(0deg) translateY(0px);
+                transform: rotate(0deg) scale(1);
             }
-            30% {
-                transform: rotate(-8deg) translateY(10px);
+            25% {
+                transform: rotate(-6deg) scale(1.02); /* Waving hand move left */
             }
             50% {
-                transform: rotate(-10deg) translateY(12px);
+                transform: rotate(4deg) scale(1.01); /* Waving hand move right */
             }
             75% {
-                transform: rotate(2deg) translateY(0px);
+                transform: rotate(-4deg) scale(1.02);
             }
         }
 
@@ -214,7 +210,6 @@
         <h1 class="title">MEYYEE</h1>
         <p class="subtitle">UNIVERSAL TRUTH ENGINE</p>
 
-        <!-- Clean Pill-shaped Cloud Search Bar -->
         <div class="cloud-search-wrapper">
             <input type="text" id="userInput" class="search-bar" placeholder="Ask anything in the world..." onkeydown="if(event.key === 'Enter') executeSearch()">
             <button class="search-btn" onclick="executeSearch()">Search</button>
@@ -227,7 +222,7 @@
             <div id="resCategory" class="category-tag"></div>
         </div>
 
-        <!-- Boy Character -->
+        <!-- Boy Character without White Container Box -->
         <div class="boy-wrapper">
             <img src=https://i.postimg.cc/CKQSVdfg/boy-8643450-1280.png alt="Meyyee Vanakkam Boy" class="boy-img">
         </div>
