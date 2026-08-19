@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meyyee - Independent Truth Engine</title>
+    <title>Meyyee - Truth Search Engine</title>
     <style>
         * {
             margin: 0;
@@ -167,6 +167,69 @@
             border-radius: 4px;
         }
 
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .toggle-admin-btn {
+            background: rgba(255, 255, 255, 0.15);
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .reset-btn {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .admin-card {
+            display: none;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: left;
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            margin-top: 10px;
+        }
+
+        .admin-input {
+            width: 100%;
+            padding: 8px 12px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border: 1px solid #475569;
+            background: #1e293b;
+            color: white;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .save-btn {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+        }
+
         .boy-wrapper {
             width: 130px;
             height: 160px;
@@ -203,7 +266,7 @@
             <svg class="cloud-svg-bg" viewBox="0 0 400 70" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M50 45 C30 45 15 35 25 20 C35 5 60 10 75 20 C90 5 130 5 145 20 C230 5 270 5 285 20 C300 5 330 10 345 20 C360 5 385 20 375 40 C385 55 360 65 340 60 C320 65 80 65 50 45 Z" fill="#ffffff" opacity="0.95"/>
             </svg>
-            <input type="text" id="userInput" class="search-bar" placeholder= SearchTruth onkeypress="handleKeyPress(event)">
+            <input type="text" id="userInput" class="search-bar" placeholder="Kelvi ketka (Eg: meyyee, earth)..." onkeydown="if(event.key === 'Enter') executeSearch()">
             <button class="search-btn" onclick="executeSearch()">Search</button>
         </div>
 
@@ -212,6 +275,20 @@
             <div id="resTitle" class="result-title"></div>
             <div id="resAnswer" class="result-text"></div>
             <div id="resCategory" class="category-tag"></div>
+        </div>
+
+        <div class="btn-group">
+            <button class="toggle-admin-btn" onclick="toggleAdminPanel()">⚙️ Admin Panel</button>
+            <button class="reset-btn" onclick="resetDatabase()">🔄 Reset Fix Data</button>
+        </div>
+
+        <div id="adminCard" class="admin-card">
+            <h3>➕ Add Truth to Meyyee Database</h3>
+            <input type="text" id="newKeys" class="admin-input" placeholder="Search Keywords (comma separated)">
+            <input type="text" id="newTitle" class="admin-input" placeholder="Result Title">
+            <textarea id="newAnswer" class="admin-input" rows="3" placeholder="Verified Answer Details"></textarea>
+            <input type="text" id="newCategory" class="admin-input" placeholder="Category">
+            <button class="save-btn" onclick="addTruth()">Save to Meyyee Engine</button>
         </div>
 
         <div class="boy-wrapper">
@@ -236,48 +313,34 @@
     </div>
 
     <script>
-        // Meyyee Local Knowledge Database
-        const meyyeeDatabase = [
+        const defaultData = [
             {
-                keys: ["meyyee", "meaning", "porul", "about"],
+                keys: ["meyyee", "meaning", "porul", "what"],
                 title: "Meyyee - Definition",
-                answer: "Meyyee endral 'Unmai Koduthal' (Truth Engine) endru porul. Idhu purely independent-aagavae seyalpadum.",
+                answer: "Meyyee endral 'Unmai Koduthal' (Truth Engine) endru porul.",
                 category: "Core Identity"
             },
             {
-                keys: ["earth", "boomi", "shape", "geoid"],
+                keys: ["earth", "boomi", "shape"],
                 title: "Boomiyin Vadivam",
-                answer: "Boomi muzhu urundai illai, adhu 'Oblate Spheroid' (Geoid) vadivam kondadhu.",
-                category: "Science & Astronomy"
+                answer: "Boomi 'Oblate Spheroid' (Geoid) vadivam kondadhu.",
+                category: "Science"
             },
             {
                 keys: ["sun", "sooriyan", "light"],
                 title: "Sooriya Oli",
-                answer: "Sooryanilirundhu purappadum oli boomiyai adaiya thoraayamaaga 8 nimidam 20 vinadigal aagum.",
+                answer: "Sooriya oli boomiyai adaiya thoraayamaaga 8 nimidam 20 vinadigal aagum.",
                 category: "Astronomy"
-            },
-            {
-                keys: ["water", "theer", "tanneer", "h2o"],
-                title: "Thanneer (Water) Formula",
-                answer: "Thanneerukku 'H2O' enru peyar. Irandu Hydrogen matrum oru Oxygen anukkal serndhadhu.",
-                category: "Chemistry"
-            },
-            {
-                keys: ["tamil", "mozhi", "language"],
-                title: "Tamil Language",
-                answer: "Tamil ulagin mighavum tholmanamana matrum ippodhum vaazhum dravida mozhigalil ondru.",
-                category: "Culture & Language"
-            },
-            {
-                keys: ["thirukkural", "kural", "thiruvalluvar"],
-                title: "Thirukkural",
-                answer: "Thirukkuralil மொத்தம் 1330 குறள்கள், 133 அதிகாரங்கள் உள்ளன. Ezhudhiyavar Thiruvalluvar.",
-                category: "Literature"
             }
         ];
 
-        function handleKeyPress(e) {
-            if (e.key === 'Enter') executeSearch();
+        let meyyeeDatabase;
+
+        try {
+            const saved = localStorage.getItem('meyyee_data');
+            meyyeeDatabase = saved ? JSON.parse(saved) : defaultData;
+        } catch (e) {
+            meyyeeDatabase = defaultData;
         }
 
         function executeSearch() {
@@ -292,9 +355,9 @@
                 return;
             }
 
-            // Keyword Matching Algorithm
+            // Enhanced Smart Search Logic
             const found = meyyeeDatabase.find(item => 
-                item.keys.some(k => query.includes(k))
+                item.keys.some(k => query.includes(k.toLowerCase()) || k.toLowerCase().includes(query))
             );
 
             resultCard.style.display = "block";
@@ -302,12 +365,47 @@
             if (found) {
                 resTitle.innerText = found.title;
                 resAnswer.innerText = found.answer;
-                resCategory.innerText = "Category: " + found.category;
+                resCategory.innerText = "Category: " + (found.category || "General");
             } else {
-                resTitle.innerText = "Meyyee Offline Engine";
-                resAnswer.innerText = `"${query}" patriya unmai thagaval Meyyee-in சொந்த Database-il ippodhu illai. Pudhiya thagavalgalai database-il add panni Meyyee-ai innum valarchiyadaiya seiyalaam.`;
-                resCategory.innerText = "Category: Database Missing";
+                resTitle.innerText = "Meyyee Search Engine";
+                resAnswer.innerText = `"${query}" patriya unmai thagaval Meyyee Database-il illai. Admin panel moolam dhagavalai serkalam.`;
+                resCategory.innerText = "Category: Not Found";
             }
+        }
+
+        function toggleAdminPanel() {
+            const adminCard = document.getElementById('adminCard');
+            adminCard.style.display = (adminCard.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function addTruth() {
+            const rawKeys = document.getElementById('newKeys').value.trim();
+            const title = document.getElementById('newTitle').value.trim();
+            const answer = document.getElementById('newAnswer').value.trim();
+            const category = document.getElementById('newCategory').value.trim() || "General";
+
+            if (!rawKeys || !title || !answer) {
+                alert("Dayavu seidhu ellaa fieldgaliyum nirappungal!");
+                return;
+            }
+
+            const keys = rawKeys.split(',').map(k => k.trim().toLowerCase());
+            meyyeeDatabase.push({ keys, title, answer, category });
+
+            localStorage.setItem('meyyee_data', JSON.stringify(meyyeeDatabase));
+            alert("✅ Pudhiya thagaval Meyyee Engine-il serkkappattadhu!");
+
+            document.getElementById('newKeys').value = '';
+            document.getElementById('newTitle').value = '';
+            document.getElementById('newAnswer').value = '';
+            document.getElementById('newCategory').value = '';
+            toggleAdminPanel();
+        }
+
+        function resetDatabase() {
+            localStorage.removeItem('meyyee_data');
+            meyyeeDatabase = defaultData;
+            alert("🔄 Database Fix panna pattadhu! Ippodhu 'meyyee' alladhu 'earth' endru type seidhu search panni paarungal.");
         }
     </script>
 </body>
