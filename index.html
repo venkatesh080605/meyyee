@@ -47,7 +47,7 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 12px;
+            gap: 15px;
             max-width: 650px;
             width: 100%;
         }
@@ -69,55 +69,49 @@
             margin-bottom: 5px;
         }
 
+        /* Pure Cloud Pill Container - NO RECTANGLE */
         .cloud-search-wrapper {
             position: relative;
             width: 100%;
             max-width: 480px;
-            height: 70px;
+            height: 55px;
             display: flex;
             align-items: center;
-            justify-content: center;
-        }
-
-        .cloud-svg-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            filter: drop-shadow(0px 8px 15px rgba(255, 255, 255, 0.3));
+            justify-content: space-between;
+            background: #ffffff;
+            border-radius: 40px;
+            padding: 5px 8px 5px 20px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5), inset 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .search-bar {
-            position: relative;
-            z-index: 2;
-            width: 65%;
-            height: 40px;
+            width: 75%;
+            height: 100%;
             border: none;
             outline: none;
-            background: same color;
+            background: transparent;
             font-size: 1rem;
             font-weight: 600;
             color: #1e293b;
-            text-align: center;
+            text-align: left;
         }
 
         .search-btn {
-            position: relative;
-            z-index: 3;
             background: #2563eb;
             color: white;
             border: none;
-            padding: 8px 18px;
-            border-radius: 20px;
+            padding: 10px 22px;
+            border-radius: 30px;
             font-weight: bold;
+            font-size: 0.95rem;
             cursor: pointer;
-            margin-left: 5px;
             transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.4);
         }
 
         .search-btn:hover {
             background: #1d4ed8;
+            transform: scale(1.03);
         }
 
         .result-card {
@@ -167,43 +161,40 @@
             border-radius: 4px;
         }
 
-        /* Fixed Image Wrapper with Glowing Avatar Pod */
+        /* Clean Glass Avatar Pod for Boy Image */
         .boy-wrapper {
-            width: 160px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 24px;
-            padding: 10px;
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.6), inset 0 0 10px rgba(0,0,0,0.1);
+            width: 170px;
+            height: 200px;
             margin-top: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 2px solid rgba(255, 255, 255, 0.8);
+            position: relative;
         }
 
-        /* Real Vanakkam Bowing & Nodding Animation */
         .boy-img {
             width: 100%;
-            height: auto;
-            max-height: 180px;
-            object-fit: contain;
-            border-radius: 16px;
-            transform-origin: bottom center;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            mix-blend-mode: multiply; /* Blends seamlessly if image has white BG */
+            border: 3px solid rgba(56, 189, 248, 0.6);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
             animation: vanakkamBow 3s infinite ease-in-out;
         }
 
         @keyframes vanakkamBow {
             0%, 100% {
-                transform: rotate(0deg) translateY(0px); /* Normal Standing */
+                transform: rotate(0deg) translateY(0px);
             }
             30% {
-                transform: rotate(-10deg) translateY(12px); /* Vanakkam Bowing Head Down */
+                transform: rotate(-8deg) translateY(10px);
             }
             50% {
-                transform: rotate(-12deg) translateY(14px); /* Holding Bow */
+                transform: rotate(-10deg) translateY(12px);
             }
             75% {
-                transform: rotate(2deg) translateY(0px); /* Returning Up & Slight Wave */
+                transform: rotate(2deg) translateY(0px);
             }
         }
 
@@ -223,10 +214,8 @@
         <h1 class="title">MEYYEE</h1>
         <p class="subtitle">UNIVERSAL TRUTH ENGINE</p>
 
+        <!-- Clean Pill-shaped Cloud Search Bar -->
         <div class="cloud-search-wrapper">
-            <svg class="cloud-svg-bg" viewBox="0 0 400 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M50 45 C30 45 15 35 25 20 C35 5 60 10 75 20 C160 5 200 5 215 20 C230 5 270 5 285 20 C300 5 330 10 345 20 C360 5 385 20 375 40 C385 55 360 65 340 60 C320 65 80 65 50 45 Z" fill="#ffffff" opacity="0.95"/>
-            </svg>
             <input type="text" id="userInput" class="search-bar" placeholder="Ask anything in the world..." onkeydown="if(event.key === 'Enter') executeSearch()">
             <button class="search-btn" onclick="executeSearch()">Search</button>
         </div>
@@ -238,9 +227,9 @@
             <div id="resCategory" class="category-tag"></div>
         </div>
 
-        <!-- Animated Vanakkam Boy Avatar Card -->
+        <!-- Boy Character -->
         <div class="boy-wrapper">
-            <img src=https://i.postimg.cc/CKQSVdfg/boy-8643450-1280.png alt="Meyyee Vanakkam Boy" class="boy-img">
+            <img src="boy-8643450_1280.jpg" alt="Meyyee Vanakkam Boy" class="boy-img">
         </div>
 
         <div class="welcome-text">WELCOME</div>
