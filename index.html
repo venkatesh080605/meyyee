@@ -1,4 +1,5 @@
-\<!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,7 +15,7 @@
 
         body {
             background-color: #ffffff; /* White background */
-            color: #111827; /* Dark text for contrast */
+            color: #111827; 
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -51,7 +52,7 @@
             text-transform: uppercase;
         }
 
-        /* Search Bar with clean border */
+        /* Search Bar */
         .search-box {
             display: flex;
             align-items: center;
@@ -101,7 +102,7 @@
             background-color: #0369a1;
         }
 
-        /* Video Container matching white theme */
+        /* NO BOX CONTAINER - Completely Transparent */
         .video-container {
             width: 200px;
             height: 200px;
@@ -109,11 +110,9 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 10px;
-            background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border: 2px solid #e2e8f0;
-            overflow: hidden;
+            background: transparent; /* No background box */
+            border: none; /* No border */
+            box-shadow: none; /* No shadow */
         }
 
         .video-container video {
@@ -160,7 +159,7 @@
             <button class="search-btn" onclick="handleSearch()">Search</button>
         </div>
 
-        <!-- Video with matching white container -->
+        <!-- Video without any box border -->
         <div class="video-container">
             <video width="100%" height="100%" controls autoplay muted loop>
                 <source src="myvideo.mp4.mp4" type="video/mp4">
