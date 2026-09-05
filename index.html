@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ta">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meyyee - Universal AI Truth Engine</title>
+    <title>Meyyee - Universal Truth Engine</title>
     <style>
         * {
             margin: 0;
@@ -13,283 +13,411 @@
         }
 
         body {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+            background-color: #0b0f19;
             color: #ffffff;
-            padding: 20px;
-            overflow-y: auto;
-        }
-
-        .galaxy-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(1px 1px at 10px 10px, #fff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 20px 50px, #fff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 30px 100px, #fff, rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 40px 150px, #fff, rgba(0,0,0,0));
-            background-repeat: repeat;
-            background-size: 200px 200px;
-            opacity: 0.8;
-            z-index: 0;
-        }
-
-        .container {
-            position: relative;
-            z-index: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
-            gap: 15px;
-            max-width: 650px;
-            width: 100%;
-            perspective: 800px; /* Perspective added for 3D forward bowing */
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        .title {
-            font-size: 3.8rem;
-            font-weight: 900;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        /* Background star effects */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(white 1px, transparent 0);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            letter-spacing: 4px;
+            font-weight: 800;
+            margin-bottom: 5px;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
 
         .subtitle {
             font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 3px;
-            color: #d1d5db;
+            letter-spacing: 2px;
+            color: #b0c4de;
+            margin-bottom: 40px;
             text-transform: uppercase;
-            margin-bottom: 5px;
         }
 
-        /* Clean Pill Search Bar */
-        .cloud-search-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 480px;
-            height: 55px;
+        /* Cloud Shape Rectangle Search Bar */
+        .search-box {
             display: flex;
             align-items: center;
-            justify-content: space-between;
             background: #ffffff;
-            border-radius: 40px;
-            padding: 5px 8px 5px 20px;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+            border-radius: 50px; /* Cloud / Pill shape rectangle */
+            padding: 8px 8px 8px 25px;
+            width: 100%;
+            max-width: 650px;
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
         }
 
-        .search-bar {
-            width: 75%;
-            height: 100%;
+        .search-box:hover {
+            box-shadow: 0 0 35px rgba(56, 189, 248, 0.7);
+        }
+
+        .search-input {
+            flex: 1;
             border: none;
             outline: none;
+            font-size: 1.1rem;
+            color: #333333;
             background: transparent;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #1e293b;
+        }
+
+        .search-input::placeholder {
+            color: #888888;
         }
 
         .search-btn {
-            background: #2563eb;
+            background-color: #0284c7;
             color: white;
             border: none;
-            padding: 10px 22px;
+            outline: none;
+            padding: 12px 30px;
             border-radius: 30px;
-            font-weight: bold;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: 0.3s;
+            transition: background 0.3s ease;
         }
 
         .search-btn:hover {
-            background: #1d4ed8;
+            background-color: #0369a1;
         }
 
-        .result-card {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: left;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-            display: none;
-        }
-
-        .truth-badge {
-            background: #10b981;
-            color: white;
-            font-size: 0.75rem;
-            font-weight: bold;
-            padding: 4px 10px;
-            border-radius: 12px;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-
-        .result-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #38bdf8;
-            margin-bottom: 8px;
-        }
-
-        .result-text {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #f1f5f9;
-        }
-
-        .category-tag {
-            display: inline-block;
-            margin-top: 10px;
-            font-size: 0.8rem;
-            color: #94a3b8;
-            border: 1px solid #475569;
-            padding: 2px 8px;
-            border-radius: 4px;
-        }
-
-        /* Outer Frame Card */
-        .boy-wrapper {
-            width: 190px;
-            height: 200px;
-            margin-top: 10px;
-            border-radius: 20px;
-            overflow: hidden;
+        /* Video Card Section (Replaced Image) */
+        .welcome-card {
             background: #ffffff;
-            border: 3px solid rgba(56, 189, 248, 0.8);
+            border-radius: 20px;
+            padding: 5px;
+            width: 220px;
+            height: 220px;
             box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            perspective: 600px;
+            justify-content: center;
+            margin-bottom: 15px;
+            border: 3px solid rgba(56, 189, 248, 0.8);
+            overflow: hidden;
         }
 
-        /* 3D Realistic Head & Spine Forward Bow Animation */
-        .boy-img {
+        .welcome-card video {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transform-origin: bottom center;
-            animation: forwardNamasteBow 3.2s infinite cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        @keyframes forwardNamasteBow {
-            0%, 100% {
-                transform: rotateX(0deg) translateY(0px) scale(1); /* Straight pose */
-            }
-            35%, 60% {
-                transform: rotateX(28deg) translateY(12px) scale(0.96); /* Bowing head and upper body forward */
-            }
+            border-radius: 15px;
         }
 
         .welcome-text {
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: 4px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffffff;
+            letter-spacing: 2px;
+            margin-top: 5px;
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+        }
+
+        /* Answer Output Display Box */
+        .result-box {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 650px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            text-align: left;
+            display: none; 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
 <body>
 
-    <div class="galaxy-bg"></div>
-
     <div class="container">
-        <h1 class="title">MEYYEE</h1>
-        <p class="subtitle">UNIVERSAL TRUTH ENGINE</p>
+        <h1>MEYYEE</h1>
+        <div class="subtitle">Universal Truth Engine</div>
 
-        <div class="cloud-search-wrapper">
-            <input type="text" id="userInput" class="search-bar" placeholder="Ask anything in the world..." onkeydown="if(event.key === 'Enter') executeSearch()">
-            <button class="search-btn" onclick="executeSearch()">Search</button>
+        <!-- Cloud Shape Search Bar -->
+        <div class="search-box">
+            <input type="text" id="userInput" class="search-input" placeholder="Ask anything in the world...">
+            <button class="search-btn" onclick="handleSearch()">Search</button>
         </div>
 
-        <div id="resultCard" class="result-card">
-            <span id="badge" class="truth-badge">✔ MEYYEE KNOWLEDGE ENGINE</span>
-            <div id="resTitle" class="result-title"></div>
-            <div id="resAnswer" class="result-text"></div>
-            <div id="resCategory" class="category-tag"></div>
+        <!-- Video Card Section -->
+        <div class="welcome-card">
+            <video width="100%" height="100%" controls autoplay muted loop>
+                <source src="myvideo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
-
-        <div class="boy-wrapper">
-            <img src=https://i.pinimg.com/736x/ca/66/41/ca66419a8c8fd3f2a7425b29fce1e648.jpg alt="Meyyee Vanakkam Character" class="boy-img">
-        </div>
-
         <div class="welcome-text">WELCOME</div>
+
+        <!-- Answer Display Box -->
+        <div id="resultBox" class="result-box"></div>
     </div>
 
     <script>
-        const localDatabase = [
-            {
-                keys: ["meyyee", "meaning", "porul"],
-                title: "Meyyee - Definition",
-                answer: "Meyyee endral 'Unmai Koduthal' (Truth Engine) endru porul.",
-                category: "Core Identity"
-            },
-            {
-                keys: ["earth", "boomi", "shape"],
-                title: "Boomiyin Vadivam",
-                answer: "Boomi 'Oblate Spheroid' (Geoid) vadivam kondadhu.",
-                category: "Science"
-            }
-        ];
-
-        async function executeSearch() {
+        function handleSearch() {
             const query = document.getElementById('userInput').value.trim();
-            const resultCard = document.getElementById('resultCard');
-            const resTitle = document.getElementById('resTitle');
-            const resAnswer = document.getElementById('resAnswer');
-            const resCategory = document.getElementById('resCategory');
+            const resultBox = document.getElementById('resultBox');
 
-            if (!query) {
-                resultCard.style.display = "none";
+            if (query === "") {
+                alert("Dhayavu seithu edhavathu kelvi kelungal!");
                 return;
             }
 
-            resultCard.style.display = "block";
-            resTitle.innerText = "Searching Meyyee Engine...";
-            resAnswer.innerText = "Searching global knowledge database...";
-            resCategory.innerText = "Status: Fetching Truth";
-
-            const foundLocal = localDatabase.find(item => 
-                item.keys.some(k => query.toLowerCase().includes(k))
-            );
-
-            if (foundLocal) {
-                resTitle.innerText = foundLocal.title;
-                resAnswer.innerText = foundLocal.answer;
-                resCategory.innerText = "Source: Meyyee Local Core (" + foundLocal.category + ")";
-                return;
-            }
-
-            try {
-                const response = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`);
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data.extract) {
-                        resTitle.innerText = data.title;
-                        resAnswer.innerText = data.extract;
-                        resCategory.innerText = "Source: Meyyee Global Knowledge Engine";
-                        return;
-                    }
-                }
-            } catch (err) {
-                console.log("Global fetch error:", err);
-            }
-
-            resTitle.innerText = `Search Query: "${query}"`;
-            resAnswer.innerText = `"${query}" patriya thagaval Meyyee-il illai. Proper keyword type seidhu search seiyavum.`;
-            resCategory.innerText = "Source: Meyyee Search";
+            resultBox.style.display = "block";
+            resultBox.innerHTML = `<strong>Search Query:</strong> "${query}"<br><br><strong>Meyyee Engine:</strong> Ungal kelvikuana universal truth-ah theddukirathu...`;
         }
+
+        document.getElementById('userInput').addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                handleSearch();
+            }
+        });
     </script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meyyee - Universal Truth Engine</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0b0f19;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Background star effects */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(white 1px, transparent 0);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            letter-spacing: 4px;
+            font-weight: 800;
+            margin-bottom: 5px;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            letter-spacing: 2px;
+            color: #b0c4de;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        /* Cloud Shape Rectangle Search Bar */
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 50px; /* Cloud / Pill shape rectangle */
+            padding: 8px 8px 8px 25px;
+            width: 100%;
+            max-width: 650px;
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .search-box:hover {
+            box-shadow: 0 0 35px rgba(56, 189, 248, 0.7);
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 1.1rem;
+            color: #333333;
+            background: transparent;
+        }
+
+        .search-input::placeholder {
+            color: #888888;
+        }
+
+        .search-btn {
+            background-color: #0284c7;
+            color: white;
+            border: none;
+            outline: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background-color: #0369a1;
+        }
+
+        /* Video Card Section (Replaced Image) */
+        .welcome-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 5px;
+            width: 220px;
+            height: 220px;
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            border: 3px solid rgba(56, 189, 248, 0.8);
+            overflow: hidden;
+        }
+
+        .welcome-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .welcome-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffffff;
+            letter-spacing: 2px;
+            margin-top: 5px;
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+        }
+
+        /* Answer Output Display Box */
+        .result-box {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 650px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            text-align: left;
+            display: none; 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>MEYYEE</h1>
+        <div class="subtitle">Universal Truth Engine</div>
+
+        <!-- Cloud Shape Search Bar -->
+        <div class="search-box">
+            <input type="text" id="userInput" class="search-input" placeholder="Ask anything in the world...">
+            <button class="search-btn" onclick="handleSearch()">Search</button>
+        </div>
+
+        <!-- Video Card Section -->
+        <div class="welcome-card">
+            <video width="100%" height="100%" controls autoplay muted loop>
+                <source src="myvideo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="welcome-text">WELCOME</div>
+
+        <!-- Answer Display Box -->
+        <div id="resultBox" class="result-box"></div>
+    </div>
+
+    <script>
+        function handleSearch() {
+            const query = document.getElementById('userInput').value.trim();
+            const resultBox = document.getElementById('resultBox');
+
+            if (query === "") {
+                alert("Dhayavu seithu edhavathu kelvi kelungal!");
+                return;
+            }
+
+            resultBox.style.display = "block";
+            resultBox.innerHTML = `<strong>Search Query:</strong> "${query}"<br><br><strong>Meyyee Engine:</strong> Ungal kelvikuana universal truth-ah theddukirathu...`;
+        }
+
+        document.getElementById('userInput').addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                handleSearch();
+            }
+        });
+    </script>
+
 </body>
 </html>
