@@ -22,6 +22,7 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            padding: 15px;
         }
 
         .container {
@@ -32,13 +33,12 @@
             text-align: center;
             width: 100%;
             max-width: 800px;
-            padding: 20px;
         }
 
         /* Bold & Bright Colorful MEYYEE Title */
         h1 {
-            font-size: 4rem;
-            letter-spacing: 6px;
+            font-size: 3.5rem;
+            letter-spacing: 5px;
             font-weight: 900;
             margin-bottom: 5px;
             background: linear-gradient(90deg, #2563eb, #7c3aed, #db2777);
@@ -47,25 +47,25 @@
         }
 
         .subtitle {
-            font-size: 1rem;
+            font-size: 0.9rem;
             letter-spacing: 2px;
             color: #64748b;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             text-transform: uppercase;
         }
 
-        /* Search Bar */
+        /* Fully Responsive Search Bar */
         .search-box {
             display: flex;
             align-items: center;
             background: #f1f5f9;
             border: 2px solid #cbd5e1;
             border-radius: 50px;
-            padding: 8px 8px 8px 25px;
+            padding: 6px 6px 6px 20px;
             width: 100%;
             max-width: 650px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             transition: all 0.3s ease;
         }
 
@@ -78,28 +78,30 @@
             flex: 1;
             border: none;
             outline: none;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #1e293b;
             background: transparent;
+            min-width: 0; /* Prevents text overflow */
         }
 
         .search-input::placeholder {
             color: #94a3b8;
         }
 
-        /* Straight Mic Button */
+        /* Mic Button */
         .mic-btn {
             background: transparent;
             border: none;
             outline: none;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             cursor: pointer;
-            padding: 8px 12px;
-            margin-right: 8px;
+            padding: 8px 10px;
+            margin-right: 5px;
             border-radius: 50%;
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
             transform: rotate(0deg);
             transition: background 0.2s;
         }
@@ -113,11 +115,12 @@
             color: white;
             border: none;
             outline: none;
-            padding: 12px 30px;
+            padding: 10px 22px;
             border-radius: 30px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
+            flex-shrink: 0;
             transition: background 0.3s ease;
         }
 
@@ -125,10 +128,10 @@
             background-color: #0369a1;
         }
 
-        /* Video Container - No Black Loading Box */
+        /* Video Container */
         .video-container {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -142,11 +145,11 @@
             height: 100%;
             object-fit: cover;
             border-radius: 15px;
-            background: transparent; /* Removes black backing before load */
+            background: transparent;
         }
 
         .welcome-text {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: bold;
             color: #0f172a;
             letter-spacing: 2px;
@@ -161,12 +164,27 @@
             background: #f8fafc;
             border: 1px solid #cbd5e1;
             border-radius: 15px;
-            padding: 20px;
-            font-size: 1.1rem;
+            padding: 15px;
+            font-size: 1rem;
             color: #334155;
             text-align: left;
             display: none; 
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.8rem;
+                letter-spacing: 3px;
+            }
+            .search-box {
+                padding: 4px 4px 4px 15px;
+            }
+            .search-btn {
+                padding: 9px 16px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -176,14 +194,12 @@
         <h1>MEYYEE</h1>
         <div class="subtitle">Universal Truth Engine</div>
 
-        <!-- Search Bar -->
         <div class="search-box">
             <input type="text" id="userInput" class="search-input" placeholder="Ask anything or use voice...">
             <button class="mic-btn" onclick="startVoiceSearch()" title="Search by Voice">🎤</button>
             <button class="search-btn" onclick="handleSearch()">Search</button>
         </div>
 
-        <!-- Video Display without black box -->
         <div class="video-container">
             <video width="100%" height="100%" controls autoplay muted loop playsinline>
                 <source src="myvideo.mp4.mp4" type="video/mp4">
@@ -192,7 +208,6 @@
         </div>
         <div class="welcome-text">WELCOME</div>
 
-        <!-- Answer Display Box -->
         <div id="resultBox" class="result-box"></div>
     </div>
 
