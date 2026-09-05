@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +13,7 @@
         }
 
         body {
-            background-color: #ffffff; /* White background */
+            background-color: #ffffff;
             color: #111827; 
             display: flex;
             flex-direction: column;
@@ -52,7 +51,7 @@
             text-transform: uppercase;
         }
 
-        /* Search Bar */
+        /* Search Bar with Mic Button */
         .search-box {
             display: flex;
             align-items: center;
@@ -85,6 +84,23 @@
             color: #94a3b8;
         }
 
+        /* Mic Button Styling */
+        .mic-btn {
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 8px 12px;
+            margin-right: 8px;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+
+        .mic-btn:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
         .search-btn {
             background-color: #0284c7;
             color: white;
@@ -102,7 +118,7 @@
             background-color: #0369a1;
         }
 
-        /* NO BOX CONTAINER - Completely Transparent */
+        /* Video Container - No Box / Transparent */
         .video-container {
             width: 200px;
             height: 200px;
@@ -110,9 +126,9 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 10px;
-            background: transparent; /* No background box */
-            border: none; /* No border */
-            box-shadow: none; /* No shadow */
+            background: transparent;
+            border: none;
+            box-shadow: none;
         }
 
         .video-container video {
@@ -153,13 +169,14 @@
         <h1>MEYYEE</h1>
         <div class="subtitle">Universal Truth Engine</div>
 
-        <!-- Cloud Shape Search Bar -->
+        <!-- Search Bar with Mic Icon -->
         <div class="search-box">
-            <input type="text" id="userInput" class="search-input" placeholder="Ask anything in the world...">
+            <input type="text" id="userInput" class="search-input" placeholder="Ask anything or use voice...">
+            <button class="mic-btn" onclick="startVoiceSearch()" title="Search by Voice">🎤</button>
             <button class="search-btn" onclick="handleSearch()">Search</button>
         </div>
 
-        <!-- Video without any box border -->
+        <!-- Video Display -->
         <div class="video-container">
             <video width="100%" height="100%" controls autoplay muted loop>
                 <source src="myvideo.mp4.mp4" type="video/mp4">
@@ -173,6 +190,37 @@
     </div>
 
     <script>
+        // Native Voice Search Implementation
+        function startVoiceSearch() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            
+            if (!SpeechRecognition) {
+                alert("Unga browser voice search-ah support panralathu. Chrome illa Edge use pannunga!");
+                return;
+            }
+
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'en-US'; // Neenga tamil-la pesnalum recognise aagum
+            
+            recognition.onstart = function() {
+                document.getElementById('userInput').placeholder = "Kelungal... Kettu kondu irukiren 🎙️";
+            };
+
+            recognition.onresult = function(event) {
+                const spokenText = event.results[0][0].transcript;
+                document.getElementById('userInput').value = spokenText;
+                document.getElementById('userInput').placeholder = "Ask anything or use voice...";
+                handleSearch(); // Automatically trigger search after speech
+            };
+
+            recognition.onerror = function() {
+                document.getElementById('userInput').placeholder = "Ask anything or use voice...";
+                alert("Voice k கேட்கவில்லை, marubadiyum try pannunga.");
+            };
+
+            recognition.start();
+        }
+
         function handleSearch() {
             const query = document.getElementById('userInput').value.trim();
             const resultBox = document.getElementById('resultBox');
