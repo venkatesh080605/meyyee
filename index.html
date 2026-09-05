@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+\<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,8 +13,8 @@
         }
 
         body {
-            background-color: #0b0f19;
-            color: #ffffff;
+            background-color: #ffffff; /* White background */
+            color: #111827; /* Dark text for contrast */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -22,18 +22,6 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
-        }
-
-        /* Background star effects */
-        body::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: radial-gradient(white 1px, transparent 0);
-            background-size: 50px 50px;
-            opacity: 0.1;
-            z-index: -1;
         }
 
         .container {
@@ -52,34 +40,35 @@
             letter-spacing: 4px;
             font-weight: 800;
             margin-bottom: 5px;
-            color: #ffffff;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            color: #0f172a;
         }
 
         .subtitle {
             font-size: 1rem;
             letter-spacing: 2px;
-            color: #b0c4de;
+            color: #64748b;
             margin-bottom: 40px;
             text-transform: uppercase;
         }
 
-        /* Cloud Shape Rectangle Search Bar */
+        /* Search Bar with clean border */
         .search-box {
             display: flex;
             align-items: center;
-            background: #ffffff;
+            background: #f1f5f9;
+            border: 2px solid #cbd5e1;
             border-radius: 50px;
             padding: 8px 8px 8px 25px;
             width: 100%;
             max-width: 650px;
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             margin-bottom: 35px;
             transition: all 0.3s ease;
         }
 
         .search-box:hover {
-            box-shadow: 0 0 35px rgba(56, 189, 248, 0.7);
+            border-color: #0284c7;
+            box-shadow: 0 4px 20px rgba(2, 132, 199, 0.15);
         }
 
         .search-input {
@@ -87,12 +76,12 @@
             border: none;
             outline: none;
             font-size: 1.1rem;
-            color: #333333;
+            color: #1e293b;
             background: transparent;
         }
 
         .search-input::placeholder {
-            color: #888888;
+            color: #94a3b8;
         }
 
         .search-btn {
@@ -112,7 +101,7 @@
             background-color: #0369a1;
         }
 
-        /* Video Container - No Box / Transparent Background */
+        /* Video Container matching white theme */
         .video-container {
             width: 200px;
             height: 200px;
@@ -120,6 +109,11 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 10px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e2e8f0;
+            overflow: hidden;
         }
 
         .video-container video {
@@ -127,16 +121,14 @@
             height: 100%;
             object-fit: cover;
             border-radius: 15px;
-            background: transparent;
         }
 
         .welcome-text {
             font-size: 1.4rem;
             font-weight: bold;
-            color: #ffffff;
+            color: #0f172a;
             letter-spacing: 2px;
             margin-top: 5px;
-            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
         }
 
         /* Answer Output Display Box */
@@ -144,15 +136,15 @@
             margin-top: 20px;
             width: 100%;
             max-width: 650px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(56, 189, 248, 0.3);
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
             border-radius: 15px;
             padding: 20px;
             font-size: 1.1rem;
-            color: #e2e8f0;
+            color: #334155;
             text-align: left;
             display: none; 
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
     </style>
 </head>
@@ -168,7 +160,7 @@
             <button class="search-btn" onclick="handleSearch()">Search</button>
         </div>
 
-        <!-- Video without white background box -->
+        <!-- Video with matching white container -->
         <div class="video-container">
             <video width="100%" height="100%" controls autoplay muted loop>
                 <source src="myvideo.mp4.mp4" type="video/mp4">
