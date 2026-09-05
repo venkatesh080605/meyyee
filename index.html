@@ -24,6 +24,7 @@
             position: relative;
         }
 
+        /* Background star effects */
         body::before {
             content: '';
             position: absolute;
@@ -63,6 +64,7 @@
             text-transform: uppercase;
         }
 
+        /* Cloud Shape Rectangle Search Bar */
         .search-box {
             display: flex;
             align-items: center;
@@ -72,7 +74,7 @@
             width: 100%;
             max-width: 650px;
             box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
-            margin-bottom: 40px;
+            margin-bottom: 35px;
             transition: all 0.3s ease;
         }
 
@@ -110,31 +112,26 @@
             background-color: #0369a1;
         }
 
-        .welcome-card {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 5px;
-            width: 220px;
-            height: 220px;
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
+        /* Video Container - No Box / Transparent Background */
+        .video-container {
+            width: 200px;
+            height: 200px;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin-bottom: 15px;
-            border: 3px solid rgba(56, 189, 248, 0.8);
-            overflow: hidden;
+            margin-bottom: 10px;
         }
 
-        .welcome-card video {
+        .video-container video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 15px;
+            background: transparent;
         }
 
         .welcome-text {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: bold;
             color: #ffffff;
             letter-spacing: 2px;
@@ -142,6 +139,7 @@
             text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
         }
 
+        /* Answer Output Display Box */
         .result-box {
             margin-top: 20px;
             width: 100%;
@@ -164,12 +162,14 @@
         <h1>MEYYEE</h1>
         <div class="subtitle">Universal Truth Engine</div>
 
+        <!-- Cloud Shape Search Bar -->
         <div class="search-box">
             <input type="text" id="userInput" class="search-input" placeholder="Ask anything in the world...">
             <button class="search-btn" onclick="handleSearch()">Search</button>
         </div>
 
-        <div class="welcome-card">
+        <!-- Video without white background box -->
+        <div class="video-container">
             <video width="100%" height="100%" controls autoplay muted loop>
                 <source src="myvideo.mp4.mp4" type="video/mp4">
                 Your browser does not support the video tag.
@@ -177,6 +177,7 @@
         </div>
         <div class="welcome-text">WELCOME</div>
 
+        <!-- Answer Display Box -->
         <div id="resultBox" class="result-box"></div>
     </div>
 
