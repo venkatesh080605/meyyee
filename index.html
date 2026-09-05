@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,12 +36,16 @@
             padding: 20px;
         }
 
+        /* Colorful & Stylish MEYYEE Title */
         h1 {
-            font-size: 3.5rem;
-            letter-spacing: 4px;
-            font-weight: 800;
+            font-size: 4rem;
+            letter-spacing: 6px;
+            font-weight: 900;
             margin-bottom: 5px;
-            color: #0f172a;
+            background: linear-gradient(135deg, #0284c7 0%, #6366f1 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
         }
 
         .subtitle {
@@ -51,7 +56,7 @@
             text-transform: uppercase;
         }
 
-        /* Search Bar with Mic Button */
+        /* Search Bar */
         .search-box {
             display: flex;
             align-items: center;
@@ -84,7 +89,7 @@
             color: #94a3b8;
         }
 
-        /* Mic Button Styling */
+        /* Straight Mic Button Styling */
         .mic-btn {
             background: transparent;
             border: none;
@@ -94,6 +99,10 @@
             padding: 8px 12px;
             margin-right: 8px;
             border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(0deg); /* Ensures it is completely straight */
             transition: background 0.2s;
         }
 
@@ -118,7 +127,7 @@
             background-color: #0369a1;
         }
 
-        /* Video Container - No Box / Transparent */
+        /* Video Container - Transparent */
         .video-container {
             width: 200px;
             height: 200px;
@@ -169,7 +178,7 @@
         <h1>MEYYEE</h1>
         <div class="subtitle">Universal Truth Engine</div>
 
-        <!-- Search Bar with Mic Icon -->
+        <!-- Search Bar -->
         <div class="search-box">
             <input type="text" id="userInput" class="search-input" placeholder="Ask anything or use voice...">
             <button class="mic-btn" onclick="startVoiceSearch()" title="Search by Voice">🎤</button>
@@ -190,7 +199,6 @@
     </div>
 
     <script>
-        // Native Voice Search Implementation
         function startVoiceSearch() {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             
@@ -200,7 +208,7 @@
             }
 
             const recognition = new SpeechRecognition();
-            recognition.lang = 'en-US'; // Neenga tamil-la pesnalum recognise aagum
+            recognition.lang = 'en-US';
             
             recognition.onstart = function() {
                 document.getElementById('userInput').placeholder = "Kelungal... Kettu kondu irukiren 🎙️";
@@ -210,12 +218,12 @@
                 const spokenText = event.results[0][0].transcript;
                 document.getElementById('userInput').value = spokenText;
                 document.getElementById('userInput').placeholder = "Ask anything or use voice...";
-                handleSearch(); // Automatically trigger search after speech
+                handleSearch();
             };
 
             recognition.onerror = function() {
                 document.getElementById('userInput').placeholder = "Ask anything or use voice...";
-                alert("Voice k கேட்கவில்லை, marubadiyum try pannunga.");
+                alert("Voice கேட்கவில்லை, marubadiyum try pannunga.");
             };
 
             recognition.start();
