@@ -12,24 +12,24 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-       body {
+        body {
             background-color: #ffffff;
             color: #111827; 
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: flex-start; /* கூகுள் போல மேலே வர வைக்க */
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
-            padding-top: 15px; /* 
+            padding-top: 30px; /* மேலிருந்து இடைவெளி */
         }
 
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             text-align: center;
             width: 100%;
             max-width: 800px;
@@ -128,7 +128,7 @@
             background-color: #0369a1;
         }
 
-        /* Video Container - Updated */
+        /* Video Container - Black Box removed */
         .video-container {
             width: 150px;
             height: 150px;
@@ -199,7 +199,7 @@
             <button class="search-btn" onclick="handleSearch()">Search</button>
         </div>
 
-        <!-- Video tag updated without 'controls' to remove the black box -->
+        <!-- Video tag without controls to avoid black box -->
         <div class="video-container">
             <video autoplay muted loop playsinline>
                 <source src="myvideo.mp4.mp4" type="video/mp4">
