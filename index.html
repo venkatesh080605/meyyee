@@ -33,6 +33,7 @@
             text-align: center;
             width: 100%;
             max-width: 800px;
+            padding: 0 15px;
         }
 
         /* Bold & Bright Colorful MEYYEE Title */
@@ -154,20 +155,34 @@
             margin-top: 5px;
         }
 
-        /* Answer Output Display Box */
+        /* Palm Leaf Manuscript (olai chuvadi) Style Result Box */
         .result-box {
-            margin-top: 20px;
+            margin-top: 25px;
             width: 100%;
-            max-width: 650px;
-            background: #f8fafc;
-            border: 1px solid #cbd5e1;
-            border-radius: 15px;
-            padding: 15px;
-            font-size: 1rem;
-            color: #334155;
+            max-width: 680px;
+            background: linear-gradient(135deg, #f4ecd8 0%, #e9dcc0 100%);
+            border: 3px solid #8c6747;
+            border-radius: 8px;
+            padding: 25px;
+            font-size: 1.05rem;
+            color: #2c1d0c;
             text-align: left;
             display: none; 
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            position: relative;
+            background-image: repeating-linear-gradient(0deg, transparent, transparent 35px, rgba(140, 103, 71, 0.07) 35px, rgba(140, 103, 71, 0.07) 36px);
+        }
+
+        .result-box::before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border: 1px dashed #a47e5b;
+            pointer-events: none;
+            border-radius: 4px;
         }
 
         /* Mobile Adjustments */
@@ -182,6 +197,9 @@
             .search-btn {
                 padding: 9px 16px;
                 font-size: 0.9rem;
+            }
+            .result-box {
+                padding: 15px;
             }
         }
     </style>
@@ -210,26 +228,24 @@
     </div>
 
     <script>
-        // திருக்குறள் தரவுத்தளம் (தமிழ் மற்றும் ஆங்கிலம்)
-        const thirukkuralDatabase = {
-            1: {
-                number: 1,
-                tamil: {
-                    line1: "அகர முதல எழுத்தெல்லாம் ஆதி",
-                    line2: "பகவன் முதற்றே உலகு.",
-                    exp: "எழுத்துக்கள் எல்லாம் அகரத்தை அடிப்படையாகக் கொண்டிருக்கின்றன; அதுபோல உலகம் கடவுளை அடிப்படையாகக் கொண்டுள்ளது."
-                },
-                english: {
-                    line1: "Agara mudhala எழுத்துellam aadhi",
-                    line2: "Bagavan mudhatre ulagu.",
-                    exp: "As 'A' is the first of all letters, so is the eternal God the first in the world."
-                }
+        // நீங்கள் கேட்ட சிறப்பான பொருளுடன் கூடிய திருக்குறள் தரவுத்தளம்
+        const thirukkuralData = {
+            tamil: {
+                title: "📜 முதல் அதிகாரம் - கடவுள் வாழ்த்து (ஓலைச்சுவடி)",
+                line1: "அகர முதல எழுத்தெல்லாம் ஆதி",
+                line2: "பகவன் முதற்றே உலகு.",
+                exp: "அகர முதல எழுத்துமெல்லாம் ஆதி பகவன் முதற்றே உலகு. அகரத்தை முதன்மையாக கொண்டுள்ள எழுத்துமுறை அனைத்திற்கும் சிவனின் சித்திரையே முதன்மையாக ஆனது."
+            },
+            english: {
+                title: "📜 First Chapter - Praise of God (Palm Leaf)",
+                line1: "Agara mudhala எழுத்தellam aadhi",
+                line2: "Bagavan mudhatre ulagu.",
+                exp: "As 'A' is the first of all letters, so is the eternal God the first in the world. Agarathai mudhanmaiyaga kondulla ezhuthu murai anithirkkum sivanin chithirai ezhuthe mudhanmai aanadhu."
             }
         };
 
-        // தமிழ் எழுத்துக்களைக் கண்டறியும் வசதி
         function isTamil(text) {
-            return /[\u0B80-\u0BFF]/.test(text);
+            return /[\u0B80-\u0BFF]/.test(text) || text.toLowerCase().includes("திருக்குறள்");
         }
 
         function startVoiceSearch() {
@@ -263,7 +279,7 @@
         }
 
         function handleSearch() {
-            const query = document.getElementById('userInput').value.trim();
+            const query = document.getElementById('userInput').value.trim().toLowerCase();
             const resultBox = document.getElementById('resultBox');
 
             if (query === "") {
@@ -273,38 +289,37 @@
 
             resultBox.style.display = "block";
             
-            let kuralNum = parseInt(query);
-            
-            if (!isNaN(kuralNum) && thirukkuralDatabase[kuralNum]) {
-                const data = thirukkuralDatabase[kuralNum];
+            if (query.includes("thirukkural") || query.includes("திருக்குறள்") || query === "1") {
                 
-                if (isTamil(query) || !isNaN(query)) {
+                if (isTamil(query)) {
                     resultBox.innerHTML = `
-                        <div style="text-align: center; color: #db2777; font-size: 1.2rem;"><strong>திருக்குறள் - ${data.number}</strong></div>
-                        <div style="margin-top: 15px; font-weight: bold; color: #2563eb; font-size: 1.1rem; line-height: 1.6;">
-                            ${data.tamil.line1}<br>
-                            ${data.tamil.line2}
+                        <div style="text-align: center; color: #78350f; font-size: 1.2rem; margin-bottom: 12px; font-weight: bold;"><strong>${thirukkuralData.tamil.title}</strong></div>
+                        <div style="font-weight: bold; color: #451a03; font-size: 1.15rem; line-height: 1.8; text-align: center; letter-spacing: 0.5px;">
+                            ${thirukkuralData.tamil.line1}<br>
+                            ${thirukkuralData.tamil.line2}
                         </div>
-                        <div style="margin-top: 15px; color: #334155;">
-                            <strong>விளக்கம்:</strong> ${data.tamil.exp}
+                        <hr style="border: 0; border-top: 1px solid #b45309; margin: 15px 0;">
+                        <div style="color: #2c1d0c; line-height: 1.7; font-size: 1.02rem;">
+                            <strong>தெளிவுரை:</strong> ${thirukkuralData.tamil.exp}
                         </div>
                     `;
                 } else {
                     resultBox.innerHTML = `
-                        <div style="text-align: center; color: #db2777; font-size: 1.2rem;"><strong>Thirukkural - ${data.number}</strong></div>
-                        <div style="margin-top: 15px; font-weight: bold; color: #2563eb; font-size: 1.1rem; line-height: 1.6;">
-                            ${data.english.line1}<br>
-                            ${data.english.line2}
+                        <div style="text-align: center; color: #78350f; font-size: 1.2rem; margin-bottom: 12px; font-weight: bold;"><strong>${thirukkuralData.english.title}</strong></div>
+                        <div style="font-weight: bold; color: #451a03; font-size: 1.15rem; line-height: 1.8; text-align: center; letter-spacing: 0.5px;">
+                            ${thirukkuralData.english.line1}<br>
+                            ${thirukkuralData.english.line2}
                         </div>
-                        <div style="margin-top: 15px; color: #334155;">
-                            <strong>Meaning:</strong> ${data.english.exp}
+                        <hr style="border: 0; border-top: 1px solid #b45309; margin: 15px 0;">
+                        <div style="color: #2c1d0c; line-height: 1.7; font-size: 1.02rem;">
+                            <strong>Meaning:</strong> ${thirukkuralData.english.exp}
                         </div>
                     `;
                 }
             } else {
                 resultBox.innerHTML = `
-                    <strong>Search Query:</strong> "${query}"<br><br>
-                    <strong>Meyyee Engine:</strong> உங்களுக்கான Universal Truth தேடப்படுகிறது...
+                    <div style="color: #451a03; font-weight: bold;">Search Query: "${query}"</div><br>
+                    <div style="color: #2c1d0c;"><strong>Meyyee Engine:</strong> உங்களுக்கான Universal Truth தேடப்படுகிறது...</div>
                 `;
             }
         }
