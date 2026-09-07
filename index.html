@@ -18,11 +18,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* கூகுள் போல மேலே வர வைக்க */
+            justify-content: flex-start;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
-            padding-top: 30px; /* மேலிருந்து இடைவெளி */
+            padding-top: 30px;
         }
 
         .container {
@@ -81,7 +81,7 @@
             font-size: 1rem;
             color: #1e293b;
             background: transparent;
-            min-width: 0; /* Prevents text overflow */
+            min-width: 0;
         }
 
         .search-input::placeholder {
@@ -102,7 +102,6 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            transform: rotate(0deg);
             transition: background 0.2s;
         }
 
@@ -128,7 +127,7 @@
             background-color: #0369a1;
         }
 
-        /* Video Container - Black Box removed */
+        /* Video Container */
         .video-container {
             width: 150px;
             height: 150px;
@@ -199,7 +198,6 @@
             <button class="search-btn" onclick="handleSearch()">Search</button>
         </div>
 
-        <!-- Video tag without controls to avoid black box -->
         <div class="video-container">
             <video autoplay muted loop playsinline>
                 <source src="myvideo.mp4.mp4" type="video/mp4">
@@ -212,6 +210,28 @@
     </div>
 
     <script>
+        // திருக்குறள் தரவுத்தளம் (தமிழ் மற்றும் ஆங்கிலம்)
+        const thirukkuralDatabase = {
+            1: {
+                number: 1,
+                tamil: {
+                    line1: "அகர முதல எழுத்தெல்லாம் ஆதி",
+                    line2: "பகவன் முதற்றே உலகு.",
+                    exp: "எழுத்துக்கள் எல்லாம் அகரத்தை அடிப்படையாகக் கொண்டிருக்கின்றன; அதுபோல உலகம் கடவுளை அடிப்படையாகக் கொண்டுள்ளது."
+                },
+                english: {
+                    line1: "Agara mudhala எழுத்துellam aadhi",
+                    line2: "Bagavan mudhatre ulagu.",
+                    exp: "As 'A' is the first of all letters, so is the eternal God the first in the world."
+                }
+            }
+        };
+
+        // தமிழ் எழுத்துக்களைக் கண்டறியும் வசதி
+        function isTamil(text) {
+            return /[\u0B80-\u0BFF]/.test(text);
+        }
+
         function startVoiceSearch() {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             
@@ -252,7 +272,41 @@
             }
 
             resultBox.style.display = "block";
-            resultBox.innerHTML = `<strong>Search Query:</strong> "${query}"<br><br><strong>Meyyee Engine:</strong> Ungal kelvikuana universal truth-ah theddukirathu...`;
+            
+            let kuralNum = parseInt(query);
+            
+            if (!isNaN(kuralNum) && thirukkuralDatabase[kuralNum]) {
+                const data = thirukkuralDatabase[kuralNum];
+                
+                if (isTamil(query) || !isNaN(query)) {
+                    resultBox.innerHTML = `
+                        <div style="text-align: center; color: #db2777; font-size: 1.2rem;"><strong>திருக்குறள் - ${data.number}</strong></div>
+                        <div style="margin-top: 15px; font-weight: bold; color: #2563eb; font-size: 1.1rem; line-height: 1.6;">
+                            ${data.tamil.line1}<br>
+                            ${data.tamil.line2}
+                        </div>
+                        <div style="margin-top: 15px; color: #334155;">
+                            <strong>விளக்கம்:</strong> ${data.tamil.exp}
+                        </div>
+                    `;
+                } else {
+                    resultBox.innerHTML = `
+                        <div style="text-align: center; color: #db2777; font-size: 1.2rem;"><strong>Thirukkural - ${data.number}</strong></div>
+                        <div style="margin-top: 15px; font-weight: bold; color: #2563eb; font-size: 1.1rem; line-height: 1.6;">
+                            ${data.english.line1}<br>
+                            ${data.english.line2}
+                        </div>
+                        <div style="margin-top: 15px; color: #334155;">
+                            <strong>Meaning:</strong> ${data.english.exp}
+                        </div>
+                    `;
+                }
+            } else {
+                resultBox.innerHTML = `
+                    <strong>Search Query:</strong> "${query}"<br><br>
+                    <strong>Meyyee Engine:</strong> உங்களுக்கான Universal Truth தேடப்படுகிறது...
+                `;
+            }
         }
 
         document.getElementById('userInput').addEventListener("keypress", function(event) {
