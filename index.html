@@ -102,6 +102,7 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            transform: rotate(0deg);
             transition: background 0.2s;
         }
 
@@ -127,16 +128,15 @@
             background-color: #0369a1;
         }
 
-        /* Video Container */
+        /* Video Container - Updated */
         .video-container {
-            width: 180px;
-            height: 180px;
+            width: 150px;
+            height: 150px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             background: transparent;
-            border: none;
         }
 
         .video-container video {
@@ -199,8 +199,9 @@
             <button class="search-btn" onclick="handleSearch()">Search</button>
         </div>
 
+        <!-- Video tag updated without 'controls' to remove the black box -->
         <div class="video-container">
-            <video width="100%" height="100%" controls autoplay muted loop playsinline>
+            <video autoplay muted loop playsinline>
                 <source src="myvideo.mp4.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -242,51 +243,18 @@
         }
 
         function handleSearch() {
-            const inputElement = document.getElementById('userInput');
+            const query = document.getElementById('userInput').value.trim();
             const resultBox = document.getElementById('resultBox');
-            
-            if (!inputElement || !resultBox) return;
-
-            const query = inputElement.value.trim().toLowerCase();
 
             if (query === "") {
                 alert("Dhayavu seithu edhavathu kelvi kelungal!");
                 return;
             }
 
-            let answer = "";
-
-            // 1. Mathematical / Calculation Queries (Dynamic handling)
-            if (query.startsWith("calc ") || query.startsWith("math ")) {
-                try {
-                    let expression = query.replace("calc", "").replace("math", "").trim();
-                    let result = eval(expression); // Local math calculation
-                    answer = `Mathematical Calculation Result: ${result}`;
-                } catch (e) {
-                    answer = "Invalid mathematical expression.";
-                }
-            }
-            // 2. Universal Definitions & Scientific Laws Database
-            else if (query.includes("gravity") || query.includes("puvi ஈர்ப்பு")) {
-                answer = "Universal Truth: Gravity is a fundamental interaction which causes mutual attraction between all things with mass.";
-            } 
-            else if (query.includes("time") || query.includes("neram")) {
-                answer = "Universal Truth: Time is the indefinite continued progress of existence and events in the past, present, and future regarded as a whole.";
-            }
-            else if (query.includes("energy") || query.includes("sakthi")) {
-                answer = "Scientific Law: Energy cannot be created or destroyed, only converted from one form to another (Law of Conservation of Energy).";
-            }
-            // 3. Fallback Universal Reasoning for Any Other Question
-            else {
-                answer = `Meyyee Analysis: For the query "${inputElement.value}", the core universal principle points to a balanced cause-and-effect system governed by physical and logical laws. (Local intelligent fallback active).`;
-            }
-
-            // Display result
             resultBox.style.display = "block";
-            resultBox.innerHTML = `<strong>Query:</strong> "${inputElement.value}"<br><br><strong>Meyyee Engine:</strong> ${answer}`;
+            resultBox.innerHTML = `<strong>Search Query:</strong> "${query}"<br><br><strong>Meyyee Engine:</strong> Ungal kelvikuana universal truth-ah theddukirathu...`;
         }
 
-        // Enter key press listener
         document.getElementById('userInput').addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
                 handleSearch();
