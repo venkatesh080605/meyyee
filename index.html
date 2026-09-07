@@ -33,7 +33,6 @@
             text-align: center;
             width: 100%;
             max-width: 800px;
-            padding: 0 15px;
         }
 
         /* Bold & Bright Colorful MEYYEE Title */
@@ -155,34 +154,22 @@
             margin-top: 5px;
         }
 
-        /* Palm Leaf Manuscript (olai chuvadi) Style Result Box */
+        /* Thirukkural Olai Chuvadi (Palm Leaf) Design Box */
         .result-box {
             margin-top: 25px;
             width: 100%;
             max-width: 680px;
-            background: linear-gradient(135deg, #f4ecd8 0%, #e9dcc0 100%);
-            border: 3px solid #8c6747;
+            background: linear-gradient(135deg, #f4e8c1 0%, #e6d39e 100%);
+            border: 2px solid #8b5a2b;
             border-radius: 8px;
             padding: 25px;
             font-size: 1.05rem;
             color: #2c1d0c;
             text-align: left;
             display: none; 
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 25px rgba(139, 90, 43, 0.25);
             position: relative;
-            background-image: repeating-linear-gradient(0deg, transparent, transparent 35px, rgba(140, 103, 71, 0.07) 35px, rgba(140, 103, 71, 0.07) 36px);
-        }
-
-        .result-box::before {
-            content: "";
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            right: 5px;
-            bottom: 5px;
-            border: 1px dashed #a47e5b;
-            pointer-events: none;
-            border-radius: 4px;
+            background-image: repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(139, 90, 43, 0.08) 30px, rgba(139, 90, 43, 0.08) 31px);
         }
 
         /* Mobile Adjustments */
@@ -197,9 +184,6 @@
             .search-btn {
                 padding: 9px 16px;
                 font-size: 0.9rem;
-            }
-            .result-box {
-                padding: 15px;
             }
         }
     </style>
@@ -228,19 +212,19 @@
     </div>
 
     <script>
-        // நீங்கள் கேட்ட சிறப்பான பொருளுடன் கூடிய திருக்குறள் தரவுத்தளம்
+        // திருக்குறள் தரவுத்தளம் (ஓலைச்சுவடி விளக்கத்துடன்)
         const thirukkuralData = {
             tamil: {
-                title: "📜 முதல் அதிகாரம் - கடவுள் வாழ்த்து (ஓலைச்சுவடி)",
+                title: "முதல் அதிகாரம் - கடவுள் வாழ்த்து",
                 line1: "அகர முதல எழுத்தெல்லாம் ஆதி",
                 line2: "பகவன் முதற்றே உலகு.",
-                exp: "அகர முதல எழுத்துமெல்லாம் ஆதி பகவன் முதற்றே உலகு. அகரத்தை முதன்மையாக கொண்டுள்ள எழுத்துமுறை அனைத்திற்கும் சிவனின் சித்திரையே முதன்மையாக ஆனது."
+                exp: "எழுத்துக்கள் எல்லாம் அகரத்தை அடிப்படையாகக் கொண்டிருக்கின்றன; அதுபோல உலகம் கடவுளை அடிப்படையாகக் கொண்டுள்ளது. அகரத்தை முதன்மையாக கொண்டுள்ள எழுத்துமுறை அனைத்திற்கும் சிவனின் சித்திரையே முதன்மையாக ஆனது."
             },
             english: {
-                title: "📜 First Chapter - Praise of God (Palm Leaf)",
+                title: "First Chapter - Praise of God",
                 line1: "Agara mudhala எழுத்தellam aadhi",
                 line2: "Bagavan mudhatre ulagu.",
-                exp: "As 'A' is the first of all letters, so is the eternal God the first in the world. Agarathai mudhanmaiyaga kondulla ezhuthu murai anithirkkum sivanin chithirai ezhuthe mudhanmai aanadhu."
+                exp: "As 'A' is the first of all letters, so is the eternal God the first in the world."
             }
         };
 
@@ -293,33 +277,31 @@
                 
                 if (isTamil(query)) {
                     resultBox.innerHTML = `
-                        <div style="text-align: center; color: #78350f; font-size: 1.2rem; margin-bottom: 12px; font-weight: bold;"><strong>${thirukkuralData.tamil.title}</strong></div>
-                        <div style="font-weight: bold; color: #451a03; font-size: 1.15rem; line-height: 1.8; text-align: center; letter-spacing: 0.5px;">
+                        <div style="text-align: center; color: #78350f; font-size: 1.25rem; font-weight: bold; margin-bottom: 12px; border-bottom: 1px dashed #8b5a2b; padding-bottom: 8px;">📜 ${thirukkuralData.tamil.title}</div>
+                        <div style="font-weight: bold; color: #451a03; font-size: 1.15rem; line-height: 1.6; text-align: center; margin-bottom: 15px;">
                             ${thirukkuralData.tamil.line1}<br>
                             ${thirukkuralData.tamil.line2}
                         </div>
-                        <hr style="border: 0; border-top: 1px solid #b45309; margin: 15px 0;">
-                        <div style="color: #2c1d0c; line-height: 1.7; font-size: 1.02rem;">
-                            <strong>தெளிவுரை:</strong> ${thirukkuralData.tamil.exp}
+                        <div style="color: #2c1d0c; line-height: 1.7; background: rgba(255, 255, 255, 0.3); padding: 12px; border-radius: 6px;">
+                            <strong>பொருள் / தெளிவுரை:</strong> ${thirukkuralData.tamil.exp}
                         </div>
                     `;
                 } else {
                     resultBox.innerHTML = `
-                        <div style="text-align: center; color: #78350f; font-size: 1.2rem; margin-bottom: 12px; font-weight: bold;"><strong>${thirukkuralData.english.title}</strong></div>
-                        <div style="font-weight: bold; color: #451a03; font-size: 1.15rem; line-height: 1.8; text-align: center; letter-spacing: 0.5px;">
+                        <div style="text-align: center; color: #78350f; font-size: 1.25rem; font-weight: bold; margin-bottom: 12px; border-bottom: 1px dashed #8b5a2b; padding-bottom: 8px;">📜 ${thirukkuralData.english.title}</div>
+                        <div style="font-weight: bold; color: #451a03; font-size: 1.15rem; line-height: 1.6; text-align: center; margin-bottom: 15px;">
                             ${thirukkuralData.english.line1}<br>
                             ${thirukkuralData.english.line2}
                         </div>
-                        <hr style="border: 0; border-top: 1px solid #b45309; margin: 15px 0;">
-                        <div style="color: #2c1d0c; line-height: 1.7; font-size: 1.02rem;">
+                        <div style="color: #2c1d0c; line-height: 1.7; background: rgba(255, 255, 255, 0.3); padding: 12px; border-radius: 6px;">
                             <strong>Meaning:</strong> ${thirukkuralData.english.exp}
                         </div>
                     `;
                 }
             } else {
                 resultBox.innerHTML = `
-                    <div style="color: #451a03; font-weight: bold;">Search Query: "${query}"</div><br>
-                    <div style="color: #2c1d0c;"><strong>Meyyee Engine:</strong> உங்களுக்கான Universal Truth தேடப்படுகிறது...</div>
+                    <strong>Search Query:</strong> "${query}"<br><br>
+                    <strong>Meyyee Engine:</strong> உங்களுக்கான Universal Truth தேடப்படுகிறது...
                 `;
             }
         }
