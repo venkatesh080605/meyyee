@@ -22,7 +22,8 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
-            padding: 30px 15px;
+            padding: 40px 15px;
+            transition: all 0.4s ease;
         }
 
         .container {
@@ -33,9 +34,33 @@
             text-align: center;
             width: 100%;
             max-width: 800px;
+            transition: all 0.4s ease;
         }
 
-        /* MEYYEE Title: Perfect Rainbow Gradient */
+        /* Initial Center Layout */
+        .search-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            transition: all 0.4s ease;
+            margin-top: 15vh; /* Center aligned initially */
+        }
+
+        /* Top Layout After Search */
+        body.searched .search-section {
+            margin-top: 0;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 20px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* MEYYEE Title: Rainbow Gradient */
         h1 {
             font-size: 3.8rem;
             letter-spacing: 6px;
@@ -44,6 +69,13 @@
             background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            transition: font-size 0.4s ease;
+        }
+
+        body.searched h1 {
+            font-size: 2rem; /* Smaller size when moved to top */
+            letter-spacing: 3px;
+            margin-bottom: 0;
         }
 
         .subtitle {
@@ -52,6 +84,11 @@
             color: #64748b;
             margin-bottom: 35px;
             text-transform: uppercase;
+            transition: opacity 0.3s;
+        }
+
+        body.searched .subtitle {
+            display: none; /* Hide subtitle after search */
         }
 
         /* Exact Hand-Drawn Cloud Shape Search Bar */
@@ -69,13 +106,18 @@
             margin-bottom: 30px;
             transition: all 0.3s ease;
             position: relative;
-            /* Creates the bumpy cloud outline effect like your drawing */
             clip-path: polygon(
                 3% 20%, 8% 5%, 15% 15%, 22% 2%, 30% 12%, 38% 3%, 45% 15%, 
                 55% 2%, 62% 15%, 70% 3%, 78% 12%, 85% 2%, 92% 15%, 98% 25%, 
                 100% 50%, 97% 80%, 90% 95%, 82% 88%, 75% 98%, 65% 85%, 
                 55% 98%, 45% 85%, 35% 98%, 25% 85%, 15% 98%, 8% 85%, 2% 60%
             );
+        }
+
+        body.searched .search-box {
+            margin-bottom: 0;
+            max-width: 500px;
+            padding: 8px 12px 8px 20px;
         }
 
         .search-box:hover {
@@ -137,7 +179,14 @@
             transform: scale(1.15);
         }
 
-        /* Video Container */
+        /* Welcome Section (Hidden after search) */
+        #welcomeSection {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
         .video-container {
             width: 150px;
             height: 150px;
@@ -172,7 +221,7 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
-            margin-top: 15px;
+            margin-top: 25px;
         }
 
         /* Individual Palm Leaf Card */
@@ -220,34 +269,43 @@
         /* Mobile Adjustments */
         @media (max-width: 480px) {
             h1 {
-                font-size: 3rem;
+                font-size: 2.8rem;
                 letter-spacing: 4px;
             }
-            .search-box {
-                padding: 10px;
+            body.searched .search-section {
+                flex-direction: column;
+                gap: 10px;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>MEYYEE</h1>
-        <div class="subtitle">only truth here</div>
+    <div class="container" id="mainContainer">
+        
+        <div class="search-section" id="searchSection">
+            <div>
+                <h1>MEYYEE</h1>
+                <div class="subtitle">Universal Truth Engine</div>
+            </div>
 
-        <div class="search-box">
-            <input type="text" id="userInput" class="search-input" placeholder="Search truth">
-            <button class="mic-btn" onclick="startVoiceSearch()" title="Search by Voice">🎤</button>
-            <button class="search-btn" onclick="handleSearch()" title="Search">🔎</button>
+            <div class="search-box">
+                <input type="text" id="userInput" class="search-input" placeholder="Search truth">
+                <button class="mic-btn" onclick="startVoiceSearch()" title="Search by Voice">🎤</button>
+                <button class="search-btn" onclick="handleSearch()" title="Search">🔎</button>
+            </div>
         </div>
 
-        <div class="video-container">
-            <video autoplay muted loop playsinline>
-                <source src="myvideo.mp4.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+        <!-- Welcome Section that disappears after search -->
+        <div id="welcomeSection">
+            <div class="video-container">
+                <video autoplay muted loop playsinline>
+                    <source src="myvideo.mp4.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="welcome-text">WELCOME</div>
         </div>
-        <div class="welcome-text">WELCOME</div>
 
         <!-- All Results Container -->
         <div id="resultContainer"></div>
@@ -292,6 +350,10 @@
                 alert("தயவுசெய்து எதாவது உள்ளிடவும்!");
                 return;
             }
+
+            // Trigger Google-like search view (Hides welcome image & moves title to top)
+            document.body.classList.add('searched');
+            document.getElementById('welcomeSection').style.display = 'none';
 
             if (query.includes("thirukkural") || query.includes("திருக்குறள்") || query.includes("kural") || query.includes("குறள்") || query.includes("search truth")) {
                 resultContainer.innerHTML = `
