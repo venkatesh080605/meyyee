@@ -133,6 +133,7 @@
             margin-bottom: 30px;
             transition: all 0.3s ease;
             position: relative;
+            cursor: pointer;
             clip-path: polygon(
                 3% 20%, 8% 5%, 15% 15%, 22% 2%, 30% 12%, 38% 3%, 45% 15%, 
                 55% 2%, 62% 15%, 70% 3%, 78% 12%, 85% 2%, 92% 15%, 98% 25%, 
@@ -203,7 +204,7 @@
             background: transparent;
         }
 
-        .video-container video {
+        .video-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -409,20 +410,18 @@
                 <div class="subtitle">Universal Truth Engine</div>
             </div>
 
-            <div class="search-box">
-                <input type="text" id="userInput" class="search-input" placeholder="Search truth">
-                <button class="mic-btn" onclick="startVoiceSearch()" title="Search by Voice">🎤</button>
-                <button class="search-btn" onclick="handleSearch()" title="Search">🔎</button>
+            <!-- Search Box with click listener -->
+            <div class="search-box" onclick="handleSearch()">
+                <input type="text" id="userInput" class="search-input" placeholder="Search truth" onclick="event.stopPropagation()">
+                <button class="mic-btn" onclick="event.stopPropagation(); startVoiceSearch();" title="Search by Voice">🎤</button>
+                <button class="search-btn" onclick="event.stopPropagation(); handleSearch();" title="Search">🔎</button>
             </div>
         </div>
 
         <!-- Welcome Section -->
         <div id="welcomeSection">
             <div class="video-container">
-                <video autoplay muted loop playsinline>
-                    <source src="myvideo.mp4.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <img src="your-image.png" alt="Welcome Image">
             </div>
             <div class="welcome-text">WELCOME</div>
         </div>
@@ -532,7 +531,7 @@
             const query = document.getElementById('userInput').value.trim().toLowerCase();
             const resultContainer = document.getElementById('resultContainer');
 
-            // Search bar-ல் எதுவும் டைப் செய்யாமல் கிளிக் செய்தாலும் screen மேலே சென்றுவிடும்
+            // Screen மேலே செல்வது மற்றும் இமேஜ் மறைவது உடனடியாக நடக்கும்
             document.body.classList.add('searched');
             document.getElementById('welcomeSection').style.display = 'none';
 
@@ -575,7 +574,7 @@
                         <div class="kural-lines">
                             மலர்மிசை ஏகினான் மானடி சேர்ந்தார்<br>
                             நிலமிசை நீடுவாழ் வார்.
-                    </div>
+                        </div>
                         <div class="meaning-box">
                             <strong>தெளிவுரை:</strong> பிரம்மனாகிய முருகனின் அடிகளை சேர்ந்தவர் தான் இந்த நிலத்தின் மீது நீண்ட காலம் வாழ்வார். இங்கு மலர்மிசை ஏகினான் என்பது தாமரை மலர் மீது வீற்றிருக்கும் பிரம்மாவை குறிக்கும் பிரம்மா என்றால் முருகனை குறிக்கும்.
                         </div>
@@ -599,7 +598,7 @@
                     <div class="result-box">
                         <div class="board-title">📜 கூறல் எண்: 2</div>
                         <div class="kural-lines">
-                            கற்றதனால் ஆய பயனென்கொல் வாலறிவன்< generic<br>
+                            கற்றதனால் ஆய பயனென்கொல் வாலறிவன்<br>
                             நற்றாள் தொழாஅர் எனின்.
                         </div>
                         <div class="meaning-box">
