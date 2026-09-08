@@ -26,6 +26,32 @@
             transition: all 0.4s ease;
         }
 
+        /* Top Navigation Bar for Google-like Features */
+        .top-nav {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .nav-btn {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: #e2e8f0;
+            border-color: #94a3b8;
+        }
+
         .container {
             display: flex;
             flex-direction: column;
@@ -35,6 +61,7 @@
             width: 100%;
             max-width: 800px;
             transition: all 0.4s ease;
+            margin-top: 20px;
         }
 
         /* Initial Center Layout */
@@ -44,7 +71,7 @@
             align-items: center;
             width: 100%;
             transition: all 0.4s ease;
-            margin-top: 15vh; /* Center aligned initially */
+            margin-top: 10vh;
         }
 
         /* Top Layout After Search */
@@ -73,7 +100,7 @@
         }
 
         body.searched h1 {
-            font-size: 2rem; /* Smaller size when moved to top */
+            font-size: 2rem; 
             letter-spacing: 3px;
             margin-bottom: 0;
         }
@@ -88,7 +115,7 @@
         }
 
         body.searched .subtitle {
-            display: none; /* Hide subtitle after search */
+            display: none;
         }
 
         /* Exact Hand-Drawn Cloud Shape Search Bar */
@@ -140,15 +167,13 @@
             color: #94a3b8;
         }
 
-        /* Transparent Mic Button */
-        .mic-btn {
+        .mic-btn, .search-btn {
             background: transparent;
             border: none;
             outline: none;
             font-size: 1.25rem;
             cursor: pointer;
             padding: 8px 10px;
-            margin-right: 5px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -156,30 +181,11 @@
             transition: transform 0.2s;
         }
 
-        .mic-btn:hover {
+        .mic-btn:hover, .search-btn:hover {
             transform: scale(1.15);
         }
 
-        /* Transparent Search Button with 🔎 Icon */
-        .search-btn {
-            background: transparent;
-            border: none;
-            outline: none;
-            font-size: 1.35rem;
-            cursor: pointer;
-            padding: 8px 12px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            transition: transform 0.2s;
-        }
-
-        .search-btn:hover {
-            transform: scale(1.15);
-        }
-
-        /* Welcome Section (Hidden after search) */
+        /* Welcome Section */
         #welcomeSection {
             display: flex;
             flex-direction: column;
@@ -214,7 +220,98 @@
             margin-bottom: 20px;
         }
 
-        /* Palm Leaf Result Box Container */
+        /* Modal / Form for Website Builder */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            text-align: left;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .modal-content h3 {
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #334155;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-secondary:hover {
+            background: #cbd5e1;
+        }
+
+        /* User Created Website Output Preview */
         #resultContainer {
             width: 100%;
             max-width: 680px;
@@ -224,7 +321,6 @@
             margin-top: 25px;
         }
 
-        /* Individual Palm Leaf Card */
         .result-box {
             width: 100%;
             background: linear-gradient(135deg, #f4e8c1 0%, #e6d39e 100%);
@@ -235,7 +331,6 @@
             color: #2c1d0c;
             text-align: left;
             box-shadow: 0 8px 25px rgba(139, 90, 43, 0.25);
-            position: relative;
             background-image: repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(139, 90, 43, 0.08) 30px, rgba(139, 90, 43, 0.08) 31px);
         }
 
@@ -266,20 +361,45 @@
             border-radius: 6px;
         }
 
+        /* Custom User Website Display Style */
+        .user-website-card {
+            width: 100%;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .user-website-card h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .user-website-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
         /* Mobile Adjustments */
         @media (max-width: 480px) {
             h1 {
                 font-size: 2.8rem;
                 letter-spacing: 4px;
             }
-            body.searched .search-section {
-                flex-direction: column;
-                gap: 10px;
+            .top-nav {
+                top: 10px;
+                right: 10px;
             }
         }
     </style>
 </head>
 <body>
+
+    <!-- Google Sites style Top Navigation -->
+    <div class="top-nav">
+        <button class="nav-btn" onclick="openWebsiteBuilder()">🌐 Create Website</button>
+    </div>
 
     <div class="container" id="mainContainer">
         
@@ -296,7 +416,7 @@
             </div>
         </div>
 
-        <!-- Welcome Section that disappears after search -->
+        <!-- Welcome Section -->
         <div id="welcomeSection">
             <div class="video-container">
                 <video autoplay muted loop playsinline>
@@ -311,7 +431,73 @@
         <div id="resultContainer"></div>
     </div>
 
+    <!-- Website Builder Modal -->
+    <div class="modal-overlay" id="websiteModal">
+        <div class="modal-content">
+            <h3>🌐 Create Your Own Website (Meyyee Sites)</h3>
+            <div class="form-group">
+                <label>Website Title (தளத்தின் தலைப்பு):</label>
+                <input type="text" id="siteTitleInput" placeholder="எ.கா: எனது சொந்தத் தளம்">
+            </div>
+            <div class="form-group">
+                <label>Website Content / Description (உள்ளடக்கம்):</label>
+                <textarea id="siteContentInput" placeholder="உங்கள் வெப்சைட் பற்றிய விவரங்களை இங்கு எழுதவும்..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>Theme Background Color (பின்னணி நிறம்):</label>
+                <select id="siteBgColor">
+                    <option value="#f8fafc">Light Minimal (வெள்ளை)</option>
+                    <option value="#dbeafe">Ocean Blue (நீலம்)</option>
+                    <option value="#fef3c7">Golden Palm (மஞ்சள்)</option>
+                    <option value="#f3e8ff">Royal Purple (ஊதா)</option>
+                </select>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeWebsiteBuilder()">Cancel</button>
+                <button class="btn-primary" onclick="generateUserWebsite()">Create My Website</button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        function openWebsiteBuilder() {
+            document.getElementById('websiteModal').style.display = 'flex';
+        }
+
+        function closeWebsiteBuilder() {
+            document.getElementById('websiteModal').style.display = 'none';
+        }
+
+        function generateUserWebsite() {
+            const title = document.getElementById('siteTitleInput').value.trim();
+            const content = document.getElementById('siteContentInput').value.trim();
+            const bgColor = document.getElementById('siteBgColor').value;
+            const resultContainer = document.getElementById('resultContainer');
+
+            if (title === "" || content === "") {
+                alert("தயவுசெய்து தலைப்பு மற்றும் உள்ளடக்கத்தை நிரப்பவும்!");
+                return;
+            }
+
+            document.body.classList.add('searched');
+            document.getElementById('welcomeSection').style.display = 'none';
+            closeWebsiteBuilder();
+
+            resultContainer.innerHTML = `
+                <div style="background: #e0f2fe; padding: 12px; border-radius: 8px; color: #0369a1; font-weight: bold; text-align: center; margin-bottom: 10px;">
+                    🎉 உங்கள் புதிய வெப்சைட் வெற்றிகரமாக உருவாக்கப்பட்டது! (Meyyee Sites Live)
+                </div>
+                <div class="user-website-card" style="background-color: ${bgColor}; border: 2px solid #cbd5e1;">
+                    <h2>${title}</h2>
+                    <hr style="margin: 15px 0; border: 0; border-top: 1px solid rgba(0,0,0,0.1);">
+                    <p>${content.replace(/\n/g, '<br>')}</p>
+                    <div style="margin-top: 20px; font-size: 0.85rem; color: #64748b;">
+                        Published via <strong>Meyyee Universal Truth Engine</strong>
+                    </div>
+                </div>
+            `;
+        }
+
         function startVoiceSearch() {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             
@@ -346,14 +532,19 @@
             const query = document.getElementById('userInput').value.trim().toLowerCase();
             const resultContainer = document.getElementById('resultContainer');
 
-            if (query === "") {
-                alert("தயவுசெய்து எதாவது உள்ளிடவும்!");
-                return;
-            }
-
-            // Trigger Google-like search view (Hides welcome image & moves title to top)
+            // Search bar-ல் எதுவும் டைப் செய்யாமல் கிளிக் செய்தாலும் screen மேலே சென்றுவிடும்
             document.body.classList.add('searched');
             document.getElementById('welcomeSection').style.display = 'none';
+
+            if (query === "") {
+                resultContainer.innerHTML = `
+                    <div class="result-box" style="text-align: center; background: #fff; border: 1px solid #cbd5e1;">
+                        <strong>தேடல் முடிவு:</strong> (வெற்றுத் தேடல்)<br><br>
+                        <strong>Meyyee Engine:</strong> தயவுசெய்து தேட வேண்டிய வார்த்தையை உள்ளிடவும்.
+                    </div>
+                `;
+                return;
+            }
 
             if (query.includes("thirukkural") || query.includes("திருக்குறள்") || query.includes("kural") || query.includes("குறள்") || query.includes("search truth")) {
                 resultContainer.innerHTML = `
@@ -384,7 +575,7 @@
                         <div class="kural-lines">
                             மலர்மிசை ஏகினான் மானடி சேர்ந்தார்<br>
                             நிலமிசை நீடுவாழ் வார்.
-                        </div>
+                    </div>
                         <div class="meaning-box">
                             <strong>தெளிவுரை:</strong> பிரம்மனாகிய முருகனின் அடிகளை சேர்ந்தவர் தான் இந்த நிலத்தின் மீது நீண்ட காலம் வாழ்வார். இங்கு மலர்மிசை ஏகினான் என்பது தாமரை மலர் மீது வீற்றிருக்கும் பிரம்மாவை குறிக்கும் பிரம்மா என்றால் முருகனை குறிக்கும்.
                         </div>
@@ -408,7 +599,7 @@
                     <div class="result-box">
                         <div class="board-title">📜 கூறல் எண்: 2</div>
                         <div class="kural-lines">
-                            கற்றதனால் ஆய பயனென்கொல் வாலறிவன்<br>
+                            கற்றதனால் ஆய பயனென்கொல் வாலறிவன்< generic<br>
                             நற்றாள் தொழாஅர் எனின்.
                         </div>
                         <div class="meaning-box">
@@ -431,7 +622,7 @@
                 `;
             } else {
                 resultContainer.innerHTML = `
-                    <div class="result-box" style="text-align: center;">
+                    <div class="result-box" style="text-align: center; background: #fff; border: 1px solid #cbd5e1;">
                         <strong>தேடல் முடிவு:</strong> "${query}"<br><br>
                         <strong>Meyyee Engine:</strong> உங்களுக்கான Universal Truth தேடப்படுகிறது...
                     </div>
