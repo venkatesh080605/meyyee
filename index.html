@@ -255,7 +255,7 @@
             
             if (query.includes("thirukkural") || query.includes("திருக்குறள்") || query === "1" || query.includes("mudhal") || query.includes("andha")) {
                 resultBox.innerHTML = `
-                    <div style="text-align: center; color: #78350f; font-size: 1.25rem; font-weight: bold; margin-bottom: 12px; border-bottom: 1px dashed #8b5a2b; padding-bottom: 8px;">📜 முதல் அதிகாரம் - கடவுள் வாழ்த்து</div>
+                    <div style="text-align: center; color: #78350f; font-size: 1.25rem; font-weight: bold; margin-bottom: 12px; border-bottom: 1px dashed #8b5a2b; padding-bottom: 8px;"> முதல் அதிகாரம் - கடவுள் வாழ்த்து</div>
                     <div style="font-weight: bold; color: #451a03; font-size: 1.15rem; line-height: 1.6; text-align: center; margin-bottom: 15px;">
                         அகர முதல எழுத்தெல்லாம் ஆதி<br>
                         பகவன் முதற்றே உலகு.
@@ -263,8 +263,18 @@
                     <div style="color: #2c1d0c; line-height: 1.7; background: rgba(255, 255, 255, 0.3); padding: 12px; border-radius: 6px;">
                         <strong>தெளிவுரை:</strong> அகரத்தை முதன்மையாக கொண்டுள்ள எழுத்துமுறை அனைத்திற்கும் சிவனின் சித்திரை எழுத்தே முதன்மை ஆனது.
                     </div>
+             if (query.includes("thirukkural") || query.includes("திருக்குறள்") || query === "2" || query.includes("mudhal") || query.includes("andha")) {
+                resultBox.innerHTML = `
+                    <div style="text-align: center; color: #78350f; font-size: 1.25rem; font-weight: bold; margin-bottom: 12px; border-bottom: 1px dashed #8b5a2b; padding-bottom: 8px;"> முதல் அதிகாரம் - கடவுள் வாழ்த்து</div>
+                    <div style="font-weight: bold; color: #451a03; font-size: 1.15rem; line-height: 1.6; text-align: center; margin-bottom: 15px;">
+                        கற்றதனால் ஆய பயனென்கொல் வாலறிவன்<br>
+                        நற்றாள் தொழாஅர் எனின்.
+                    </div>
+                    <div style="color: #2c1d0c; line-height: 1.7; background: rgba(255, 255, 255, 0.3); padding: 12px; border-radius: 6px;">
+                        <strong>தெளிவுரை:</strong> தெளிவுரை முருகனின் நல்ல பாதங்களை தொழாதவர் படித்ததனால் உண்டாகிய பயன்தான் என்னச் சொல். இங்கு வாலறிவன் என்பது முருகனை குறிக்கம்.ு
+                    </div>
                 `;
-            } else {
+          } else {
                 resultBox.innerHTML = `
                     <strong>Search Query:</strong> "${query}"<br><br>
                     <strong>Meyyee Engine:</strong> உங்களுக்கான Universal Truth தேடப்படுகிறது...
