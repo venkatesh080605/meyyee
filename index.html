@@ -35,13 +35,13 @@
             max-width: 800px;
         }
 
-        /* Rainbow MEYYEE Title */
+        /* MEYYEE Title: Bottom-to-Top Rainbow Gradient */
         h1 {
             font-size: 3.5rem;
             letter-spacing: 5px;
             font-weight: 900;
             margin-bottom: 5px;
-            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
+            background: linear-gradient(0deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -54,24 +54,25 @@
             text-transform: uppercase;
         }
 
-        /* Cloud Shape Search Bar */
+        /* Perfect Cloud Shape Search Bar */
         .search-box {
             display: flex;
             align-items: center;
-            background: #f1f5f9;
+            background: #f8fafc;
             border: 2px solid #cbd5e1;
-            border-radius: 40px 60px 40px 60px / 50px 40px 50px 40px; /* Cloud Shape Effect */
-            padding: 8px 12px 8px 22px;
+            border-radius: 50px 50px 40px 40px / 40px 40px 30px 30px;
+            padding: 8px 12px 8px 25px;
             width: 100%;
             max-width: 650px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
             margin-bottom: 30px;
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .search-box:hover {
             border-color: #0284c7;
-            box-shadow: 0 6px 25px rgba(2, 132, 199, 0.2);
+            box-shadow: 0 8px 30px rgba(2, 132, 199, 0.15);
         }
 
         .search-input {
@@ -88,49 +89,43 @@
             color: #94a3b8;
         }
 
-        /* Mic Button */
+        /* Transparent Mic Button */
         .mic-btn {
             background: transparent;
             border: none;
             outline: none;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             cursor: pointer;
             padding: 8px 10px;
             margin-right: 5px;
-            border-radius: 50%;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            transition: background 0.2s;
+            transition: transform 0.2s;
         }
 
         .mic-btn:hover {
-            background: rgba(0, 0, 0, 0.05);
+            transform: scale(1.1);
         }
 
-        /* Search Button with 🔎 Icon */
+        /* Transparent Search Button with 🔎 Icon */
         .search-btn {
-            background-color: #0284c7;
-            color: white;
+            background: transparent;
             border: none;
             outline: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            font-size: 1.2rem;
+            font-size: 1.35rem;
             cursor: pointer;
-            display: flex;
+            padding: 8px 12px;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            transition: background 0.3s ease, transform 0.2s;
-            box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
+            transition: transform 0.2s;
         }
 
         .search-btn:hover {
-            background-color: #0369a1;
-            transform: scale(1.05);
+            transform: scale(1.15);
         }
 
         /* Video Container */
@@ -232,7 +227,7 @@
         <div class="subtitle">Universal Truth Engine</div>
 
         <div class="search-box">
-            <input type="text" id="userInput" class="search-input" placeholder="'Thirukkural' என டைப் செய்யவும்...">
+            <input type="text" id="userInput" class="search-input" placeholder="Search truth">
             <button class="mic-btn" onclick="startVoiceSearch()" title="Search by Voice">🎤</button>
             <button class="search-btn" onclick="handleSearch()" title="Search">🔎</button>
         </div>
@@ -268,12 +263,12 @@
             recognition.onresult = function(event) {
                 const spokenText = event.results[0][0].transcript;
                 document.getElementById('userInput').value = spokenText;
-                document.getElementById('userInput').placeholder = "'Thirukkural' என டைப் செய்யவும்...";
+                document.getElementById('userInput').placeholder = "Search truth";
                 handleSearch();
             };
 
             recognition.onerror = function() {
-                document.getElementById('userInput').placeholder = "'Thirukkural' என டைப் செய்யவும்...";
+                document.getElementById('userInput').placeholder = "Search truth";
                 alert("Voice கேட்கவில்லை, மறுபடியும் முயற்சிக்கவும்.");
             };
 
@@ -285,11 +280,11 @@
             const resultContainer = document.getElementById('resultContainer');
 
             if (query === "") {
-                alert("தயவுசெய்து 'Thirukkural' அல்லது 'திருக்குறள்' என டைப் செய்யவும்!");
+                alert("தயவுசெய்து எதாவது உள்ளிடவும்!");
                 return;
             }
 
-            if (query.includes("thirukkural") || query.includes("திருக்குறள்") || query.includes("kural") || query.includes("குறள்")) {
+            if (query.includes("thirukkural") || query.includes("திருக்குறள்") || query.includes("kural") || query.includes("குறள்") || query.includes("search truth")) {
                 resultContainer.innerHTML = `
                     <div class="result-box">
                         <div class="board-title">📜 கூறல் எண்: 1 - கடவுள் வாழ்த்து</div>
