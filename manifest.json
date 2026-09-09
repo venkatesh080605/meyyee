@@ -1,0 +1,12 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Meyyee",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "Meyyee",
+  "start_url": "https://www.meyyee.site/",
+  "theme_color": "#ffffff",
+  "lang": "en"
+}
