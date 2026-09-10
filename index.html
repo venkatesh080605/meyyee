@@ -91,15 +91,13 @@
             cursor: default;
         }
 
-        /* MEYYEE Title: Rainbow Gradient */
+        /* MEYYEE Title: Solid Black */
         h1 {
             font-size: 3.8rem;
             letter-spacing: 6px;
             font-weight: 900;
             margin-bottom: 5px;
-            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #000000;
             transition: font-size 0.4s ease;
         }
 
@@ -226,7 +224,7 @@
             margin-bottom: 20px;
         }
 
-        /* Intro / Corner Animation Styles */
+        /* 4-Corner Split Animation Overlay (3 Seconds Duration) */
         #intro-animation {
             position: fixed;
             top: 0;
@@ -238,38 +236,72 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            cursor: pointer;
             overflow: hidden;
             transition: opacity 0.5s ease;
         }
 
-        .anim-logo-wrapper {
-            text-align: center;
-        }
-
-        .anim-logo {
+        .anim-wrapper {
+            position: relative;
             width: 150px;
-            height: 150px;
-            object-fit: contain;
-            transform: translate(-500px, -500px) scale(0.2);
-            opacity: 0;
-            transition: transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 1s ease-in;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
+        /* 4 Pieces of the Logo starting from Corners */
+        .piece {
+            position: absolute;
+            width: 75px;
+            height: 75px;
+            background-image: url('/launchericon-512x512.png');
+            background-size: 150px 150px;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: transform 3s cubic-bezier(0.1, 0.9, 0.2, 1), opacity 1s ease;
+        }
+
+        /* Top-Left Piece */
+        .piece-tl {
+            top: 0; left: 0;
+            background-position: 0 0;
+            transform: translate(-40vw, -40vh) rotate(-45deg);
+        }
+        /* Top-Right Piece */
+        .piece-tr {
+            top: 0; right: 0;
+            background-position: -75px 0;
+            transform: translate(40vw, -40vh) rotate(45deg);
+        }
+        /* Bottom-Left Piece */
+        .piece-bl {
+            bottom: 0; left: 0;
+            background-position: 0 -75px;
+            transform: translate(-40vw, 40vh) rotate(45deg);
+        }
+        /* Bottom-Right Piece */
+        .piece-br {
+            bottom: 0; right: 0;
+            background-position: -75px -75px;
+            transform: translate(40vw, 40vh) rotate(-45deg);
+        }
+
+        /* Black Title appearing after pieces join */
         .anim-title {
-            margin-top: 20px;
-            font-size: 32px;
-            font-weight: bold;
-            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            position: absolute;
+            bottom: -50px;
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: #000000;
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease 0.8s;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease 2.2s, transform 0.8s ease 2.2s;
         }
 
-        #intro-animation.animate .anim-logo {
-            transform: translate(0, 0) scale(1);
+        /* Animation Trigger Classes */
+        #intro-animation.animate .piece {
+            transform: translate(0, 0) rotate(0deg);
             opacity: 1;
         }
 
@@ -452,10 +484,13 @@
 </head>
 <body>
 
-    <!-- Intro / Corner Animation Splash Screen -->
+    <!-- 4-Corner Split Animation Splash Screen (3 Seconds) -->
     <div id="intro-animation" onclick="closeIntro()">
-        <div class="anim-logo-wrapper">
-            <img src="/launchericon-512x512.png" alt="Meyyee Logo" class="anim-logo" id="animLogo">
+        <div class="anim-wrapper">
+            <div class="piece piece-tl"></div>
+            <div class="piece piece-tr"></div>
+            <div class="piece piece-bl"></div>
+            <div class="piece piece-br"></div>
             <div class="anim-title">MEYYEE</div>
         </div>
     </div>
@@ -525,16 +560,16 @@
     </div>
 
     <script>
-        // Trigger intro animation on load
+        // Trigger intro animation on load for exactly 3 seconds
         window.onload = function() {
             setTimeout(() => {
                 document.getElementById('intro-animation').classList.add('animate');
-            }, 300);
+            }, 200);
 
-            // Automatically hide intro screen after 3 seconds so user can use the app
+            // Automatically hide intro screen after exactly 3.5 seconds
             setTimeout(() => {
                 closeIntro();
-            }, 3000);
+            }, 3500);
         };
 
         function closeIntro() {
