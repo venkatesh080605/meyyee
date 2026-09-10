@@ -1,12 +1,4 @@
-{
-  "name": "Meyyee",
-  "short_name": "Meyyee",
-  "start_url": "https://www.meyyee.site/",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#ffffff",
-  "lang": "en",
-  "icons": [
+"icons": [
     {
       "src": "launchericon-512x512.png",
       "sizes": "512x512",
@@ -39,4 +31,3 @@
       "type": "image/png"
     }
   ]
-}
