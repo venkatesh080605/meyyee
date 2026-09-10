@@ -226,95 +226,6 @@
             margin-bottom: 20px;
         }
 
-        /* 4-Corner Large Split Animation Overlay (3 Seconds Duration) */
-        #intro-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            overflow: hidden;
-            transition: opacity 0.5s ease;
-        }
-
-        .anim-wrapper {
-            position: relative;
-            width: 300px;
-            height: 350px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* 4 Perfectly Aligned Large Pieces of the Logo */
-        .piece {
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            background-image: url('/launchericon-512x512.png');
-            background-size: 300px 300px;
-            background-repeat: no-repeat;
-            opacity: 0;
-            transition: transform 3s cubic-bezier(0.1, 0.9, 0.2, 1), opacity 1s ease;
-        }
-
-        /* Top-Left Piece */
-        .piece-tl {
-            top: 0; left: 0;
-            background-position: 0 0;
-            transform: translate(-60vw, -60vh) rotate(-45deg);
-        }
-        /* Top-Right Piece */
-        .piece-tr {
-            top: 0; right: 0;
-            background-position: -150px 0;
-            transform: translate(60vw, -60vh) rotate(45deg);
-        }
-        /* Bottom-Left Piece */
-        .piece-bl {
-            bottom: 50px; left: 0;
-            background-position: 0 -150px;
-            transform: translate(-60vw, 60vh) rotate(45deg);
-        }
-        /* Bottom-Right Piece */
-        .piece-br {
-            bottom: 50px; right: 0;
-            background-position: -150px -150px;
-            transform: translate(60vw, 60vh) rotate(-45deg);
-        }
-
-        /* Colorful Rainbow Title appearing after pieces join */
-        .anim-title {
-            position: absolute;
-            bottom: -5px;
-            font-size: 40px;
-            font-weight: 900;
-            letter-spacing: 6px;
-            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease 2.2s, transform 0.8s ease 2.2s;
-        }
-
-        /* Animation Trigger Classes */
-        #intro-animation.animate .piece {
-            transform: translate(0, 0) rotate(0deg);
-            opacity: 1;
-        }
-
-        #intro-animation.animate .anim-title {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         /* Modal / Form for Website Builder */
         .modal-overlay {
             display: none;
@@ -489,17 +400,6 @@
 </head>
 <body>
 
-    <!-- 4-Corner Large Split Animation Splash Screen (3 Seconds) -->
-    <div id="intro-animation" onclick="closeIntro()">
-        <div class="anim-wrapper">
-            <div class="piece piece-tl"></div>
-            <div class="piece piece-tr"></div>
-            <div class="piece piece-bl"></div>
-            <div class="piece piece-br"></div>
-            <div class="anim-title">MEYYEE</div>
-        </div>
-    </div>
-
     <!-- Top Navigation -->
     <div class="top-nav">
         <button class="nav-btn" onclick="openWebsiteBuilder()">🌐 Create Website</button>
@@ -565,28 +465,6 @@
     </div>
 
     <script>
-        // Trigger intro animation on load for exactly 3 seconds
-        window.onload = function() {
-            setTimeout(() => {
-                document.getElementById('intro-animation').classList.add('animate');
-            }, 200);
-
-            // Automatically hide intro screen after exactly 3.5 seconds
-            setTimeout(() => {
-                closeIntro();
-            }, 3500);
-        };
-
-        function closeIntro() {
-            const intro = document.getElementById('intro-animation');
-            if (intro) {
-                intro.style.opacity = '0';
-                setTimeout(() => {
-                    intro.style.display = 'none';
-                }, 500);
-            }
-        }
-
         function openWebsiteBuilder() {
             document.getElementById('websiteModal').style.display = 'flex';
         }
