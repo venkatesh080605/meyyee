@@ -226,7 +226,7 @@
             margin-bottom: 20px;
         }
 
-        /* 4-Corner Extra Large Split Animation Overlay (3 Seconds Duration) */
+        /* 4-Corner Large Split Animation Overlay (3 Seconds Duration) */
         #intro-animation {
             position: fixed;
             top: 0;
@@ -244,21 +244,21 @@
 
         .anim-wrapper {
             position: relative;
-            width: 350px;
-            height: 420px;
+            width: 300px;
+            height: 350px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
         }
 
-        /* 4 Extra Large Pieces of the Logo starting from Corners */
+        /* 4 Perfectly Aligned Large Pieces of the Logo */
         .piece {
             position: absolute;
-            width: 175px;
-            height: 175px;
+            width: 150px;
+            height: 150px;
             background-image: url('/launchericon-512x512.png');
-            background-size: 350px 350px;
+            background-size: 300px 300px;
             background-repeat: no-repeat;
             opacity: 0;
             transition: transform 3s cubic-bezier(0.1, 0.9, 0.2, 1), opacity 1s ease;
@@ -273,19 +273,19 @@
         /* Top-Right Piece */
         .piece-tr {
             top: 0; right: 0;
-            background-position: -175px 0;
+            background-position: -150px 0;
             transform: translate(60vw, -60vh) rotate(45deg);
         }
         /* Bottom-Left Piece */
         .piece-bl {
-            bottom: 70px; left: 0;
-            background-position: 0 -175px;
+            bottom: 50px; left: 0;
+            background-position: 0 -150px;
             transform: translate(-60vw, 60vh) rotate(45deg);
         }
         /* Bottom-Right Piece */
         .piece-br {
-            bottom: 70px; right: 0;
-            background-position: -175px -175px;
+            bottom: 50px; right: 0;
+            background-position: -150px -150px;
             transform: translate(60vw, 60vh) rotate(-45deg);
         }
 
@@ -293,7 +293,7 @@
         .anim-title {
             position: absolute;
             bottom: -5px;
-            font-size: 42px;
+            font-size: 40px;
             font-weight: 900;
             letter-spacing: 6px;
             background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
@@ -489,7 +489,7 @@
 </head>
 <body>
 
-    <!-- 4-Corner Extra Large Split Animation Splash Screen (3 Seconds) -->
+    <!-- 4-Corner Large Split Animation Splash Screen (3 Seconds) -->
     <div id="intro-animation" onclick="closeIntro()">
         <div class="anim-wrapper">
             <div class="piece piece-tl"></div>
@@ -617,7 +617,7 @@
                 <div class="user-website-card" style="background-color: ${bgColor}; border: 2px solid #cbd5e1;">
                     <h2>${title}</h2>
                     <hr style="margin: 15px 0; border: 0; border-top: 1px solid rgba(0,0,0,0.1);">
-                    <p>${content.proto ? content : content.replace(/\n/g, '<br>')}</p>
+                    <p>${content.replace(/\n/g, '<br>')}</p>
                     <div style="margin-top: 20px; font-size: 0.85rem; color: #64748b;">
                         Published via <strong>Meyyee Universal Truth Engine</strong>
                     </div>
