@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meyyee - Universal Truth Engine</title>
-    <link rel="manifest" href="/manifest.json">
     <style>
         * {
             margin: 0;
@@ -122,7 +121,7 @@
             display: none;
         }
 
-        /* Exact Hand-Drawn Cloud Shape Search Bar */
+        /* Search Box */
         .search-box {
             display: flex;
             align-items: center;
@@ -138,12 +137,6 @@
             transition: all 0.3s ease;
             position: relative;
             cursor: pointer;
-            clip-path: polygon(
-                3% 20%, 8% 5%, 15% 15%, 22% 2%, 30% 12%, 38% 3%, 45% 15%, 
-                55% 2%, 62% 15%, 70% 3%, 78% 12%, 85% 2%, 92% 15%, 98% 25%, 
-                100% 50%, 97% 80%, 90% 95%, 82% 88%, 75% 98%, 65% 85%, 
-                55% 98%, 45% 85%, 35% 98%, 25% 85%, 15% 98%, 8% 85%, 2% 60%
-            );
         }
 
         body.searched .search-box {
@@ -191,6 +184,65 @@
             transform: scale(1.15);
         }
 
+        /* Instant Split Screen Animation */
+        #intro-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0f172a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.4s ease;
+        }
+
+        .anim-wrapper {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .split-piece {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #2563eb, #9333ea);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            transform: translate(0, 0);
+            transition: transform 0.8s cubic-bezier(0.1, 0.9, 0.2, 1);
+        }
+
+        #intro-animation.open .piece-tl { transform: translate(-110px, -110px) scale(0.2); opacity: 0; }
+        #intro-animation.open .piece-tr { transform: translate(110px, -110px) scale(0.2); opacity: 0; }
+        #intro-animation.open .piece-bl { transform: translate(-110px, 110px) scale(0.2); opacity: 0; }
+        #intro-animation.open .piece-br { transform: translate(110px, 110px) scale(0.2); opacity: 0; }
+
+        .piece-tl { top: 10px; left: 10px; border-radius: 50% 20% 50% 20%; }
+        .piece-tr { top: 10px; right: 10px; border-radius: 20% 50% 20% 50%; }
+        .piece-bl { bottom: 10px; left: 10px; border-radius: 20% 50% 20% 50%; }
+        .piece-br { bottom: 10px; right: 10px; border-radius: 50% 20% 50% 20%; }
+
+        .anim-text {
+            position: absolute;
+            color: white;
+            font-size: 1.6rem;
+            font-weight: bold;
+            letter-spacing: 5px;
+            z-index: 2;
+            transition: opacity 0.3s ease;
+        }
+
+        #intro-animation.open .anim-text {
+            opacity: 0;
+        }
+
         /* Welcome Section */
         #welcomeSection {
             display: flex;
@@ -224,95 +276,6 @@
             letter-spacing: 2px;
             margin-top: 5px;
             margin-bottom: 20px;
-        }
-
-        /* 4-Corner Large Split Animation Overlay (3 Seconds Duration) */
-        #intro-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            overflow: hidden;
-            transition: opacity 0.5s ease;
-        }
-
-        .anim-wrapper {
-            position: relative;
-            width: 300px;
-            height: 350px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* 4 Perfectly Aligned Large Pieces of the Logo */
-        .piece {
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            background-image: url('/launchericon-512x512.png');
-            background-size: 300px 300px;
-            background-repeat: no-repeat;
-            opacity: 0;
-            transition: transform 3s cubic-bezier(0.1, 0.9, 0.2, 1), opacity 1s ease;
-        }
-
-        /* Top-Left Piece */
-        .piece-tl {
-            top: 0; left: 0;
-            background-position: 0 0;
-            transform: translate(-60vw, -60vh) rotate(-45deg);
-        }
-        /* Top-Right Piece */
-        .piece-tr {
-            top: 0; right: 0;
-            background-position: -150px 0;
-            transform: translate(60vw, -60vh) rotate(45deg);
-        }
-        /* Bottom-Left Piece */
-        .piece-bl {
-            bottom: 50px; left: 0;
-            background-position: 0 -150px;
-            transform: translate(-60vw, 60vh) rotate(45deg);
-        }
-        /* Bottom-Right Piece */
-        .piece-br {
-            bottom: 50px; right: 0;
-            background-position: -150px -150px;
-            transform: translate(60vw, 60vh) rotate(-45deg);
-        }
-
-        /* Colorful Rainbow Title appearing after pieces join */
-        .anim-title {
-            position: absolute;
-            bottom: -5px;
-            font-size: 40px;
-            font-weight: 900;
-            letter-spacing: 6px;
-            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease 2.2s, transform 0.8s ease 2.2s;
-        }
-
-        /* Animation Trigger Classes */
-        #intro-animation.animate .piece {
-            transform: translate(0, 0) rotate(0deg);
-            opacity: 1;
-        }
-
-        #intro-animation.animate .anim-title {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         /* Modal / Form for Website Builder */
@@ -426,7 +389,6 @@
             color: #2c1d0c;
             text-align: left;
             box-shadow: 0 8px 25px rgba(139, 90, 43, 0.25);
-            background-image: repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(139, 90, 43, 0.08) 30px, rgba(139, 90, 43, 0.08) 31px);
         }
 
         .board-title {
@@ -489,14 +451,14 @@
 </head>
 <body>
 
-    <!-- 4-Corner Large Split Animation Splash Screen (3 Seconds) -->
-    <div id="intro-animation" onclick="closeIntro()">
+    <!-- Instant Split Animation Screen -->
+    <div id="intro-animation">
         <div class="anim-wrapper">
-            <div class="piece piece-tl"></div>
-            <div class="piece piece-tr"></div>
-            <div class="piece piece-bl"></div>
-            <div class="piece piece-br"></div>
-            <div class="anim-title">MEYYEE</div>
+            <div class="split-piece piece-tl"></div>
+            <div class="split-piece piece-tr"></div>
+            <div class="split-piece piece-bl"></div>
+            <div class="split-piece piece-br"></div>
+            <div class="anim-text">MEYYEE</div>
         </div>
     </div>
 
@@ -565,27 +527,17 @@
     </div>
 
     <script>
-        // Trigger intro animation on load for exactly 3 seconds
-        window.onload = function() {
+        // Trigger split animation instantly on load
+        window.addEventListener('load', function() {
             setTimeout(() => {
-                document.getElementById('intro-animation').classList.add('animate');
-            }, 200);
+                document.getElementById('intro-animation').classList.add('open');
+            }, 50);
 
-            // Automatically hide intro screen after exactly 3.5 seconds
             setTimeout(() => {
-                closeIntro();
-            }, 3500);
-        };
-
-        function closeIntro() {
-            const intro = document.getElementById('intro-animation');
-            if (intro) {
-                intro.style.opacity = '0';
-                setTimeout(() => {
-                    intro.style.display = 'none';
-                }, 500);
-            }
-        }
+                const intro = document.getElementById('intro-animation');
+                intro.style.display = 'none';
+            }, 800);
+        });
 
         function openWebsiteBuilder() {
             document.getElementById('websiteModal').style.display = 'flex';
