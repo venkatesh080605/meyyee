@@ -91,13 +91,15 @@
             cursor: default;
         }
 
-        /* MEYYEE Title: Solid Black */
+        /* MEYYEE Title: Rainbow Gradient */
         h1 {
             font-size: 3.8rem;
             letter-spacing: 6px;
             font-weight: 900;
             margin-bottom: 5px;
-            color: #000000;
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             transition: font-size 0.4s ease;
         }
 
@@ -224,7 +226,7 @@
             margin-bottom: 20px;
         }
 
-        /* 4-Corner Split Animation Overlay (3 Seconds Duration) */
+        /* 4-Corner Large Split Animation Overlay (3 Seconds Duration) */
         #intro-animation {
             position: fixed;
             top: 0;
@@ -242,20 +244,21 @@
 
         .anim-wrapper {
             position: relative;
-            width: 150px;
-            height: 200px;
+            width: 250px;
+            height: 300px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
         }
 
-        /* 4 Pieces of the Logo starting from Corners */
+        /* 4 Larger Pieces of the Logo starting from Corners */
         .piece {
             position: absolute;
-            width: 75px;
-            height: 75px;
+            width: 125px;
+            height: 125px;
             background-image: url('/launchericon-512x512.png');
-            background-size: 150px 150px;
+            background-size: 250px 250px;
             background-repeat: no-repeat;
             opacity: 0;
             transition: transform 3s cubic-bezier(0.1, 0.9, 0.2, 1), opacity 1s ease;
@@ -265,35 +268,37 @@
         .piece-tl {
             top: 0; left: 0;
             background-position: 0 0;
-            transform: translate(-40vw, -40vh) rotate(-45deg);
+            transform: translate(-50vw, -50vh) rotate(-45deg);
         }
         /* Top-Right Piece */
         .piece-tr {
             top: 0; right: 0;
-            background-position: -75px 0;
-            transform: translate(40vw, -40vh) rotate(45deg);
+            background-position: -125px 0;
+            transform: translate(50vw, -50vh) rotate(45deg);
         }
         /* Bottom-Left Piece */
         .piece-bl {
-            bottom: 0; left: 0;
-            background-position: 0 -75px;
-            transform: translate(-40vw, 40vh) rotate(45deg);
+            bottom: 50px; left: 0;
+            background-position: 0 -125px;
+            transform: translate(-50vw, 50vh) rotate(45deg);
         }
         /* Bottom-Right Piece */
         .piece-br {
-            bottom: 0; right: 0;
-            background-position: -75px -75px;
-            transform: translate(40vw, 40vh) rotate(-45deg);
+            bottom: 50px; right: 0;
+            background-position: -125px -125px;
+            transform: translate(50vw, 50vh) rotate(-45deg);
         }
 
-        /* Black Title appearing after pieces join */
+        /* Colorful Rainbow Title appearing after pieces join */
         .anim-title {
             position: absolute;
-            bottom: -50px;
-            font-size: 28px;
+            bottom: -10px;
+            font-size: 36px;
             font-weight: 900;
-            letter-spacing: 4px;
-            color: #000000;
+            letter-spacing: 6px;
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.8s ease 2.2s, transform 0.8s ease 2.2s;
@@ -484,7 +489,7 @@
 </head>
 <body>
 
-    <!-- 4-Corner Split Animation Splash Screen (3 Seconds) -->
+    <!-- 4-Corner Large Split Animation Splash Screen (3 Seconds) -->
     <div id="intro-animation" onclick="closeIntro()">
         <div class="anim-wrapper">
             <div class="piece piece-tl"></div>
