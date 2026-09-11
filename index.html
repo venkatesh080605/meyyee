@@ -22,12 +22,10 @@
         measurementId: "G-P07PH90RH7"
       };
 
-      // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
       const auth = getAuth(app);
 
-      // Make auth available globally for event listeners
       window.firebaseAuth = auth;
       window.authMethods = {
         createUserWithEmailAndPassword,
@@ -238,6 +236,72 @@
             margin-bottom: 20px;
         }
 
+        /* Split Animation Splash Screen */
+        #intro-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            overflow: hidden;
+            transition: opacity 0.5s ease;
+        }
+
+        .anim-wrapper {
+            position: relative;
+            width: 300px;
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .piece {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-image: url('/launchericon-512x512.png');
+            background-size: 300px 300px;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: transform 3s cubic-bezier(0.1, 0.9, 0.2, 1), opacity 1s ease;
+        }
+
+        .piece-tl { top: 0; left: 0; background-position: 0 0; transform: translate(-60vw, -60vh) rotate(-45deg); }
+        .piece-tr { top: 0; right: 0; background-position: -150px 0; transform: translate(60vw, -60vh) rotate(45deg); }
+        .piece-bl { bottom: 50px; left: 0; background-position: 0 -150px; transform: translate(-60vw, 60vh) rotate(45deg); }
+        .piece-br { bottom: 50px; right: 0; background-position: -150px -150px; transform: translate(60vw, 60vh) rotate(-45deg); }
+
+        .anim-title {
+            position: absolute;
+            bottom: -5px;
+            font-size: 40px;
+            font-weight: 900;
+            letter-spacing: 6px;
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease 2.2s, transform 0.8s ease 2.2s;
+        }
+
+        #intro-animation.animate .piece {
+            transform: translate(0, 0) rotate(0deg);
+            opacity: 1;
+        }
+
+        #intro-animation.animate .anim-title {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Login / Sign-Up Form Box */
         .auth-container {
             background: #f8fafc;
@@ -442,6 +506,17 @@
 </head>
 <body>
 
+    <!-- Split Animation Splash Screen -->
+    <div id="intro-animation" onclick="closeIntro()">
+        <div class="anim-wrapper">
+            <div class="piece piece-tl"></div>
+            <div class="piece piece-tr"></div>
+            <div class="piece piece-bl"></div>
+            <div class="piece piece-br"></div>
+            <div class="anim-title">MEYYEE</div>
+        </div>
+    </div>
+
     <!-- Top Navigation -->
     <div class="top-nav">
         <button class="nav-btn" onclick="openWebsiteBuilder()">🌐 Create Website</button>
@@ -463,7 +538,7 @@
             </div>
         </div>
 
-        <!-- Login / Sign-Up Form Section (English UI) -->
+        <!-- Login / Sign-Up Form Section -->
         <div class="auth-container">
             <h3>Account Access</h3>
             <input type="email" id="email" class="auth-input" placeholder="Email address"><br>
@@ -520,14 +595,34 @@
 
     <!-- Main JavaScript Logic -->
     <script>
-        // Firebase Authentication Event Listeners setup after window load
+        // Intro Animation Trigger
+        window.onload = function() {
+            setTimeout(() => {
+                document.getElementById('intro-animation').classList.add('animate');
+            }, 200);
+
+            setTimeout(() => {
+                closeIntro();
+            }, 3500);
+        };
+
+        function closeIntro() {
+            const intro = document.getElementById('intro-animation');
+            if (intro) {
+                intro.style.opacity = '0';
+                setTimeout(() => {
+                    intro.style.display = 'none';
+                }, 500);
+            }
+        }
+
+        // Firebase Auth Event Listeners setup
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const auth = window.firebaseAuth;
                 const { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } = window.authMethods;
 
                 if (auth) {
-                    // 1. Sign Up
                     document.getElementById("signup-btn").addEventListener("click", () => {
                         const email = document.getElementById("email").value;
                         const password = document.getElementById("password").value;
@@ -541,7 +636,6 @@
                             });
                     });
 
-                    // 2. Login
                     document.getElementById("login-btn").addEventListener("click", () => {
                         const email = document.getElementById("email").value;
                         const password = document.getElementById("password").value;
@@ -555,7 +649,6 @@
                             });
                     });
 
-                    // 3. Google Sign-In
                     document.getElementById("google-btn").addEventListener("click", () => {
                         const provider = new GoogleAuthProvider();
                         signInWithPopup(auth, provider)
