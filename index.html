@@ -1,31 +1,43 @@
 <!DOCTYPE html>
-<html lang="ta">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meyyee - Universal Truth Engine</title>
     <link rel="manifest" href="/manifest.json">
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    
+    <!-- Firebase SDKs -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+      import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyDNt5iHm7LWAVwRp449fEggS_sS48JcBSQ",
-    authDomain: "meyyee-2cb50.firebaseapp.com",
-    projectId: "meyyee-2cb50",
-    storageBucket: "meyyee-2cb50.appspot.com",
-    messagingSenderId: "242196529963",
-    appId: "1:242196529963:web:5b6b1c49acfad8c86ffb6e",
-    measurementId: "G-P07PH90RH7"
-  };
+      const firebaseConfig = {
+        apiKey: "AIzaSyDNt5iHm7LWAVwRp449fEggS_sS48JcBSQ",
+        authDomain: "meyyee-2cb50.firebaseapp.com",
+        projectId: "meyyee-2cb50",
+        storageBucket: "meyyee-2cb50.appspot.com",
+        messagingSenderId: "242196529963",
+        appId: "1:242196529963:web:5b6b1c49acfad8c86ffb6e",
+        measurementId: "G-P07PH90RH7"
+      };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  const auth = getAuth(app);
-</script>
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const auth = getAuth(app);
+
+      // Make auth available globally for event listeners
+      window.firebaseAuth = auth;
+      window.authMethods = {
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        GoogleAuthProvider,
+        signInWithPopup
+      };
+    </script>
+
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -46,18 +58,7 @@
             padding: 40px 15px;
             transition: all 0.4s ease;
         }
-<!-- லாகின் / சைன்-அப் ஃபார்ம் பகுதி -->
-<div style="text-align: center; margin-top: 50px; font-family: sans-serif;">
-  <h2>Meyyee - Login / Sign Up</h2>
-  
-  <input type="email" id="email" placeholder="Email address" style="padding: 10px; margin: 5px; width: 250px;"><br>
-  <input type="password" id="password" placeholder="Password" style="padding: 10px; margin: 5px; width: 250px;"><br>
-  
-  <button id="signup-btn" style="padding: 10px 20px; margin: 5px; background-color: #4285F4; color: white; border: none; cursor: pointer;">Sign Up</button>
-  <button id="login-btn" style="padding: 10px 20px; margin: 5px; background-color: #34A853; color: white; border: none; cursor: pointer;">Login</button>
-  <br><br>
-  <button id="google-btn" style="padding: 10px 20px; background-color: #DB4437; color: white; border: none; cursor: pointer;">Sign in with Google</button>
-</div>
+
         /* Top Navigation Bar */
         .top-nav {
             position: absolute;
@@ -97,18 +98,16 @@
             margin-top: 20px;
         }
 
-        /* Initial Center Layout */
         .search-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 100%;
             transition: all 0.4s ease;
-            margin-top: 10vh;
+            margin-top: 5vh;
             cursor: pointer;
         }
 
-        /* Top Layout After Search */
         body.searched .search-section {
             margin-top: 0;
             flex-direction: row;
@@ -122,7 +121,6 @@
             cursor: default;
         }
 
-        /* MEYYEE Title: Rainbow Gradient */
         h1 {
             font-size: 3.8rem;
             letter-spacing: 6px;
@@ -153,7 +151,6 @@
             display: none;
         }
 
-        /* Exact Hand-Drawn Cloud Shape Search Bar */
         .search-box {
             display: flex;
             align-items: center;
@@ -169,23 +166,12 @@
             transition: all 0.3s ease;
             position: relative;
             cursor: pointer;
-            clip-path: polygon(
-                3% 20%, 8% 5%, 15% 15%, 22% 2%, 30% 12%, 38% 3%, 45% 15%, 
-                55% 2%, 62% 15%, 70% 3%, 78% 12%, 85% 2%, 92% 15%, 98% 25%, 
-                100% 50%, 97% 80%, 90% 95%, 82% 88%, 75% 98%, 65% 85%, 
-                55% 98%, 45% 85%, 35% 98%, 25% 85%, 15% 98%, 8% 85%, 2% 60%
-            );
         }
 
         body.searched .search-box {
             margin-bottom: 0;
             max-width: 500px;
             padding: 8px 12px 8px 20px;
-        }
-
-        .search-box:hover {
-            border-color: #1d4ed8;
-            box-shadow: 0 12px 35px rgba(29, 78, 216, 0.2);
         }
 
         .search-input {
@@ -198,10 +184,6 @@
             min-width: 0;
             padding-left: 10px;
             cursor: text;
-        }
-
-        .search-input::placeholder {
-            color: #94a3b8;
         }
 
         .mic-btn, .search-btn {
@@ -222,7 +204,6 @@
             transform: scale(1.15);
         }
 
-        /* Welcome Section */
         #welcomeSection {
             display: flex;
             flex-direction: column;
@@ -257,96 +238,68 @@
             margin-bottom: 20px;
         }
 
-        /* 4-Corner Large Split Animation Overlay (3 Seconds Duration) */
-        #intro-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
+        /* Login / Sign-Up Form Box */
+        .auth-container {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
             width: 100%;
-            height: 100%;
-            background-color: #ffffff;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .auth-container h3 {
+            margin-bottom: 15px;
+            color: #1e293b;
+            font-size: 1.2rem;
+        }
+
+        .auth-input {
+            padding: 10px;
+            margin: 8px 0;
+            width: 100%;
+            max-width: 320px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            outline: none;
+            font-size: 0.95rem;
+        }
+
+        .auth-btn-group {
             display: flex;
+            gap: 10px;
             justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            overflow: hidden;
-            transition: opacity 0.5s ease;
+            margin-top: 10px;
         }
 
-        .anim-wrapper {
-            position: relative;
-            width: 300px;
-            height: 350px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        .btn-auth {
+            padding: 10px 15px;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
         }
 
-        /* 4 Perfectly Aligned Large Pieces of the Logo */
-        .piece {
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            background-image: url('/launchericon-512x512.png');
-            background-size: 300px 300px;
-            background-repeat: no-repeat;
-            opacity: 0;
-            transition: transform 3s cubic-bezier(0.1, 0.9, 0.2, 1), opacity 1s ease;
-        }
+        #signup-btn { background-color: #2563eb; }
+        #signup-btn:hover { background-color: #1d4ed8; }
 
-        /* Top-Left Piece */
-        .piece-tl {
-            top: 0; left: 0;
-            background-position: 0 0;
-            transform: translate(-60vw, -60vh) rotate(-45deg);
-        }
-        /* Top-Right Piece */
-        .piece-tr {
-            top: 0; right: 0;
-            background-position: -150px 0;
-            transform: translate(60vw, -60vh) rotate(45deg);
-        }
-        /* Bottom-Left Piece */
-        .piece-bl {
-            bottom: 50px; left: 0;
-            background-position: 0 -150px;
-            transform: translate(-60vw, 60vh) rotate(45deg);
-        }
-        /* Bottom-Right Piece */
-        .piece-br {
-            bottom: 50px; right: 0;
-            background-position: -150px -150px;
-            transform: translate(60vw, 60vh) rotate(-45deg);
-        }
+        #login-btn { background-color: #16a34a; }
+        #login-btn:hover { background-color: #15803d; }
 
-        /* Colorful Rainbow Title appearing after pieces join */
-        .anim-title {
-            position: absolute;
-            bottom: -5px;
-            font-size: 40px;
-            font-weight: 900;
-            letter-spacing: 6px;
-            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease 2.2s, transform 0.8s ease 2.2s;
+        #google-btn {
+            background-color: #dc2626;
+            width: 100%;
+            max-width: 320px;
+            margin-top: 10px;
         }
+        #google-btn:hover { background-color: #b91c1c; }
 
-        /* Animation Trigger Classes */
-        #intro-animation.animate .piece {
-            transform: translate(0, 0) rotate(0deg);
-            opacity: 1;
-        }
-
-        #intro-animation.animate .anim-title {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Modal / Form for Website Builder */
+        /* Modal Styles */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -368,7 +321,6 @@
             max-width: 500px;
             text-align: left;
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            position: relative;
         }
 
         .modal-content h3 {
@@ -419,10 +371,6 @@
             font-weight: 600;
         }
 
-        .btn-primary:hover {
-            background: #1d4ed8;
-        }
-
         .btn-secondary {
             background: #e2e8f0;
             color: #334155;
@@ -433,11 +381,7 @@
             font-weight: 600;
         }
 
-        .btn-secondary:hover {
-            background: #cbd5e1;
-        }
-
-        /* User Created Website Output Preview */
+        /* Result Styles */
         #resultContainer {
             width: 100%;
             max-width: 680px;
@@ -457,7 +401,6 @@
             color: #2c1d0c;
             text-align: left;
             box-shadow: 0 8px 25px rgba(139, 90, 43, 0.25);
-            background-image: repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(139, 90, 43, 0.08) 30px, rgba(139, 90, 43, 0.08) 31px);
         }
 
         .board-title {
@@ -495,41 +438,9 @@
             text-align: center;
             margin-top: 15px;
         }
-
-        .user-website-card h2 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-
-        .user-website-card p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2.8rem;
-                letter-spacing: 4px;
-            }
-            .top-nav {
-                top: 10px;
-                right: 10px;
-            }
-        }
     </style>
 </head>
 <body>
-
-    <!-- 4-Corner Large Split Animation Splash Screen (3 Seconds) -->
-    <div id="intro-animation" onclick="closeIntro()">
-        <div class="anim-wrapper">
-            <div class="piece piece-tl"></div>
-            <div class="piece piece-tr"></div>
-            <div class="piece piece-bl"></div>
-            <div class="piece piece-br"></div>
-            <div class="anim-title">MEYYEE</div>
-        </div>
-    </div>
 
     <!-- Top Navigation -->
     <div class="top-nav">
@@ -538,7 +449,7 @@
 
     <div class="container" id="mainContainer">
         
-        <!-- Search Section with click triggers -->
+        <!-- Search Section -->
         <div class="search-section" id="searchSection" onclick="handleSearch()">
             <div>
                 <h1>MEYYEE</h1>
@@ -552,7 +463,19 @@
             </div>
         </div>
 
-        <!-- Welcome Section with Video -->
+        <!-- Login / Sign-Up Form Section (English UI) -->
+        <div class="auth-container">
+            <h3>Account Access</h3>
+            <input type="email" id="email" class="auth-input" placeholder="Email address"><br>
+            <input type="password" id="password" class="auth-input" placeholder="Password"><br>
+            <div class="auth-btn-group">
+                <button id="signup-btn" class="btn-auth">Sign Up</button>
+                <button id="login-btn" class="btn-auth">Login</button>
+            </div>
+            <button id="google-btn" class="btn-auth">Sign in with Google</button>
+        </div>
+
+        <!-- Welcome Section -->
         <div id="welcomeSection">
             <div class="video-container">
                 <video autoplay muted loop playsinline>
@@ -572,20 +495,20 @@
         <div class="modal-content">
             <h3>🌐 Create Your Own Website (Meyyee Sites)</h3>
             <div class="form-group">
-                <label>Website Title (தளத்தின் தலைப்பு):</label>
-                <input type="text" id="siteTitleInput" placeholder="எ.கா: எனது சொந்தத் தளம்">
+                <label>Website Title:</label>
+                <input type="text" id="siteTitleInput" placeholder="e.g., My Personal Site">
             </div>
             <div class="form-group">
-                <label>Website Content / Description (உள்ளடக்கம்):</label>
-                <textarea id="siteContentInput" placeholder="உங்கள் வெப்சைட் பற்றிய விவரங்களை இங்கு எழுதவும்..."></textarea>
+                <label>Website Content / Description:</label>
+                <textarea id="siteContentInput" placeholder="Write details about your website here..."></textarea>
             </div>
             <div class="form-group">
-                <label>Theme Background Color (பின்னணி நிறம்):</label>
+                <label>Theme Background Color:</label>
                 <select id="siteBgColor">
-                    <option value="#f8fafc">Light Minimal (வெள்ளை)</option>
-                    <option value="#dbeafe">Ocean Blue (நீலம்)</option>
-                    <option value="#fef3c7">Golden Palm (மஞ்சள்)</option>
-                    <option value="#f3e8ff">Royal Purple (ஊதா)</option>
+                    <option value="#f8fafc">Light Minimal</option>
+                    <option value="#dbeafe">Ocean Blue</option>
+                    <option value="#fef3c7">Golden Palm</option>
+                    <option value="#f3e8ff">Royal Purple</option>
                 </select>
             </div>
             <div class="modal-actions">
@@ -595,28 +518,57 @@
         </div>
     </div>
 
+    <!-- Main JavaScript Logic -->
     <script>
-        // Trigger intro animation on load for exactly 3 seconds
-        window.onload = function() {
+        // Firebase Authentication Event Listeners setup after window load
+        window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
-                document.getElementById('intro-animation').classList.add('animate');
-            }, 200);
+                const auth = window.firebaseAuth;
+                const { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } = window.authMethods;
 
-            // Automatically hide intro screen after exactly 3.5 seconds
-            setTimeout(() => {
-                closeIntro();
-            }, 3500);
-        };
+                if (auth) {
+                    // 1. Sign Up
+                    document.getElementById("signup-btn").addEventListener("click", () => {
+                        const email = document.getElementById("email").value;
+                        const password = document.getElementById("password").value;
+                        
+                        createUserWithEmailAndPassword(auth, email, password)
+                            .then(() => {
+                                alert("Account created successfully!");
+                            })
+                            .catch((error) => {
+                                alert("Error: " + error.message);
+                            });
+                    });
 
-        function closeIntro() {
-            const intro = document.getElementById('intro-animation');
-            if (intro) {
-                intro.style.opacity = '0';
-                setTimeout(() => {
-                    intro.style.display = 'none';
-                }, 500);
-            }
-        }
+                    // 2. Login
+                    document.getElementById("login-btn").addEventListener("click", () => {
+                        const email = document.getElementById("email").value;
+                        const password = document.getElementById("password").value;
+                        
+                        signInWithEmailAndPassword(auth, email, password)
+                            .then(() => {
+                                alert("Logged in successfully!");
+                            })
+                            .catch((error) => {
+                                alert("Error: " + error.message);
+                            });
+                    });
+
+                    // 3. Google Sign-In
+                    document.getElementById("google-btn").addEventListener("click", () => {
+                        const provider = new GoogleAuthProvider();
+                        signInWithPopup(auth, provider)
+                            .then(() => {
+                                alert("Google Sign-In successful!");
+                            })
+                            .catch((error) => {
+                                alert("Error: " + error.message);
+                            });
+                    });
+                }
+            }, 1000);
+        });
 
         function openWebsiteBuilder() {
             document.getElementById('websiteModal').style.display = 'flex';
@@ -633,7 +585,7 @@
             const resultContainer = document.getElementById('resultContainer');
 
             if (title === "" || content === "") {
-                alert("தயவுசெய்து தலைப்பு மற்றும் உள்ளடக்கத்தை நிரப்பவும்!");
+                alert("Please fill in both the title and content!");
                 return;
             }
 
@@ -643,7 +595,7 @@
 
             resultContainer.innerHTML = `
                 <div style="background: #e0f2fe; padding: 12px; border-radius: 8px; color: #0369a1; font-weight: bold; text-align: center; margin-bottom: 10px;">
-                    🎉 உங்கள் புதிய வெப்சைட் வெற்றிகரமாக உருவாக்கப்பட்டது! (Meyyee Sites Live)
+                    🎉 Your new website has been created successfully! (Meyyee Sites Live)
                 </div>
                 <div class="user-website-card" style="background-color: ${bgColor}; border: 2px solid #cbd5e1;">
                     <h2>${title}</h2>
@@ -660,15 +612,15 @@
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             
             if (!SpeechRecognition) {
-                alert("Unga browser voice search-ah support panralathu. Chrome illa Edge use pannunga!");
+                alert("Your browser does not support voice search. Please use Chrome or Edge!");
                 return;
             }
 
             const recognition = new SpeechRecognition();
-            recognition.lang = 'ta-IN';
+            recognition.lang = 'en-US';
             
             recognition.onstart = function() {
-                document.getElementById('userInput').placeholder = "கேளுங்கள்... கேட்டுக் கொண்டிருக்கிறேன் 🎙️";
+                document.getElementById('userInput').placeholder = "Listening... Speak now 🎙️";
             };
 
             recognition.onresult = function(event) {
@@ -680,7 +632,7 @@
 
             recognition.onerror = function() {
                 document.getElementById('userInput').placeholder = "Search truth";
-                alert("Voice கேட்கவில்லை, மறுபடியும் முயற்சிக்கவும்.");
+                alert("Could not hear voice, please try again.");
             };
 
             recognition.start();
@@ -699,14 +651,14 @@
             if (query === "") {
                 resultContainer.innerHTML = `
                     <div class="result-box" style="text-align: center; background: #fff; border: 1px solid #cbd5e1;">
-                        <strong>தேடல் முடிவு:</strong> (வெற்றுத் தேடல்)<br><br>
-                        <strong>Meyyee Engine:</strong> தயவுசெய்து தேட வேண்டிய வார்த்தையை உள்ளிடவும்.
+                        <strong>Search Result:</strong> (Empty search)<br><br>
+                        <strong>Meyyee Engine:</strong> Please enter a search query.
                     </div>
                 `;
                 return;
             }
 
-            if (query.includes("thirukkural") || query.includes("திருக்குறள்") || query.includes("kural") || query.includes("குறள்") || query.includes("search truth")) {
+            if (query.includes("thirukkural") || query.includes("kural") || query.includes("search truth")) {
                 resultContainer.innerHTML = `
                     <div class="result-box">
                         <div class="board-title">📜 குறள் எண்: 1 - கடவுள் வாழ்த்து</div>
@@ -783,8 +735,8 @@
             } else {
                 resultContainer.innerHTML = `
                     <div class="result-box" style="text-align: center; background: #fff; border: 1px solid #cbd5e1;">
-                        <strong>தேடல் முடிவு:</strong> "${query}"<br><br>
-                        <strong>Meyyee Engine:</strong> உங்களுக்கான Universal Truth தேடப்படுகிறது...
+                        <strong>Search Result:</strong> "${query}"<br><br>
+                        <strong>Meyyee Engine:</strong> Searching for your Universal Truth...
                     </div>
                 `;
             }
@@ -796,6 +748,5 @@
             }
         });
     </script>
-
 </body>
 </html>
