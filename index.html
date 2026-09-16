@@ -5,35 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meyyee - Universal Truth Engine</title>
     <link rel="manifest" href="/manifest.json">
-    
-    <!-- Firebase SDKs -->
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
-      import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-
-      const firebaseConfig = {
-        apiKey: "AIzaSyDNt5iHm7LWAVwRp449fEggS_sS48JcBSQ",
-        authDomain: "meyyee-2cb50.firebaseapp.com",
-        projectId: "meyyee-2cb50",
-        storageBucket: "meyyee-2cb50.appspot.com",
-        messagingSenderId: "242196529963",
-        appId: "1:242196529963:web:5b6b1c49acfad8c86ffb6e",
-        measurementId: "G-P07PH90RH7"
-      };
-
-      const app = initializeApp(firebaseConfig);
-      const analytics = getAnalytics(app);
-      const auth = getAuth(app);
-
-      window.firebaseAuth = auth;
-      window.authMethods = {
-        createUserWithEmailAndPassword,
-        signInWithEmailAndPassword,
-        GoogleAuthProvider,
-        signInWithPopup
-      };
-    </script>
 
     <style>
         * {
@@ -45,7 +16,7 @@
 
         body {
             background-color: #ffffff;
-            color: #111827; 
+            color: #111827;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -57,7 +28,7 @@
             transition: all 0.4s ease;
         }
 
-        /* Top Navigation Bar */
+        /* Top Navigation */
         .top-nav {
             position: absolute;
             top: 15px;
@@ -96,6 +67,7 @@
             margin-top: 20px;
         }
 
+        /* Search Section */
         .search-section {
             display: flex;
             flex-direction: column;
@@ -124,14 +96,23 @@
             letter-spacing: 6px;
             font-weight: 900;
             margin-bottom: 5px;
-            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
+            background: linear-gradient(
+                90deg,
+                #ff0000,
+                #ff7f00,
+                #ffff00,
+                #008000,
+                #0000ff,
+                #4b0082,
+                #ee82ee
+            );
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             transition: font-size 0.4s ease;
         }
 
         body.searched h1 {
-            font-size: 2rem; 
+            font-size: 2rem;
             letter-spacing: 3px;
             margin-bottom: 0;
         }
@@ -149,6 +130,7 @@
             display: none;
         }
 
+        /* Search Box */
         .search-box {
             display: flex;
             align-items: center;
@@ -158,8 +140,9 @@
             padding: 12px 18px 12px 28px;
             width: 100%;
             max-width: 620px;
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.12),
-                        inset 0 0 15px rgba(37, 99, 235, 0.05);
+            box-shadow:
+                0 10px 25px rgba(37, 99, 235, 0.12),
+                inset 0 0 15px rgba(37, 99, 235, 0.05);
             margin-bottom: 30px;
             transition: all 0.3s ease;
             position: relative;
@@ -184,7 +167,8 @@
             cursor: text;
         }
 
-        .mic-btn, .search-btn {
+        .mic-btn,
+        .search-btn {
             background: transparent;
             border: none;
             outline: none;
@@ -198,10 +182,12 @@
             transition: transform 0.2s;
         }
 
-        .mic-btn:hover, .search-btn:hover {
+        .mic-btn:hover,
+        .search-btn:hover {
             transform: scale(1.15);
         }
 
+        /* Welcome */
         #welcomeSection {
             display: flex;
             flex-direction: column;
@@ -236,7 +222,7 @@
             margin-bottom: 20px;
         }
 
-        /* Split Animation Splash Screen */
+        /* Intro Animation */
         #intro-animation {
             position: fixed;
             top: 0;
@@ -270,13 +256,38 @@
             background-size: 300px 300px;
             background-repeat: no-repeat;
             opacity: 0;
-            transition: transform 3s cubic-bezier(0.1, 0.9, 0.2, 1), opacity 1s ease;
+            transition:
+                transform 3s cubic-bezier(0.1, 0.9, 0.2, 1),
+                opacity 1s ease;
         }
 
-        .piece-tl { top: 0; left: 0; background-position: 0 0; transform: translate(-60vw, -60vh) rotate(-45deg); }
-        .piece-tr { top: 0; right: 0; background-position: -150px 0; transform: translate(60vw, -60vh) rotate(45deg); }
-        .piece-bl { bottom: 50px; left: 0; background-position: 0 -150px; transform: translate(-60vw, 60vh) rotate(45deg); }
-        .piece-br { bottom: 50px; right: 0; background-position: -150px -150px; transform: translate(60vw, 60vh) rotate(-45deg); }
+        .piece-tl {
+            top: 0;
+            left: 0;
+            background-position: 0 0;
+            transform: translate(-60vw, -60vh) rotate(-45deg);
+        }
+
+        .piece-tr {
+            top: 0;
+            right: 0;
+            background-position: -150px 0;
+            transform: translate(60vw, -60vh) rotate(45deg);
+        }
+
+        .piece-bl {
+            bottom: 50px;
+            left: 0;
+            background-position: 0 -150px;
+            transform: translate(-60vw, 60vh) rotate(45deg);
+        }
+
+        .piece-br {
+            bottom: 50px;
+            right: 0;
+            background-position: -150px -150px;
+            transform: translate(60vw, 60vh) rotate(-45deg);
+        }
 
         .anim-title {
             position: absolute;
@@ -284,12 +295,23 @@
             font-size: 40px;
             font-weight: 900;
             letter-spacing: 6px;
-            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
+            background: linear-gradient(
+                90deg,
+                #ff0000,
+                #ff7f00,
+                #ffff00,
+                #008000,
+                #0000ff,
+                #4b0082,
+                #ee82ee
+            );
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.8s ease 2.2s, transform 0.8s ease 2.2s;
+            transition:
+                opacity 0.8s ease 2.2s,
+                transform 0.8s ease 2.2s;
         }
 
         #intro-animation.animate .piece {
@@ -302,68 +324,7 @@
             transform: translateY(0);
         }
 
-        /* Login / Sign-Up Form Box */
-        .auth-container {
-            background: #f8fafc;
-            border: 1px solid #cbd5e1;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .auth-container h3 {
-            margin-bottom: 15px;
-            color: #1e293b;
-            font-size: 1.2rem;
-        }
-
-        .auth-input {
-            padding: 10px;
-            margin: 8px 0;
-            width: 100%;
-            max-width: 320px;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            outline: none;
-            font-size: 0.95rem;
-        }
-
-        .auth-btn-group {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        .btn-auth {
-            padding: 10px 15px;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        #signup-btn { background-color: #2563eb; }
-        #signup-btn:hover { background-color: #1d4ed8; }
-
-        #login-btn { background-color: #16a34a; }
-        #login-btn:hover { background-color: #15803d; }
-
-        #google-btn {
-            background-color: #dc2626;
-            width: 100%;
-            max-width: 320px;
-            margin-top: 10px;
-        }
-        #google-btn:hover { background-color: #b91c1c; }
-
-        /* Modal Styles */
+        /* Modal */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -384,7 +345,7 @@
             width: 90%;
             max-width: 500px;
             text-align: left;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
 
         .modal-content h3 {
@@ -404,7 +365,9 @@
             margin-bottom: 5px;
         }
 
-        .form-group input, .form-group textarea, .form-group select {
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 10px;
             border: 1px solid #cbd5e1;
@@ -445,7 +408,7 @@
             font-weight: 600;
         }
 
-        /* Result Styles */
+        /* Results */
         #resultContainer {
             width: 100%;
             max-width: 680px;
@@ -457,7 +420,11 @@
 
         .result-box {
             width: 100%;
-            background: linear-gradient(135deg, #f4e8c1 0%, #e6d39e 100%);
+            background: linear-gradient(
+                135deg,
+                #f4e8c1 0%,
+                #e6d39e 100%
+            );
             border: 2px solid #8b5a2b;
             border-radius: 8px;
             padding: 25px;
@@ -468,29 +435,29 @@
         }
 
         .board-title {
-            text-align: center; 
-            color: #78350f; 
-            font-size: 1.25rem; 
-            font-weight: bold; 
-            margin-bottom: 12px; 
-            border-bottom: 1px dashed #8b5a2b; 
+            text-align: center;
+            color: #78350f;
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+            border-bottom: 1px dashed #8b5a2b;
             padding-bottom: 8px;
         }
 
         .kural-lines {
-            font-weight: bold; 
-            color: #451a03; 
-            font-size: 1.15rem; 
-            line-height: 1.6; 
-            text-align: center; 
+            font-weight: bold;
+            color: #451a03;
+            font-size: 1.15rem;
+            line-height: 1.6;
+            text-align: center;
             margin-bottom: 15px;
         }
 
         .meaning-box {
-            color: #2c1d0c; 
-            line-height: 1.7; 
-            background: rgba(255, 255, 255, 0.4); 
-            padding: 12px; 
+            color: #2c1d0c;
+            line-height: 1.7;
+            background: rgba(255, 255, 255, 0.4);
+            padding: 12px;
             border-radius: 6px;
         }
 
@@ -498,15 +465,59 @@
             width: 100%;
             border-radius: 12px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             text-align: center;
             margin-top: 15px;
         }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            body {
+                padding: 30px 12px;
+            }
+
+            .top-nav {
+                position: relative;
+                top: auto;
+                right: auto;
+                width: 100%;
+                justify-content: flex-end;
+                margin-bottom: 10px;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+                letter-spacing: 4px;
+            }
+
+            .search-box {
+                max-width: 100%;
+            }
+
+            body.searched .search-section {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            body.searched h1 {
+                text-align: center;
+            }
+
+            body.searched .search-box {
+                max-width: 100%;
+            }
+
+            .modal-content {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
+
 <body>
 
-    <!-- Split Animation Splash Screen -->
+    <!-- Intro Animation -->
     <div id="intro-animation" onclick="closeIntro()">
         <div class="anim-wrapper">
             <div class="piece piece-tl"></div>
@@ -519,327 +530,826 @@
 
     <!-- Top Navigation -->
     <div class="top-nav">
-        <button class="nav-btn" onclick="openWebsiteBuilder()">🌐 Create Website</button>
+        <button
+            class="nav-btn"
+            onclick="openWebsiteBuilder()">
+            🌐 Create Website
+        </button>
     </div>
 
     <div class="container" id="mainContainer">
-        
+
         <!-- Search Section -->
-        <div class="search-section" id="searchSection" onclick="handleSearch()">
+        <div
+            class="search-section"
+            id="searchSection"
+            onclick="handleSearch()">
+
             <div>
                 <h1>MEYYEE</h1>
-                <div class="subtitle">Universal Truth Engine</div>
+
+                <div class="subtitle">
+                    Universal Truth Engine
+                </div>
             </div>
 
-            <div class="search-box" onclick="handleSearch()">
-                <input type="text" id="userInput" class="search-input" placeholder="Search truth" onfocus="handleSearch()" onclick="event.stopPropagation(); handleSearch();">
-                <button class="mic-btn" onclick="event.stopPropagation(); startVoiceSearch();" title="Search by Voice">🎤</button>
-                <button class="search-btn" onclick="event.stopPropagation(); handleSearch();" title="Search">🔎</button>
-            </div>
-        </div>
+            <div
+                class="search-box"
+                onclick="handleSearch()">
 
-        <!-- Login / Sign-Up Form Section -->
-        <div class="auth-container">
-            <h3>Account Access</h3>
-            <input type="email" id="email" class="auth-input" placeholder="Email address"><br>
-            <input type="password" id="password" class="auth-input" placeholder="Password"><br>
-            <div class="auth-btn-group">
-                <button id="signup-btn" class="btn-auth">Sign Up</button>
-                <button id="login-btn" class="btn-auth">Login</button>
+                <input
+                    type="text"
+                    id="userInput"
+                    class="search-input"
+                    placeholder="Search truth"
+                    onfocus="handleSearch()"
+                    onclick="event.stopPropagation(); handleSearch();">
+
+                <button
+                    class="mic-btn"
+                    onclick="event.stopPropagation(); startVoiceSearch();"
+                    title="Search by Voice">
+                    🎤
+                </button>
+
+                <button
+                    class="search-btn"
+                    onclick="event.stopPropagation(); handleSearch();"
+                    title="Search">
+                    🔎
+                </button>
+
             </div>
-            <button id="google-btn" class="btn-auth">Sign in with Google</button>
         </div>
 
         <!-- Welcome Section -->
         <div id="welcomeSection">
+
             <div class="video-container">
+
                 <video autoplay muted loop playsinline>
-                    <source src="myvideo.mp4.mp4" type="video/mp4">
+
+                    <source
+                        src="myvideo.mp4.mp4"
+                        type="video/mp4">
+
                     Your browser does not support the video tag.
+
                 </video>
+
             </div>
-            <div class="welcome-text">WELCOME</div>
+
+            <div class="welcome-text">
+                WELCOME
+            </div>
+
         </div>
 
-        <!-- All Results Container -->
+        <!-- Results -->
         <div id="resultContainer"></div>
+
     </div>
 
     <!-- Website Builder Modal -->
-    <div class="modal-overlay" id="websiteModal">
+    <div
+        class="modal-overlay"
+        id="websiteModal">
+
         <div class="modal-content">
-            <h3>🌐 Create Your Own Website (Meyyee Sites)</h3>
+
+            <h3>
+                🌐 Create Your Own Website (Meyyee Sites)
+            </h3>
+
             <div class="form-group">
-                <label>Website Title:</label>
-                <input type="text" id="siteTitleInput" placeholder="e.g., My Personal Site">
+
+                <label>
+                    Website Title:
+                </label>
+
+                <input
+                    type="text"
+                    id="siteTitleInput"
+                    placeholder="e.g., My Personal Site">
+
             </div>
+
             <div class="form-group">
-                <label>Website Content / Description:</label>
-                <textarea id="siteContentInput" placeholder="Write details about your website here..."></textarea>
+
+                <label>
+                    Website Content / Description:
+                </label>
+
+                <textarea
+                    id="siteContentInput"
+                    placeholder="Write details about your website here...">
+                </textarea>
+
             </div>
+
             <div class="form-group">
-                <label>Theme Background Color:</label>
+
+                <label>
+                    Theme Background Color:
+                </label>
+
                 <select id="siteBgColor">
-                    <option value="#f8fafc">Light Minimal</option>
-                    <option value="#dbeafe">Ocean Blue</option>
-                    <option value="#fef3c7">Golden Palm</option>
-                    <option value="#f3e8ff">Royal Purple</option>
+
+                    <option value="#f8fafc">
+                        Light Minimal
+                    </option>
+
+                    <option value="#dbeafe">
+                        Ocean Blue
+                    </option>
+
+                    <option value="#fef3c7">
+                        Golden Palm
+                    </option>
+
+                    <option value="#f3e8ff">
+                        Royal Purple
+                    </option>
+
                 </select>
+
             </div>
+
             <div class="modal-actions">
-                <button class="btn-secondary" onclick="closeWebsiteBuilder()">Cancel</button>
-                <button class="btn-primary" onclick="generateUserWebsite()">Create My Website</button>
+
+                <button
+                    class="btn-secondary"
+                    onclick="closeWebsiteBuilder()">
+                    Cancel
+                </button>
+
+                <button
+                    class="btn-primary"
+                    onclick="generateUserWebsite()">
+                    Create My Website
+                </button>
+
             </div>
+
         </div>
+
     </div>
 
-    <!-- Main JavaScript Logic -->
+    <!-- Main JavaScript -->
     <script>
-        // Intro Animation Trigger
-        window.onload = function() {
+
+        /* ================================
+           INTRO ANIMATION
+        ================================= */
+
+        window.onload = function () {
+
             setTimeout(() => {
-                document.getElementById('intro-animation').classList.add('animate');
+
+                const intro =
+                    document.getElementById(
+                        'intro-animation'
+                    );
+
+                if (intro) {
+                    intro.classList.add('animate');
+                }
+
             }, 200);
 
             setTimeout(() => {
+
                 closeIntro();
+
             }, 3500);
+
         };
 
+
         function closeIntro() {
-            const intro = document.getElementById('intro-animation');
+
+            const intro =
+                document.getElementById(
+                    'intro-animation'
+                );
+
             if (intro) {
+
                 intro.style.opacity = '0';
+
                 setTimeout(() => {
+
                     intro.style.display = 'none';
+
                 }, 500);
+
             }
+
         }
 
-        // Firebase Auth Event Listeners setup
-        window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                const auth = window.firebaseAuth;
-                const { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } = window.authMethods;
 
-                if (auth) {
-                    document.getElementById("signup-btn").addEventListener("click", () => {
-                        const email = document.getElementById("email").value;
-                        const password = document.getElementById("password").value;
-                        
-                        createUserWithEmailAndPassword(auth, email, password)
-                            .then(() => {
-                                alert("Account created successfully!");
-                            })
-                            .catch((error) => {
-                                alert("Error: " + error.message);
-                            });
-                    });
-
-                    document.getElementById("login-btn").addEventListener("click", () => {
-                        const email = document.getElementById("email").value;
-                        const password = document.getElementById("password").value;
-                        
-                        signInWithEmailAndPassword(auth, email, password)
-                            .then(() => {
-                                alert("Logged in successfully!");
-                            })
-                            .catch((error) => {
-                                alert("Error: " + error.message);
-                            });
-                    });
-
-                    document.getElementById("google-btn").addEventListener("click", () => {
-                        const provider = new GoogleAuthProvider();
-                        signInWithPopup(auth, provider)
-                            .then(() => {
-                                alert("Google Sign-In successful!");
-                            })
-                            .catch((error) => {
-                                alert("Error: " + error.message);
-                            });
-                    });
-                }
-            }, 1000);
-        });
+        /* ================================
+           WEBSITE BUILDER
+        ================================= */
 
         function openWebsiteBuilder() {
-            document.getElementById('websiteModal').style.display = 'flex';
+
+            document.getElementById(
+                'websiteModal'
+            ).style.display = 'flex';
+
         }
+
 
         function closeWebsiteBuilder() {
-            document.getElementById('websiteModal').style.display = 'none';
+
+            document.getElementById(
+                'websiteModal'
+            ).style.display = 'none';
+
         }
+
 
         function generateUserWebsite() {
-            const title = document.getElementById('siteTitleInput').value.trim();
-            const content = document.getElementById('siteContentInput').value.trim();
-            const bgColor = document.getElementById('siteBgColor').value;
-            const resultContainer = document.getElementById('resultContainer');
+
+            const title =
+                document.getElementById(
+                    'siteTitleInput'
+                ).value.trim();
+
+            const content =
+                document.getElementById(
+                    'siteContentInput'
+                ).value.trim();
+
+            const bgColor =
+                document.getElementById(
+                    'siteBgColor'
+                ).value;
+
+            const resultContainer =
+                document.getElementById(
+                    'resultContainer'
+                );
+
 
             if (title === "" || content === "") {
-                alert("Please fill in both the title and content!");
+
+                alert(
+                    "Please fill in both the title and content!"
+                );
+
                 return;
+
             }
 
-            document.body.classList.add('searched');
-            document.getElementById('welcomeSection').style.display = 'none';
+
+            document.body.classList.add(
+                'searched'
+            );
+
+
+            document.getElementById(
+                'welcomeSection'
+            ).style.display = 'none';
+
+
             closeWebsiteBuilder();
 
+
             resultContainer.innerHTML = `
-                <div style="background: #e0f2fe; padding: 12px; border-radius: 8px; color: #0369a1; font-weight: bold; text-align: center; margin-bottom: 10px;">
-                    🎉 Your new website has been created successfully! (Meyyee Sites Live)
+
+                <div
+                    style="
+                        background:#e0f2fe;
+                        padding:12px;
+                        border-radius:8px;
+                        color:#0369a1;
+                        font-weight:bold;
+                        text-align:center;
+                        margin-bottom:10px;
+                    ">
+
+                    🎉 Your new website has been
+                    created successfully!
+                    (Meyyee Sites Live)
+
                 </div>
-                <div class="user-website-card" style="background-color: ${bgColor}; border: 2px solid #cbd5e1;">
-                    <h2>${title}</h2>
-                    <hr style="margin: 15px 0; border: 0; border-top: 1px solid rgba(0,0,0,0.1);">
-                    <p>${content.replace(/\n/g, '<br>')}</p>
-                    <div style="margin-top: 20px; font-size: 0.85rem; color: #64748b;">
-                        Published via <strong>Meyyee Universal Truth Engine</strong>
+
+
+                <div
+                    class="user-website-card"
+                    style="
+                        background-color:${bgColor};
+                        border:2px solid #cbd5e1;
+                    ">
+
+                    <h2>
+                        ${escapeHTML(title)}
+                    </h2>
+
+                    <hr
+                        style="
+                            margin:15px 0;
+                            border:0;
+                            border-top:
+                            1px solid rgba(0,0,0,0.1);
+                        "
+                    >
+
+                    <p>
+                        ${escapeHTML(content)
+                            .replace(/\n/g, '<br>')}
+                    </p>
+
+                    <div
+                        style="
+                            margin-top:20px;
+                            font-size:0.85rem;
+                            color:#64748b;
+                        ">
+
+                        Published via
+                        <strong>
+                            Meyyee Universal Truth Engine
+                        </strong>
+
                     </div>
+
                 </div>
+
             `;
+
         }
+
+
+        /* ================================
+           HTML SAFETY
+        ================================= */
+
+        function escapeHTML(text) {
+
+            const div =
+                document.createElement('div');
+
+            div.textContent = text;
+
+            return div.innerHTML;
+
+        }
+
+
+        /* ================================
+           VOICE SEARCH
+        ================================= */
 
         function startVoiceSearch() {
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            
+
+            const SpeechRecognition =
+                window.SpeechRecognition ||
+                window.webkitSpeechRecognition;
+
+
             if (!SpeechRecognition) {
-                alert("Your browser does not support voice search. Please use Chrome or Edge!");
+
+                alert(
+                    "Your browser does not support voice search. Please use Chrome or Edge!"
+                );
+
                 return;
+
             }
 
-            const recognition = new SpeechRecognition();
-            recognition.lang = 'en-US';
-            
-            recognition.onstart = function() {
-                document.getElementById('userInput').placeholder = "Listening... Speak now 🎙️";
+
+            const recognition =
+                new SpeechRecognition();
+
+
+            recognition.lang = 'en-IN';
+
+            recognition.continuous = false;
+
+            recognition.interimResults = false;
+
+
+            recognition.onstart = function () {
+
+                document.getElementById(
+                    'userInput'
+                ).placeholder =
+                    "Listening... Speak now 🎙️";
+
             };
 
-            recognition.onresult = function(event) {
-                const spokenText = event.results[0][0].transcript;
-                document.getElementById('userInput').value = spokenText;
-                document.getElementById('userInput').placeholder = "Search truth";
+
+            recognition.onresult = function (
+                event
+            ) {
+
+                const spokenText =
+                    event.results[0][0]
+                        .transcript;
+
+
+                document.getElementById(
+                    'userInput'
+                ).value = spokenText;
+
+
+                document.getElementById(
+                    'userInput'
+                ).placeholder =
+                    "Search truth";
+
+
                 handleSearch();
+
             };
 
-            recognition.onerror = function() {
-                document.getElementById('userInput').placeholder = "Search truth";
-                alert("Could not hear voice, please try again.");
+
+            recognition.onerror = function () {
+
+                document.getElementById(
+                    'userInput'
+                ).placeholder =
+                    "Search truth";
+
+                alert(
+                    "Could not hear voice, please try again."
+                );
+
             };
+
+
+            recognition.onend = function () {
+
+                document.getElementById(
+                    'userInput'
+                ).placeholder =
+                    "Search truth";
+
+            };
+
 
             recognition.start();
+
         }
+
+
+        /* ================================
+           SEARCH ENGINE
+        ================================= */
 
         function handleSearch() {
-            const query = document.getElementById('userInput').value.trim().toLowerCase();
-            const resultContainer = document.getElementById('resultContainer');
 
-            document.body.classList.add('searched');
-            const welcomeSec = document.getElementById('welcomeSection');
-            if(welcomeSec) {
-                welcomeSec.style.display = 'none';
+            const input =
+                document.getElementById(
+                    'userInput'
+                );
+
+            const query =
+                input.value.trim().toLowerCase();
+
+            const resultContainer =
+                document.getElementById(
+                    'resultContainer'
+                );
+
+
+            document.body.classList.add(
+                'searched'
+            );
+
+
+            const welcomeSec =
+                document.getElementById(
+                    'welcomeSection'
+                );
+
+
+            if (welcomeSec) {
+
+                welcomeSec.style.display =
+                    'none';
+
             }
+
+
+            /* Empty Search */
 
             if (query === "") {
+
                 resultContainer.innerHTML = `
-                    <div class="result-box" style="text-align: center; background: #fff; border: 1px solid #cbd5e1;">
-                        <strong>Search Result:</strong> (Empty search)<br><br>
-                        <strong>Meyyee Engine:</strong> Please enter a search query.
+
+                    <div
+                        class="result-box"
+                        style="
+                            text-align:center;
+                            background:#fff;
+                            border:1px solid #cbd5e1;
+                        ">
+
+                        <strong>
+                            Search Result:
+                        </strong>
+
+                        (Empty search)
+
+                        <br><br>
+
+                        <strong>
+                            Meyyee Engine:
+                        </strong>
+
+                        Please enter a search query.
+
                     </div>
+
                 `;
+
                 return;
+
             }
 
-            if (query.includes("thirukkural") || query.includes("kural") || query.includes("search truth")) {
+
+            /* Thirukkural Search */
+
+            if (
+                query.includes("thirukkural") ||
+                query.includes("kural") ||
+                query.includes("search truth")
+            ) {
+
                 resultContainer.innerHTML = `
-                    <div class="result-box">
-                        <div class="board-title">📜 குறள் எண்: 1 - கடவுள் வாழ்த்து</div>
-                        <div class="kural-lines">
-                            அகர முதல எழுத்தெல்லாம் ஆதி<br>
-                            பகவன் முதற்றே உலகு.
-                        </div>
-                        <div class="meaning-box">
-                            <strong>தெளிவுரை:</strong> அகரத்தை முதன்மையாக கொண்டுள்ள எழுத்துமுறை அனைத்திற்கும் சிவனின் சித்திரை எழுத்தே முதன்மை ஆனது.
-                        </div>
-                    </div>
 
                     <div class="result-box">
-                        <div class="board-title">📜 குறள் எண்: 2</div>
-                        <div class="kural-lines">
-                            கற்றதனால் ஆய பயனென்கொல் வாலறிவன்<br>
-                            நற்றாள் தொழாஅர் எனின்.
-                        </div>
-                        <div class="meaning-box">
-                            <strong>தெளிவுரை:</strong> முருகனின் நல்ல பாதங்களை தொழாதவர் படித்ததனால் உண்டாகிய பயன்தான் என்னச் சொல். இங்கு வாலறிவன் என்பது முருகனை குறிக்கும்.
-                        </div>
-                    </div>
 
-                    <div class="result-box">
-                        <div class="board-title">📜 குறள் எண்: 3</div>
-                        <div class="kural-lines">
-                            மலர்மிசை ஏகினான் மானடி சேர்ந்தார்<br>
-                            நிலமிசை நீடுவாழ் வார்.
+                        <div class="board-title">
+                            📜 குறள் எண்: 1 -
+                            கடவுள் வாழ்த்து
                         </div>
-                        <div class="meaning-box">
-                            <strong>தெளிவுரை:</strong> பிரம்மனாகிய முருகனின் அடிகளை சேர்ந்தவர் தான் இந்த நிலத்தின் மீது நீண்ட காலம் வாழ்வார். இங்கு மலர்மிசை ஏகினான் என்பது தாமரை மலர் மீது வீற்றிருக்கும் பிரம்மாவை குறிக்கும் பிரம்மா என்றால் முருகனை குறிக்கும்.
-                        </div>
-                    </div>
-                `;
-            } else if (query === "1") {
-                resultContainer.innerHTML = `
-                    <div class="result-box">
-                        <div class="board-title">📜 குறள் எண்: 1 - கடவுள் வாழ்த்து</div>
+
                         <div class="kural-lines">
+
                             அகர முதல எழுத்தெல்லாம் ஆதி<br>
                             பகவன் முதற்றே உலகு.
+
                         </div>
+
                         <div class="meaning-box">
-                            <strong>தெளிவுரை:</strong> அகரத்தை முதன்மையாக கொண்டுள்ள எழுத்துமுறை அனைத்திற்கும் சிவனின் சித்திரை எழுத்தே முதன்மை ஆனது.
+
+                            <strong>
+                                தெளிவுரை:
+                            </strong>
+
+                            அகரத்தை முதன்மையாக கொண்டுள்ள
+                            எழுத்துமுறை அனைத்திற்கும்
+                            ஆதி பகவன் முதன்மையானவன்.
+
                         </div>
+
                     </div>
-                `;
-            } else if (query === "2") {
-                resultContainer.innerHTML = `
+
+
                     <div class="result-box">
-                        <div class="board-title">📜 குறள் எண்: 2</div>
+
+                        <div class="board-title">
+                            📜 குறள் எண்: 2
+                        </div>
+
                         <div class="kural-lines">
+
                             கற்றதனால் ஆய பயனென்கொல் வாலறிவன்<br>
                             நற்றாள் தொழாஅர் எனின்.
+
                         </div>
+
                         <div class="meaning-box">
-                            <strong>தெளிவுரை:</strong> முருகனின் நல்ல பாதங்களை தொழாதவர் படித்ததனால் உண்டாகிய பயன்தான் என்னச் சொல். இங்கு வாலறிவன் என்பது முருகனை குறிக்கும்.
+
+                            <strong>
+                                தெளிவுரை:
+                            </strong>
+
+                            ஒருவர் கற்ற கல்வியின்
+                            பயன் உயர்ந்த அறிவுடைய
+                            இறைவனின் திருவடிகளை
+                            வணங்குவதில் உள்ளது.
+
                         </div>
+
                     </div>
-                `;
-            } else if (query === "3") {
-                resultContainer.innerHTML = `
+
+
                     <div class="result-box">
-                        <div class="board-title">📜 குறள் எண்: 3</div>
+
+                        <div class="board-title">
+                            📜 குறள் எண்: 3
+                        </div>
+
                         <div class="kural-lines">
+
                             மலர்மிசை ஏகினான் மானடி சேர்ந்தார்<br>
                             நிலமிசை நீடுவாழ் வார்.
+
                         </div>
+
                         <div class="meaning-box">
-                            <strong>தெளிவுரை:</strong> பிரம்மனாகிய முருகனின் அடிகளை சேர்ந்தவர் தான் இந்த நிலத்தின் மீது நீண்ட காலம் வாழ்வார். இங்கு மலர்மிசை ஏகினான் என்பது தாமரை மலர் மீது வீற்றிருக்கும் பிரம்மாவை குறிக்கும் பிரம்மா என்றால் முருகனை குறிக்கும்.
+
+                            <strong>
+                                தெளிவுரை:
+                            </strong>
+
+                            மலரின் மேல் வீற்றிருக்கும்
+                            இறைவனின் திருவடிகளைச்
+                            சேர்ந்தவர்கள் இவ்வுலகில்
+                            நீண்ட காலம் வாழ்வார்கள்.
+
                         </div>
+
                     </div>
+
                 `;
-            } else {
-                resultContainer.innerHTML = `
-                    <div class="result-box" style="text-align: center; background: #fff; border: 1px solid #cbd5e1;">
-                        <strong>Search Result:</strong> "${query}"<br><br>
-                        <strong>Meyyee Engine:</strong> Searching for your Universal Truth...
-                    </div>
-                `;
+
             }
+
+
+            /* Kural 1 */
+
+            else if (query === "1") {
+
+                resultContainer.innerHTML = `
+
+                    <div class="result-box">
+
+                        <div class="board-title">
+                            📜 குறள் எண்: 1 -
+                            கடவுள் வாழ்த்து
+                        </div>
+
+                        <div class="kural-lines">
+
+                            அகர முதல எழுத்தெல்லாம் ஆதி<br>
+                            பகவன் முதற்றே உலகு.
+
+                        </div>
+
+                        <div class="meaning-box">
+
+                            <strong>
+                                தெளிவுரை:
+                            </strong>
+
+                            அகரத்தை முதன்மையாகக்
+                            கொண்டுள்ள எழுத்துக்கள்
+                            அனைத்திற்கும் ஆதி பகவன்
+                            முதன்மையானவன்.
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+
+
+            /* Kural 2 */
+
+            else if (query === "2") {
+
+                resultContainer.innerHTML = `
+
+                    <div class="result-box">
+
+                        <div class="board-title">
+                            📜 குறள் எண்: 2
+                        </div>
+
+                        <div class="kural-lines">
+
+                            கற்றதனால் ஆய பயனென்கொல் வாலறிவன்<br>
+                            நற்றாள் தொழாஅர் எனின்.
+
+                        </div>
+
+                        <div class="meaning-box">
+
+                            <strong>
+                                தெளிவுரை:
+                            </strong>
+
+                            உயர்ந்த அறிவுடைய
+                            இறைவனின் திருவடிகளை
+                            வணங்காதவர்களுக்கு
+                            அவர்கள் கற்ற கல்வியால்
+                            என்ன பயன்?
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+
+
+            /* Kural 3 */
+
+            else if (query === "3") {
+
+                resultContainer.innerHTML = `
+
+                    <div class="result-box">
+
+                        <div class="board-title">
+                            📜 குறள் எண்: 3
+                        </div>
+
+                        <div class="kural-lines">
+
+                            மலர்மிசை ஏகினான் மானடி சேர்ந்தார்<br>
+                            நிலமிசை நீடுவாழ் வார்.
+
+                        </div>
+
+                        <div class="meaning-box">
+
+                            <strong>
+                                தெளிவுரை:
+                            </strong>
+
+                            மலரின் மேல் வீற்றிருக்கும்
+                            இறைவனின் திருவடிகளைச்
+                            சேர்ந்தவர்கள் இவ்வுலகில்
+                            நீண்ட காலம் வாழ்வார்கள்.
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+
+
+            /* Other Searches */
+
+            else {
+
+                resultContainer.innerHTML = `
+
+                    <div
+                        class="result-box"
+                        style="
+                            text-align:center;
+                            background:#fff;
+                            border:1px solid #cbd5e1;
+                        ">
+
+                        <strong>
+                            Search Result:
+                        </strong>
+
+                        "${escapeHTML(query)}"
+
+                        <br><br>
+
+                        <strong>
+                            Meyyee Engine:
+                        </strong>
+
+                        Searching for your
+                        Universal Truth...
+
+                    </div>
+
+                `;
+
+            }
+
         }
 
-        document.getElementById('userInput').addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                handleSearch();
-            }
-        });
+
+        /* ================================
+           ENTER KEY SEARCH
+        ================================= */
+
+        document
+            .getElementById('userInput')
+            .addEventListener(
+                'keypress',
+                function (event) {
+
+                    if (event.key === "Enter") {
+
+                        handleSearch();
+
+                    }
+
+                }
+            );
+
     </script>
+
 </body>
 </html>
