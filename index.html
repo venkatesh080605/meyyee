@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Meyyee - Universal Truth Engine</title>
+
     <link rel="manifest" href="/manifest.json">
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -16,7 +19,7 @@
 
         body {
             background-color: #ffffff;
-            color: #111827; 
+            color: #111827;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -28,12 +31,16 @@
             transition: all 0.4s ease;
         }
 
+        /* ================================
+           TOP NAVIGATION
+        ================================= */
+
         .top-nav {
             position: absolute;
             top: 15px;
             right: 25px;
             display: flex;
-            gap: 15px;
+            gap: 10px;
             align-items: center;
             z-index: 10;
         }
@@ -54,6 +61,24 @@
             border-color: #94a3b8;
         }
 
+        .account-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 9px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .account-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* ================================
+           MAIN CONTAINER
+        ================================= */
+
         .container {
             display: flex;
             flex-direction: column;
@@ -65,6 +90,10 @@
             transition: all 0.4s ease;
             margin-top: 20px;
         }
+
+        /* ================================
+           SEARCH
+        ================================= */
 
         .search-section {
             display: flex;
@@ -94,14 +123,26 @@
             letter-spacing: 6px;
             font-weight: 900;
             margin-bottom: 5px;
-            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
+
+            background: linear-gradient(
+                90deg,
+                #ff0000,
+                #ff7f00,
+                #ffff00,
+                #008000,
+                #0000ff,
+                #4b0082,
+                #ee82ee
+            );
+
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+
             transition: font-size 0.4s ease;
         }
 
         body.searched h1 {
-            font-size: 2rem; 
+            font-size: 2rem;
             letter-spacing: 3px;
             margin-bottom: 0;
         }
@@ -128,8 +169,11 @@
             padding: 12px 18px 12px 28px;
             width: 100%;
             max-width: 620px;
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.12),
-                        inset 0 0 15px rgba(37, 99, 235, 0.05);
+
+            box-shadow:
+                0 10px 25px rgba(37, 99, 235, 0.12),
+                inset 0 0 15px rgba(37, 99, 235, 0.05);
+
             margin-bottom: 30px;
             transition: all 0.3s ease;
             position: relative;
@@ -154,7 +198,8 @@
             cursor: text;
         }
 
-        .mic-btn, .search-btn {
+        .mic-btn,
+        .search-btn {
             background: transparent;
             border: none;
             outline: none;
@@ -168,9 +213,14 @@
             transition: transform 0.2s;
         }
 
-        .mic-btn:hover, .search-btn:hover {
+        .mic-btn:hover,
+        .search-btn:hover {
             transform: scale(1.15);
         }
+
+        /* ================================
+           WELCOME
+        ================================= */
 
         #welcomeSection {
             display: flex;
@@ -206,6 +256,10 @@
             margin-bottom: 20px;
         }
 
+        /* ================================
+           INTRO ANIMATION
+        ================================= */
+
         #intro-animation {
             position: fixed;
             top: 0;
@@ -235,11 +289,17 @@
             position: absolute;
             width: 150px;
             height: 150px;
+
             background-image: url('/launchericon-512x512.png');
+
             background-size: 300px 300px;
             background-repeat: no-repeat;
+
             opacity: 0;
-            transition: transform 3s cubic-bezier(0.1, 0.9, 0.2, 1), opacity 1s ease;
+
+            transition:
+                transform 3s cubic-bezier(0.1, 0.9, 0.2, 1),
+                opacity 1s ease;
         }
 
         .piece-tl {
@@ -276,12 +336,27 @@
             font-size: 40px;
             font-weight: 900;
             letter-spacing: 6px;
-            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
+
+            background: linear-gradient(
+                90deg,
+                #ff0000,
+                #ff7f00,
+                #ffff00,
+                #008000,
+                #0000ff,
+                #4b0082,
+                #ee82ee
+            );
+
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.8s ease 2.2s, transform 0.8s ease 2.2s;
+
+            transition:
+                opacity 0.8s ease 2.2s,
+                transform 0.8s ease 2.2s;
         }
 
         #intro-animation.animate .piece {
@@ -294,7 +369,10 @@
             transform: translateY(0);
         }
 
-        /* Modal Styles */
+        /* ================================
+           MODAL
+        ================================= */
+
         .modal-overlay {
             display: none;
             position: fixed;
@@ -302,9 +380,12 @@
             left: 0;
             width: 100%;
             height: 100%;
+
             background: rgba(0, 0, 0, 0.5);
+
             justify-content: center;
             align-items: center;
+
             z-index: 1000;
         }
 
@@ -315,7 +396,11 @@
             width: 90%;
             max-width: 500px;
             text-align: left;
+
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .modal-content h3 {
@@ -356,6 +441,7 @@
             justify-content: flex-end;
             gap: 10px;
             margin-top: 20px;
+            flex-wrap: wrap;
         }
 
         .btn-primary {
@@ -368,6 +454,10 @@
             font-weight: 600;
         }
 
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
         .btn-secondary {
             background: #e2e8f0;
             color: #334155;
@@ -378,7 +468,65 @@
             font-weight: 600;
         }
 
-        /* Result Styles */
+        /* ================================
+           AUTH
+        ================================= */
+
+        .auth-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            background: #f8fafc;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .auth-tab.active {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        .auth-message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 7px;
+            display: none;
+            font-size: 0.9rem;
+        }
+
+        .auth-message.success {
+            display: block;
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .auth-message.error {
+            display: block;
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .user-info {
+            background: #eff6ff;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            color: #1e40af;
+            word-break: break-word;
+        }
+
+        /* ================================
+           RESULTS
+        ================================= */
+
         #resultContainer {
             width: 100%;
             max-width: 680px;
@@ -390,40 +538,49 @@
 
         .result-box {
             width: 100%;
-            background: linear-gradient(135deg, #f4e8c1 0%, #e6d39e 100%);
+
+            background: linear-gradient(
+                135deg,
+                #f4e8c1 0%,
+                #e6d39e 100%
+            );
+
             border: 2px solid #8b5a2b;
             border-radius: 8px;
             padding: 25px;
+
             font-size: 1.05rem;
             color: #2c1d0c;
             text-align: left;
-            box-shadow: 0 8px 25px rgba(139, 90, 43, 0.25);
+
+            box-shadow:
+                0 8px 25px rgba(139, 90, 43, 0.25);
         }
 
         .board-title {
-            text-align: center; 
-            color: #78350f; 
-            font-size: 1.25rem; 
-            font-weight: bold; 
-            margin-bottom: 12px; 
-            border-bottom: 1px dashed #8b5a2b; 
+            text-align: center;
+            color: #78350f;
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+            border-bottom: 1px dashed #8b5a2b;
             padding-bottom: 8px;
         }
 
         .kural-lines {
-            font-weight: bold; 
-            color: #451a03; 
-            font-size: 1.15rem; 
-            line-height: 1.6; 
-            text-align: center; 
+            font-weight: bold;
+            color: #451a03;
+            font-size: 1.15rem;
+            line-height: 1.6;
+            text-align: center;
             margin-bottom: 15px;
         }
 
         .meaning-box {
-            color: #2c1d0c; 
-            line-height: 1.7; 
-            background: rgba(255, 255, 255, 0.4); 
-            padding: 12px; 
+            color: #2c1d0c;
+            line-height: 1.7;
+            background: rgba(255, 255, 255, 0.4);
+            padding: 12px;
             border-radius: 6px;
         }
 
@@ -435,37 +592,135 @@
             text-align: center;
             margin-top: 15px;
         }
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 70px 12px 30px;
+            }
+
+            .top-nav {
+                top: 12px;
+                right: 12px;
+                left: 12px;
+                justify-content: flex-end;
+            }
+
+            .nav-btn,
+            .account-btn {
+                padding: 7px 11px;
+                font-size: 0.8rem;
+            }
+
+            h1 {
+                font-size: 3rem;
+                letter-spacing: 4px;
+            }
+
+            body.searched h1 {
+                font-size: 1.5rem;
+            }
+
+            body.searched .search-section {
+                gap: 10px;
+            }
+
+            body.searched .search-box {
+                max-width: 100%;
+            }
+
+            .search-box {
+                padding-left: 18px;
+            }
+
+            .modal-content {
+                padding: 22px;
+            }
+        }
+
     </style>
 </head>
 
 <body>
 
-    <!-- Split Animation Splash Screen -->
+    <!-- ==========================================
+         INTRO ANIMATION
+    =========================================== -->
+
     <div id="intro-animation" onclick="closeIntro()">
+
         <div class="anim-wrapper">
+
             <div class="piece piece-tl"></div>
             <div class="piece piece-tr"></div>
             <div class="piece piece-bl"></div>
             <div class="piece piece-br"></div>
-            <div class="anim-title">MEYYEE</div>
+
+            <div class="anim-title">
+                MEYYEE
+            </div>
+
         </div>
+
     </div>
 
-    <!-- Top Navigation -->
+
+    <!-- ==========================================
+         TOP NAVIGATION
+    =========================================== -->
+
     <div class="top-nav">
-        <button class="nav-btn" onclick="openWebsiteBuilder()">🌐 Create Website</button>
+
+        <button
+            class="nav-btn"
+            onclick="openWebsiteBuilder()">
+            🌐 Create Website
+        </button>
+
+        <button
+            class="account-btn"
+            id="accountButton"
+            onclick="openAccountModal()">
+            👤 Account
+        </button>
+
     </div>
+
+
+    <!-- ==========================================
+         MAIN CONTAINER
+    =========================================== -->
 
     <div class="container" id="mainContainer">
 
-        <!-- Search Section -->
-        <div class="search-section" id="searchSection" onclick="handleSearch()">
+        <!-- SEARCH SECTION -->
+
+        <div
+            class="search-section"
+            id="searchSection"
+            onclick="handleSearch()">
+
             <div>
-                <h1>MEYYEE</h1>
-                <div class="subtitle">Universal Truth Engine</div>
+
+                <h1>
+                    MEYYEE
+                </h1>
+
+                <div class="subtitle">
+                    Universal Truth Engine
+                </div>
+
             </div>
 
-            <div class="search-box" onclick="handleSearch()">
+
+            <div
+                class="search-box"
+                onclick="handleSearch()">
+
                 <input
                     type="text"
                     id="userInput"
@@ -475,159 +730,1101 @@
                     onclick="event.stopPropagation(); handleSearch();"
                 >
 
+
                 <button
                     class="mic-btn"
                     onclick="event.stopPropagation(); startVoiceSearch();"
                     title="Search by Voice">
+
                     🎤
+
                 </button>
+
 
                 <button
                     class="search-btn"
                     onclick="event.stopPropagation(); handleSearch();"
                     title="Search">
+
                     🔎
+
                 </button>
+
             </div>
+
         </div>
 
-        <!-- Welcome Section -->
+
+        <!-- ==========================================
+             WELCOME SECTION
+        =========================================== -->
+
         <div id="welcomeSection">
+
             <div class="video-container">
-                <video autoplay muted loop playsinline>
-                    <source src="myvideo.mp4.mp4" type="video/mp4">
+
+                <video
+                    autoplay
+                    muted
+                    loop
+                    playsinline>
+
+                    <source
+                        src="myvideo.mp4.mp4"
+                        type="video/mp4">
+
                     Your browser does not support the video tag.
+
                 </video>
+
             </div>
 
-            <div class="welcome-text">WELCOME</div>
+            <div class="welcome-text">
+                WELCOME
+            </div>
+
         </div>
 
-        <!-- All Results Container -->
+
+        <!-- ==========================================
+             RESULTS
+        =========================================== -->
+
         <div id="resultContainer"></div>
 
     </div>
 
-    <!-- Website Builder Modal -->
-    <div class="modal-overlay" id="websiteModal">
+
+    <!-- ==========================================
+         WEBSITE BUILDER MODAL
+    =========================================== -->
+
+    <div
+        class="modal-overlay"
+        id="websiteModal">
 
         <div class="modal-content">
 
-            <h3>🌐 Create Your Own Website (Meyyee Sites)</h3>
+            <h3>
+                🌐 Create Your Own Website
+                <br>
+                <small style="color:#64748b;">
+                    Meyyee Sites
+                </small>
+            </h3>
+
 
             <div class="form-group">
-                <label>Website Title:</label>
+
+                <label>
+                    Website Title:
+                </label>
+
                 <input
                     type="text"
                     id="siteTitleInput"
                     placeholder="e.g., My Personal Site">
+
             </div>
 
+
             <div class="form-group">
-                <label>Website Content / Description:</label>
+
+                <label>
+                    Website Content / Description:
+                </label>
+
                 <textarea
                     id="siteContentInput"
                     placeholder="Write details about your website here..."></textarea>
+
             </div>
+
 
             <div class="form-group">
-                <label>Theme Background Color:</label>
+
+                <label>
+                    Theme Background Color:
+                </label>
 
                 <select id="siteBgColor">
-                    <option value="#f8fafc">Light Minimal</option>
-                    <option value="#dbeafe">Ocean Blue</option>
-                    <option value="#fef3c7">Golden Palm</option>
-                    <option value="#f3e8ff">Royal Purple</option>
+
+                    <option value="#f8fafc">
+                        Light Minimal
+                    </option>
+
+                    <option value="#dbeafe">
+                        Ocean Blue
+                    </option>
+
+                    <option value="#fef3c7">
+                        Golden Palm
+                    </option>
+
+                    <option value="#f3e8ff">
+                        Royal Purple
+                    </option>
+
                 </select>
+
             </div>
 
+
             <div class="modal-actions">
+
                 <button
                     class="btn-secondary"
                     onclick="closeWebsiteBuilder()">
+
                     Cancel
+
                 </button>
+
 
                 <button
                     class="btn-primary"
                     onclick="generateUserWebsite()">
+
                     Create My Website
+
                 </button>
+
             </div>
 
         </div>
+
     </div>
 
-    <!-- Main JavaScript Logic -->
+
+    <!-- ==========================================
+         ACCOUNT / LOGIN MODAL
+    =========================================== -->
+
+    <div
+        class="modal-overlay"
+        id="accountModal">
+
+        <div class="modal-content">
+
+            <h3>
+                👤 Meyyee Account
+            </h3>
+
+
+            <!-- Logged-in user -->
+
+            <div
+                id="loggedInSection"
+                style="display:none;">
+
+                <div class="user-info">
+
+                    <strong>
+                        You are logged in
+                    </strong>
+
+                    <br><br>
+
+                    <span id="userEmailDisplay"></span>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        class="btn-secondary"
+                        onclick="closeAccountModal()">
+
+                        Close
+
+                    </button>
+
+
+                    <button
+                        class="btn-primary"
+                        onclick="logoutUser()">
+
+                        Logout
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Login / Signup -->
+
+            <div id="authSection">
+
+                <div class="auth-tabs">
+
+                    <button
+                        class="auth-tab active"
+                        id="loginTab"
+                        onclick="showLogin()">
+
+                        Login
+
+                    </button>
+
+
+                    <button
+                        class="auth-tab"
+                        id="signupTab"
+                        onclick="showSignup()">
+
+                        Sign Up
+
+                    </button>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Email:
+                    </label>
+
+                    <input
+                        type="email"
+                        id="authEmail"
+                        placeholder="Enter your email"
+                        autocomplete="email">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Password:
+                    </label>
+
+                    <input
+                        type="password"
+                        id="authPassword"
+                        placeholder="Enter password"
+                        autocomplete="current-password">
+
+                </div>
+
+
+                <button
+                    class="btn-primary"
+                    id="authSubmitButton"
+                    onclick="loginUser()"
+                    style="width:100%;">
+
+                    Login
+
+                </button>
+
+
+                <div
+                    id="authMessage"
+                    class="auth-message">
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        class="btn-secondary"
+                        onclick="closeAccountModal()">
+
+                        Close
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================================
+         SUPABASE
+    =========================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <!-- ==========================================
+         MAIN JAVASCRIPT
+    =========================================== -->
+
     <script>
 
-        // Intro Animation Trigger
-        window.onload = function() {
+        /* ==========================================
+           SUPABASE CONFIGURATION
+        =========================================== */
+
+        const SUPABASE_URL =
+            "https://tukrsibwlwsmhlggqhxo.supabase.co";
+
+        const SUPABASE_PUBLISHABLE_KEY =
+            "sb_publishable_XVVpGFYayIZPn9OET1ioVw_SQPKgt27";
+
+
+        const supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_PUBLISHABLE_KEY
+            );
+
+
+        let currentUser = null;
+
+        let authMode = "login";
+
+
+        /* ==========================================
+           PAGE LOAD
+        =========================================== */
+
+        window.onload = async function() {
 
             setTimeout(() => {
-                document
-                    .getElementById('intro-animation')
-                    .classList.add('animate');
+
+                const intro =
+                    document.getElementById(
+                        'intro-animation'
+                    );
+
+                if (intro) {
+                    intro.classList.add('animate');
+                }
+
             }, 200);
 
+
             setTimeout(() => {
+
                 closeIntro();
+
             }, 3500);
+
+
+            await checkUser();
+
+
+            supabaseClient.auth.onAuthStateChange(
+                async function(event, session) {
+
+                    currentUser =
+                        session ? session.user : null;
+
+                    updateAccountButton();
+
+                }
+            );
+
         };
 
 
+        /* ==========================================
+           INTRO
+        =========================================== */
+
         function closeIntro() {
 
-            const intro = document.getElementById('intro-animation');
+            const intro =
+                document.getElementById(
+                    'intro-animation'
+                );
 
             if (intro) {
 
                 intro.style.opacity = '0';
 
                 setTimeout(() => {
+
                     intro.style.display = 'none';
+
                 }, 500);
 
             }
+
         }
 
 
-        function openWebsiteBuilder() {
-            document.getElementById('websiteModal').style.display = 'flex';
+        /* ==========================================
+           CHECK USER
+        =========================================== */
+
+        async function checkUser() {
+
+            try {
+
+                const {
+                    data,
+                    error
+                } =
+                    await supabaseClient.auth.getUser();
+
+
+                if (error) {
+
+                    currentUser = null;
+
+                } else {
+
+                    currentUser =
+                        data.user || null;
+
+                }
+
+
+                updateAccountButton();
+
+            } catch (error) {
+
+                console.error(
+                    "User check error:",
+                    error
+                );
+
+            }
+
         }
 
 
-        function closeWebsiteBuilder() {
-            document.getElementById('websiteModal').style.display = 'none';
-        }
+        /* ==========================================
+           ACCOUNT BUTTON
+        =========================================== */
+
+        function updateAccountButton() {
+
+            const button =
+                document.getElementById(
+                    'accountButton'
+                );
 
 
-        function generateUserWebsite() {
-
-            const title =
-                document.getElementById('siteTitleInput').value.trim();
-
-            const content =
-                document.getElementById('siteContentInput').value.trim();
-
-            const bgColor =
-                document.getElementById('siteBgColor').value;
-
-            const resultContainer =
-                document.getElementById('resultContainer');
-
-
-            if (title === "" || content === "") {
-
-                alert("Please fill in both the title and content!");
-
+            if (!button) {
                 return;
             }
 
 
-            document.body.classList.add('searched');
+            if (currentUser) {
 
-            document.getElementById('welcomeSection').style.display = 'none';
+                button.innerHTML =
+                    "👤 " +
+                    (currentUser.email || "Account");
+
+            } else {
+
+                button.innerHTML =
+                    "👤 Account";
+
+            }
+
+        }
+
+
+        /* ==========================================
+           OPEN ACCOUNT
+        =========================================== */
+
+        function openAccountModal() {
+
+            document.getElementById(
+                'accountModal'
+            ).style.display = 'flex';
+
+
+            updateAccountModal();
+
+        }
+
+
+        function closeAccountModal() {
+
+            document.getElementById(
+                'accountModal'
+            ).style.display = 'none';
+
+        }
+
+
+        /* ==========================================
+           ACCOUNT MODAL STATE
+        =========================================== */
+
+        function updateAccountModal() {
+
+            const loggedInSection =
+                document.getElementById(
+                    'loggedInSection'
+                );
+
+            const authSection =
+                document.getElementById(
+                    'authSection'
+                );
+
+            const emailDisplay =
+                document.getElementById(
+                    'userEmailDisplay'
+                );
+
+
+            if (currentUser) {
+
+                loggedInSection.style.display =
+                    'block';
+
+                authSection.style.display =
+                    'none';
+
+
+                emailDisplay.textContent =
+                    currentUser.email || "";
+
+            } else {
+
+                loggedInSection.style.display =
+                    'none';
+
+                authSection.style.display =
+                    'block';
+
+            }
+
+        }
+
+
+        /* ==========================================
+           LOGIN TAB
+        =========================================== */
+
+        function showLogin() {
+
+            authMode = "login";
+
+
+            document.getElementById(
+                'loginTab'
+            ).classList.add('active');
+
+
+            document.getElementById(
+                'signupTab'
+            ).classList.remove('active');
+
+
+            document.getElementById(
+                'authSubmitButton'
+            ).textContent = "Login";
+
+
+            document.getElementById(
+                'authSubmitButton'
+            ).onclick = loginUser;
+
+
+            clearAuthMessage();
+
+        }
+
+
+        /* ==========================================
+           SIGNUP TAB
+        =========================================== */
+
+        function showSignup() {
+
+            authMode = "signup";
+
+
+            document.getElementById(
+                'signupTab'
+            ).classList.add('active');
+
+
+            document.getElementById(
+                'loginTab'
+            ).classList.remove('active');
+
+
+            document.getElementById(
+                'authSubmitButton'
+            ).textContent = "Create Account";
+
+
+            document.getElementById(
+                'authSubmitButton'
+            ).onclick = signupUser;
+
+
+            clearAuthMessage();
+
+        }
+
+
+        /* ==========================================
+           AUTH MESSAGE
+        =========================================== */
+
+        function showAuthMessage(
+            message,
+            type
+        ) {
+
+            const box =
+                document.getElementById(
+                    'authMessage'
+                );
+
+
+            box.textContent = message;
+
+            box.className =
+                "auth-message " + type;
+
+        }
+
+
+        function clearAuthMessage() {
+
+            const box =
+                document.getElementById(
+                    'authMessage'
+                );
+
+
+            box.textContent = "";
+
+            box.className =
+                "auth-message";
+
+        }
+
+
+        /* ==========================================
+           SIGN UP
+        =========================================== */
+
+        async function signupUser() {
+
+            const email =
+                document.getElementById(
+                    'authEmail'
+                ).value.trim();
+
+
+            const password =
+                document.getElementById(
+                    'authPassword'
+                ).value;
+
+
+            if (!email || !password) {
+
+                showAuthMessage(
+                    "Please enter email and password.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            if (password.length < 6) {
+
+                showAuthMessage(
+                    "Password must contain at least 6 characters.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            const button =
+                document.getElementById(
+                    'authSubmitButton'
+                );
+
+
+            button.disabled = true;
+
+            button.textContent =
+                "Creating...";
+
+
+            try {
+
+                const {
+                    data,
+                    error
+                } =
+                    await supabaseClient.auth.signUp({
+
+                        email: email,
+
+                        password: password
+
+                    });
+
+
+                if (error) {
+
+                    showAuthMessage(
+                        error.message,
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                if (data.user && !data.session) {
+
+                    showAuthMessage(
+                        "Account created! Please check your email and confirm your account before logging in.",
+                        "success"
+                    );
+
+                } else {
+
+                    showAuthMessage(
+                        "Account created successfully!",
+                        "success"
+                    );
+
+                    currentUser =
+                        data.user;
+
+                    updateAccountButton();
+
+                }
+
+            } catch (error) {
+
+                console.error(error);
+
+                showAuthMessage(
+                    "Something went wrong. Please try again.",
+                    "error"
+                );
+
+            } finally {
+
+                button.disabled = false;
+
+                button.textContent =
+                    "Create Account";
+
+            }
+
+        }
+
+
+        /* ==========================================
+           LOGIN
+        =========================================== */
+
+        async function loginUser() {
+
+            const email =
+                document.getElementById(
+                    'authEmail'
+                ).value.trim();
+
+
+            const password =
+                document.getElementById(
+                    'authPassword'
+                ).value;
+
+
+            if (!email || !password) {
+
+                showAuthMessage(
+                    "Please enter email and password.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            const button =
+                document.getElementById(
+                    'authSubmitButton'
+                );
+
+
+            button.disabled = true;
+
+            button.textContent =
+                "Logging in...";
+
+
+            try {
+
+                const {
+                    data,
+                    error
+                } =
+                    await supabaseClient.auth
+                        .signInWithPassword({
+
+                            email: email,
+
+                            password: password
+
+                        });
+
+
+                if (error) {
+
+                    showAuthMessage(
+                        error.message,
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                currentUser =
+                    data.user;
+
+
+                updateAccountButton();
+
+
+                showAuthMessage(
+                    "Login successful!",
+                    "success"
+                );
+
+
+                setTimeout(() => {
+
+                    updateAccountModal();
+
+                }, 700);
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                showAuthMessage(
+                    "Login failed. Please try again.",
+                    "error"
+                );
+
+            } finally {
+
+                button.disabled = false;
+
+                button.textContent =
+                    "Login";
+
+            }
+
+        }
+
+
+        /* ==========================================
+           LOGOUT
+        =========================================== */
+
+        async function logoutUser() {
+
+            try {
+
+                const {
+                    error
+                } =
+                    await supabaseClient.auth
+                        .signOut();
+
+
+                if (error) {
+
+                    alert(
+                        error.message
+                    );
+
+                    return;
+
+                }
+
+
+                currentUser = null;
+
+
+                updateAccountButton();
+
+
+                updateAccountModal();
+
+
+                closeAccountModal();
+
+
+                alert(
+                    "You have been logged out."
+                );
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert(
+                    "Logout failed. Please try again."
+                );
+
+            }
+
+        }
+
+
+        /* ==========================================
+           WEBSITE BUILDER
+        =========================================== */
+
+        function openWebsiteBuilder() {
+
+            if (!currentUser) {
+
+                alert(
+                    "Please Login or Create an Account first to create your own Meyyee Website."
+                );
+
+                openAccountModal();
+
+                return;
+
+            }
+
+
+            document.getElementById(
+                'websiteModal'
+            ).style.display = 'flex';
+
+        }
+
+
+        function closeWebsiteBuilder() {
+
+            document.getElementById(
+                'websiteModal'
+            ).style.display = 'none';
+
+        }
+
+
+        /* ==========================================
+           HTML SECURITY
+        =========================================== */
+
+        function escapeHTML(text) {
+
+            const div =
+                document.createElement('div');
+
+            div.textContent = text;
+
+            return div.innerHTML;
+
+        }
+
+
+        /* ==========================================
+           CREATE WEBSITE
+        =========================================== */
+
+        function generateUserWebsite() {
+
+            if (!currentUser) {
+
+                closeWebsiteBuilder();
+
+                alert(
+                    "Please login first."
+                );
+
+                openAccountModal();
+
+                return;
+
+            }
+
+
+            const title =
+                document.getElementById(
+                    'siteTitleInput'
+                ).value.trim();
+
+
+            const content =
+                document.getElementById(
+                    'siteContentInput'
+                ).value.trim();
+
+
+            const bgColor =
+                document.getElementById(
+                    'siteBgColor'
+                ).value;
+
+
+            const resultContainer =
+                document.getElementById(
+                    'resultContainer'
+                );
+
+
+            if (
+                title === "" ||
+                content === ""
+            ) {
+
+                alert(
+                    "Please fill in both the title and content!"
+                );
+
+                return;
+
+            }
+
+
+            const safeTitle =
+                escapeHTML(title);
+
+
+            const safeContent =
+                escapeHTML(content)
+                    .replace(/\n/g, '<br>');
+
+
+            document.body.classList.add(
+                'searched'
+            );
+
+
+            document.getElementById(
+                'welcomeSection'
+            ).style.display = 'none';
+
 
             closeWebsiteBuilder();
 
@@ -643,9 +1840,17 @@
                     text-align: center;
                     margin-bottom: 10px;
                 ">
+
                     🎉 Your new website has been created successfully!
-                    (Meyyee Sites Live)
+
+                    <br>
+
+                    <small>
+                        Meyyee Sites Live
+                    </small>
+
                 </div>
+
 
                 <div
                     class="user-website-card"
@@ -655,7 +1860,10 @@
                     "
                 >
 
-                    <h2>${title}</h2>
+                    <h2>
+                        ${safeTitle}
+                    </h2>
+
 
                     <hr style="
                         margin: 15px 0;
@@ -663,21 +1871,36 @@
                         border-top: 1px solid rgba(0,0,0,0.1);
                     ">
 
-                    <p>${content.replace(/\n/g, '<br>')}</p>
+
+                    <p>
+                        ${safeContent}
+                    </p>
+
 
                     <div style="
                         margin-top: 20px;
                         font-size: 0.85rem;
                         color: #64748b;
                     ">
+
                         Published via
-                        <strong>Meyyee Universal Truth Engine</strong>
+
+                        <strong>
+                            Meyyee Universal Truth Engine
+                        </strong>
+
                     </div>
 
                 </div>
+
             `;
+
         }
 
+
+        /* ==========================================
+           VOICE SEARCH
+        =========================================== */
 
         function startVoiceSearch() {
 
@@ -693,73 +1916,111 @@
                 );
 
                 return;
+
             }
 
 
-            const recognition = new SpeechRecognition();
-
-            recognition.lang = 'en-US';
-
-
-            recognition.onstart = function() {
-
-                document.getElementById('userInput').placeholder =
-                    "Listening... Speak now 🎙️";
-            };
+            const recognition =
+                new SpeechRecognition();
 
 
-            recognition.onresult = function(event) {
-
-                const spokenText =
-                    event.results[0][0].transcript;
-
-                document.getElementById('userInput').value =
-                    spokenText;
-
-                document.getElementById('userInput').placeholder =
-                    "Search truth";
-
-                handleSearch();
-            };
+            recognition.lang =
+                'en-US';
 
 
-            recognition.onerror = function() {
+            recognition.onstart =
+                function() {
 
-                document.getElementById('userInput').placeholder =
-                    "Search truth";
+                    document.getElementById(
+                        'userInput'
+                    ).placeholder =
+                        "Listening... Speak now 🎙️";
 
-                alert(
-                    "Could not hear voice, please try again."
-                );
-            };
+                };
+
+
+            recognition.onresult =
+                function(event) {
+
+                    const spokenText =
+                        event.results[0][0]
+                            .transcript;
+
+
+                    document.getElementById(
+                        'userInput'
+                    ).value =
+                        spokenText;
+
+
+                    document.getElementById(
+                        'userInput'
+                    ).placeholder =
+                        "Search truth";
+
+
+                    handleSearch();
+
+                };
+
+
+            recognition.onerror =
+                function() {
+
+                    document.getElementById(
+                        'userInput'
+                    ).placeholder =
+                        "Search truth";
+
+
+                    alert(
+                        "Could not hear voice, please try again."
+                    );
+
+                };
 
 
             recognition.start();
+
         }
 
+
+        /* ==========================================
+           SEARCH ENGINE
+        =========================================== */
 
         function handleSearch() {
 
             const query =
-                document.getElementById('userInput')
-                    .value
-                    .trim()
-                    .toLowerCase();
+                document.getElementById(
+                    'userInput'
+                ).value
+                .trim()
+                .toLowerCase();
 
 
             const resultContainer =
-                document.getElementById('resultContainer');
+                document.getElementById(
+                    'resultContainer'
+                );
 
 
-            document.body.classList.add('searched');
+            document.body.classList.add(
+                'searched'
+            );
 
 
             const welcomeSec =
-                document.getElementById('welcomeSection');
+                document.getElementById(
+                    'welcomeSection'
+                );
 
 
             if (welcomeSec) {
-                welcomeSec.style.display = 'none';
+
+                welcomeSec.style.display =
+                    'none';
+
             }
 
 
@@ -776,24 +2037,32 @@
                         "
                     >
 
-                        <strong>Search Result:</strong>
+                        <strong>
+                            Search Result:
+                        </strong>
+
                         (Empty search)
 
                         <br><br>
 
-                        <strong>Meyyee Engine:</strong>
+                        <strong>
+                            Meyyee Engine:
+                        </strong>
+
                         Please enter a search query.
 
                     </div>
+
                 `;
 
                 return;
+
             }
 
 
-            /* ================================
-               THIRUKKURAL RESULTS
-               ================================ */
+            /* ======================================
+               THIRUKKURAL
+            ====================================== */
 
             if (
                 query.includes("thirukkural") ||
@@ -803,11 +2072,16 @@
 
                 resultContainer.innerHTML = `
 
+                    <!-- KURAL 1 -->
+
                     <div class="result-box">
 
                         <div class="board-title">
+
                             📜 குறள் எண்: 1 - கடவுள் வாழ்த்து
+
                         </div>
+
 
                         <div class="kural-lines">
 
@@ -816,9 +2090,12 @@
 
                         </div>
 
+
                         <div class="meaning-box">
 
-                            <strong>தெளிவுரை:</strong>
+                            <strong>
+                                தெளிவுரை:
+                            </strong>
 
                             அகரத்தை முதன்மையாக கொண்டுள்ள எழுத்துமுறை அனைத்திற்கும் சிவனின் சித்திரை எழுத்தே முதன்மை ஆனது.
 
@@ -827,11 +2104,16 @@
                     </div>
 
 
+                    <!-- KURAL 2 -->
+
                     <div class="result-box">
 
                         <div class="board-title">
+
                             📜 குறள் எண்: 2
+
                         </div>
+
 
                         <div class="kural-lines">
 
@@ -840,9 +2122,12 @@
 
                         </div>
 
+
                         <div class="meaning-box">
 
-                            <strong>தெளிவுரை:</strong>
+                            <strong>
+                                தெளிவுரை:
+                            </strong>
 
                             முருகனின் நல்ல பாதங்களை தொழாதவர் படித்ததனால் உண்டாகிய பயன்தான் என்னச் சொல். இங்கு வாலறிவன் என்பது முருகனை குறிக்கும்.
 
@@ -851,11 +2136,16 @@
                     </div>
 
 
+                    <!-- KURAL 3 -->
+
                     <div class="result-box">
 
                         <div class="board-title">
+
                             📜 குறள் எண்: 3
+
                         </div>
+
 
                         <div class="kural-lines">
 
@@ -864,9 +2154,12 @@
 
                         </div>
 
+
                         <div class="meaning-box">
 
-                            <strong>தெளிவுரை:</strong>
+                            <strong>
+                                தெளிவுரை:
+                            </strong>
 
                             பிரம்மனாகிய முருகனின் அடிகளை சேர்ந்தவர் தான் இந்த நிலத்தின் மீது நீண்ட காலம் வாழ்வார். இங்கு மலர்மிசை ஏகினான் என்பது தாமரை மலர் மீது வீற்றிருக்கும் பிரம்மாவை குறிக்கும் பிரம்மா என்றால் முருகனை குறிக்கும்.
 
@@ -877,6 +2170,11 @@
                 `;
 
             }
+
+
+            /* ======================================
+               KURAL 1
+            ====================================== */
 
             else if (query === "1") {
 
@@ -885,8 +2183,11 @@
                     <div class="result-box">
 
                         <div class="board-title">
+
                             📜 குறள் எண்: 1 - கடவுள் வாழ்த்து
+
                         </div>
+
 
                         <div class="kural-lines">
 
@@ -895,9 +2196,12 @@
 
                         </div>
 
+
                         <div class="meaning-box">
 
-                            <strong>தெளிவுரை:</strong>
+                            <strong>
+                                தெளிவுரை:
+                            </strong>
 
                             அகரத்தை முதன்மையாக கொண்டுள்ள எழுத்துமுறை அனைத்திற்கும் சிவனின் சித்திரை எழுத்தே முதன்மை ஆனது.
 
@@ -909,6 +2213,11 @@
 
             }
 
+
+            /* ======================================
+               KURAL 2
+            ====================================== */
+
             else if (query === "2") {
 
                 resultContainer.innerHTML = `
@@ -916,8 +2225,11 @@
                     <div class="result-box">
 
                         <div class="board-title">
+
                             📜 குறள் எண்: 2
+
                         </div>
+
 
                         <div class="kural-lines">
 
@@ -926,9 +2238,12 @@
 
                         </div>
 
+
                         <div class="meaning-box">
 
-                            <strong>தெளிவுரை:</strong>
+                            <strong>
+                                தெளிவுரை:
+                            </strong>
 
                             முருகனின் நல்ல பாதங்களை தொழாதவர் படித்ததனால் உண்டாகிய பயன்தான் என்னச் சொல். இங்கு வாலறிவன் என்பது முருகனை குறிக்கும்.
 
@@ -940,6 +2255,11 @@
 
             }
 
+
+            /* ======================================
+               KURAL 3
+            ====================================== */
+
             else if (query === "3") {
 
                 resultContainer.innerHTML = `
@@ -947,8 +2267,11 @@
                     <div class="result-box">
 
                         <div class="board-title">
+
                             📜 குறள் எண்: 3
+
                         </div>
+
 
                         <div class="kural-lines">
 
@@ -957,9 +2280,12 @@
 
                         </div>
 
+
                         <div class="meaning-box">
 
-                            <strong>தெளிவுரை:</strong>
+                            <strong>
+                                தெளிவுரை:
+                            </strong>
 
                             பிரம்மனாகிய முருகனின் அடிகளை சேர்ந்தவர் தான் இந்த நிலத்தின் மீது நீண்ட காலம் வாழ்வார். இங்கு மலர்மிசை ஏகினான் என்பது தாமரை மலர் மீது வீற்றிருக்கும் பிரம்மாவை குறிக்கும் பிரம்மா என்றால் முருகனை குறிக்கும்.
 
@@ -971,7 +2297,16 @@
 
             }
 
+
+            /* ======================================
+               OTHER SEARCH
+            ====================================== */
+
             else {
+
+                const safeQuery =
+                    escapeHTML(query);
+
 
                 resultContainer.innerHTML = `
 
@@ -984,30 +2319,87 @@
                         "
                     >
 
-                        <strong>Search Result:</strong>
-                        "${query}"
+                        <strong>
+                            Search Result:
+                        </strong>
+
+                        "${safeQuery}"
 
                         <br><br>
 
-                        <strong>Meyyee Engine:</strong>
+                        <strong>
+                            Meyyee Engine:
+                        </strong>
+
                         Searching for your Universal Truth...
 
                     </div>
 
                 `;
+
             }
+
         }
 
 
+        /* ==========================================
+           ENTER KEY SEARCH
+        =========================================== */
+
         document
             .getElementById('userInput')
-            .addEventListener("keypress", function(event) {
+            .addEventListener(
+                "keypress",
+                function(event) {
 
-                if (event.key === "Enter") {
-                    handleSearch();
+                    if (event.key === "Enter") {
+
+                        handleSearch();
+
+                    }
+
                 }
+            );
 
-            });
+
+        /* ==========================================
+           CLOSE MODALS WHEN CLICKING OUTSIDE
+        =========================================== */
+
+        document
+            .getElementById('websiteModal')
+            .addEventListener(
+                'click',
+                function(event) {
+
+                    if (
+                        event.target === this
+                    ) {
+
+                        closeWebsiteBuilder();
+
+                    }
+
+                }
+            );
+
+
+        document
+            .getElementById('accountModal')
+            .addEventListener(
+                'click',
+                function(event) {
+
+                    if (
+                        event.target === this
+                    ) {
+
+                        closeAccountModal();
+
+                    }
+
+                }
+            );
 
     </script>
 
