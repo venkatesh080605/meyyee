@@ -16,7 +16,7 @@
 
         body {
             background-color: #ffffff;
-            color: #111827;
+            color: #111827; 
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -28,7 +28,6 @@
             transition: all 0.4s ease;
         }
 
-        /* Top Navigation */
         .top-nav {
             position: absolute;
             top: 15px;
@@ -67,7 +66,6 @@
             margin-top: 20px;
         }
 
-        /* Search Section */
         .search-section {
             display: flex;
             flex-direction: column;
@@ -96,23 +94,14 @@
             letter-spacing: 6px;
             font-weight: 900;
             margin-bottom: 5px;
-            background: linear-gradient(
-                90deg,
-                #ff0000,
-                #ff7f00,
-                #ffff00,
-                #008000,
-                #0000ff,
-                #4b0082,
-                #ee82ee
-            );
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             transition: font-size 0.4s ease;
         }
 
         body.searched h1 {
-            font-size: 2rem;
+            font-size: 2rem; 
             letter-spacing: 3px;
             margin-bottom: 0;
         }
@@ -130,7 +119,6 @@
             display: none;
         }
 
-        /* Search Box */
         .search-box {
             display: flex;
             align-items: center;
@@ -140,9 +128,8 @@
             padding: 12px 18px 12px 28px;
             width: 100%;
             max-width: 620px;
-            box-shadow:
-                0 10px 25px rgba(37, 99, 235, 0.12),
-                inset 0 0 15px rgba(37, 99, 235, 0.05);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.12),
+                        inset 0 0 15px rgba(37, 99, 235, 0.05);
             margin-bottom: 30px;
             transition: all 0.3s ease;
             position: relative;
@@ -167,8 +154,7 @@
             cursor: text;
         }
 
-        .mic-btn,
-        .search-btn {
+        .mic-btn, .search-btn {
             background: transparent;
             border: none;
             outline: none;
@@ -182,12 +168,10 @@
             transition: transform 0.2s;
         }
 
-        .mic-btn:hover,
-        .search-btn:hover {
+        .mic-btn:hover, .search-btn:hover {
             transform: scale(1.15);
         }
 
-        /* Welcome */
         #welcomeSection {
             display: flex;
             flex-direction: column;
@@ -222,7 +206,6 @@
             margin-bottom: 20px;
         }
 
-        /* Intro Animation */
         #intro-animation {
             position: fixed;
             top: 0;
@@ -256,9 +239,7 @@
             background-size: 300px 300px;
             background-repeat: no-repeat;
             opacity: 0;
-            transition:
-                transform 3s cubic-bezier(0.1, 0.9, 0.2, 1),
-                opacity 1s ease;
+            transition: transform 3s cubic-bezier(0.1, 0.9, 0.2, 1), opacity 1s ease;
         }
 
         .piece-tl {
@@ -295,23 +276,12 @@
             font-size: 40px;
             font-weight: 900;
             letter-spacing: 6px;
-            background: linear-gradient(
-                90deg,
-                #ff0000,
-                #ff7f00,
-                #ffff00,
-                #008000,
-                #0000ff,
-                #4b0082,
-                #ee82ee
-            );
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             opacity: 0;
             transform: translateY(20px);
-            transition:
-                opacity 0.8s ease 2.2s,
-                transform 0.8s ease 2.2s;
+            transition: opacity 0.8s ease 2.2s, transform 0.8s ease 2.2s;
         }
 
         #intro-animation.animate .piece {
@@ -324,7 +294,7 @@
             transform: translateY(0);
         }
 
-        /* Modal */
+        /* Modal Styles */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -345,7 +315,7 @@
             width: 90%;
             max-width: 500px;
             text-align: left;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
 
         .modal-content h3 {
@@ -408,7 +378,7 @@
             font-weight: 600;
         }
 
-        /* Results */
+        /* Result Styles */
         #resultContainer {
             width: 100%;
             max-width: 680px;
@@ -420,11 +390,7 @@
 
         .result-box {
             width: 100%;
-            background: linear-gradient(
-                135deg,
-                #f4e8c1 0%,
-                #e6d39e 100%
-            );
+            background: linear-gradient(135deg, #f4e8c1 0%, #e6d39e 100%);
             border: 2px solid #8b5a2b;
             border-radius: 8px;
             padding: 25px;
@@ -435,29 +401,29 @@
         }
 
         .board-title {
-            text-align: center;
-            color: #78350f;
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-bottom: 12px;
-            border-bottom: 1px dashed #8b5a2b;
+            text-align: center; 
+            color: #78350f; 
+            font-size: 1.25rem; 
+            font-weight: bold; 
+            margin-bottom: 12px; 
+            border-bottom: 1px dashed #8b5a2b; 
             padding-bottom: 8px;
         }
 
         .kural-lines {
-            font-weight: bold;
-            color: #451a03;
-            font-size: 1.15rem;
-            line-height: 1.6;
-            text-align: center;
+            font-weight: bold; 
+            color: #451a03; 
+            font-size: 1.15rem; 
+            line-height: 1.6; 
+            text-align: center; 
             margin-bottom: 15px;
         }
 
         .meaning-box {
-            color: #2c1d0c;
-            line-height: 1.7;
-            background: rgba(255, 255, 255, 0.4);
-            padding: 12px;
+            color: #2c1d0c; 
+            line-height: 1.7; 
+            background: rgba(255, 255, 255, 0.4); 
+            padding: 12px; 
             border-radius: 6px;
         }
 
@@ -465,59 +431,16 @@
             width: 100%;
             border-radius: 12px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             text-align: center;
             margin-top: 15px;
-        }
-
-        /* Mobile */
-        @media (max-width: 600px) {
-            body {
-                padding: 30px 12px;
-            }
-
-            .top-nav {
-                position: relative;
-                top: auto;
-                right: auto;
-                width: 100%;
-                justify-content: flex-end;
-                margin-bottom: 10px;
-            }
-
-            h1 {
-                font-size: 2.8rem;
-                letter-spacing: 4px;
-            }
-
-            .search-box {
-                max-width: 100%;
-            }
-
-            body.searched .search-section {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 10px;
-            }
-
-            body.searched h1 {
-                text-align: center;
-            }
-
-            body.searched .search-box {
-                max-width: 100%;
-            }
-
-            .modal-content {
-                padding: 20px;
-            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Intro Animation -->
+    <!-- Split Animation Splash Screen -->
     <div id="intro-animation" onclick="closeIntro()">
         <div class="anim-wrapper">
             <div class="piece piece-tl"></div>
@@ -530,40 +453,27 @@
 
     <!-- Top Navigation -->
     <div class="top-nav">
-        <button
-            class="nav-btn"
-            onclick="openWebsiteBuilder()">
-            🌐 Create Website
-        </button>
+        <button class="nav-btn" onclick="openWebsiteBuilder()">🌐 Create Website</button>
     </div>
 
     <div class="container" id="mainContainer">
 
         <!-- Search Section -->
-        <div
-            class="search-section"
-            id="searchSection"
-            onclick="handleSearch()">
-
+        <div class="search-section" id="searchSection" onclick="handleSearch()">
             <div>
                 <h1>MEYYEE</h1>
-
-                <div class="subtitle">
-                    Universal Truth Engine
-                </div>
+                <div class="subtitle">Universal Truth Engine</div>
             </div>
 
-            <div
-                class="search-box"
-                onclick="handleSearch()">
-
+            <div class="search-box" onclick="handleSearch()">
                 <input
                     type="text"
                     id="userInput"
                     class="search-input"
                     placeholder="Search truth"
                     onfocus="handleSearch()"
-                    onclick="event.stopPropagation(); handleSearch();">
+                    onclick="event.stopPropagation(); handleSearch();"
+                >
 
                 <button
                     class="mic-btn"
@@ -578,105 +488,60 @@
                     title="Search">
                     🔎
                 </button>
-
             </div>
         </div>
 
         <!-- Welcome Section -->
         <div id="welcomeSection">
-
             <div class="video-container">
-
                 <video autoplay muted loop playsinline>
-
-                    <source
-                        src="myvideo.mp4.mp4"
-                        type="video/mp4">
-
+                    <source src="myvideo.mp4.mp4" type="video/mp4">
                     Your browser does not support the video tag.
-
                 </video>
-
             </div>
 
-            <div class="welcome-text">
-                WELCOME
-            </div>
-
+            <div class="welcome-text">WELCOME</div>
         </div>
 
-        <!-- Results -->
+        <!-- All Results Container -->
         <div id="resultContainer"></div>
 
     </div>
 
     <!-- Website Builder Modal -->
-    <div
-        class="modal-overlay"
-        id="websiteModal">
+    <div class="modal-overlay" id="websiteModal">
 
         <div class="modal-content">
 
-            <h3>
-                🌐 Create Your Own Website (Meyyee Sites)
-            </h3>
+            <h3>🌐 Create Your Own Website (Meyyee Sites)</h3>
 
             <div class="form-group">
-
-                <label>
-                    Website Title:
-                </label>
-
+                <label>Website Title:</label>
                 <input
                     type="text"
                     id="siteTitleInput"
                     placeholder="e.g., My Personal Site">
-
             </div>
 
             <div class="form-group">
-
-                <label>
-                    Website Content / Description:
-                </label>
-
+                <label>Website Content / Description:</label>
                 <textarea
                     id="siteContentInput"
-                    placeholder="Write details about your website here...">
-                </textarea>
-
+                    placeholder="Write details about your website here..."></textarea>
             </div>
 
             <div class="form-group">
-
-                <label>
-                    Theme Background Color:
-                </label>
+                <label>Theme Background Color:</label>
 
                 <select id="siteBgColor">
-
-                    <option value="#f8fafc">
-                        Light Minimal
-                    </option>
-
-                    <option value="#dbeafe">
-                        Ocean Blue
-                    </option>
-
-                    <option value="#fef3c7">
-                        Golden Palm
-                    </option>
-
-                    <option value="#f3e8ff">
-                        Royal Purple
-                    </option>
-
+                    <option value="#f8fafc">Light Minimal</option>
+                    <option value="#dbeafe">Ocean Blue</option>
+                    <option value="#fef3c7">Golden Palm</option>
+                    <option value="#f3e8ff">Royal Purple</option>
                 </select>
-
             </div>
 
             <div class="modal-actions">
-
                 <button
                     class="btn-secondary"
                     onclick="closeWebsiteBuilder()">
@@ -688,220 +553,131 @@
                     onclick="generateUserWebsite()">
                     Create My Website
                 </button>
-
             </div>
 
         </div>
-
     </div>
 
-    <!-- Main JavaScript -->
+    <!-- Main JavaScript Logic -->
     <script>
 
-        /* ================================
-           INTRO ANIMATION
-        ================================= */
-
-        window.onload = function () {
+        // Intro Animation Trigger
+        window.onload = function() {
 
             setTimeout(() => {
-
-                const intro =
-                    document.getElementById(
-                        'intro-animation'
-                    );
-
-                if (intro) {
-                    intro.classList.add('animate');
-                }
-
+                document
+                    .getElementById('intro-animation')
+                    .classList.add('animate');
             }, 200);
 
             setTimeout(() => {
-
                 closeIntro();
-
             }, 3500);
-
         };
 
 
         function closeIntro() {
 
-            const intro =
-                document.getElementById(
-                    'intro-animation'
-                );
+            const intro = document.getElementById('intro-animation');
 
             if (intro) {
 
                 intro.style.opacity = '0';
 
                 setTimeout(() => {
-
                     intro.style.display = 'none';
-
                 }, 500);
 
             }
-
         }
 
 
-        /* ================================
-           WEBSITE BUILDER
-        ================================= */
-
         function openWebsiteBuilder() {
-
-            document.getElementById(
-                'websiteModal'
-            ).style.display = 'flex';
-
+            document.getElementById('websiteModal').style.display = 'flex';
         }
 
 
         function closeWebsiteBuilder() {
-
-            document.getElementById(
-                'websiteModal'
-            ).style.display = 'none';
-
+            document.getElementById('websiteModal').style.display = 'none';
         }
 
 
         function generateUserWebsite() {
 
             const title =
-                document.getElementById(
-                    'siteTitleInput'
-                ).value.trim();
+                document.getElementById('siteTitleInput').value.trim();
 
             const content =
-                document.getElementById(
-                    'siteContentInput'
-                ).value.trim();
+                document.getElementById('siteContentInput').value.trim();
 
             const bgColor =
-                document.getElementById(
-                    'siteBgColor'
-                ).value;
+                document.getElementById('siteBgColor').value;
 
             const resultContainer =
-                document.getElementById(
-                    'resultContainer'
-                );
+                document.getElementById('resultContainer');
 
 
             if (title === "" || content === "") {
 
-                alert(
-                    "Please fill in both the title and content!"
-                );
+                alert("Please fill in both the title and content!");
 
                 return;
-
             }
 
 
-            document.body.classList.add(
-                'searched'
-            );
+            document.body.classList.add('searched');
 
-
-            document.getElementById(
-                'welcomeSection'
-            ).style.display = 'none';
-
+            document.getElementById('welcomeSection').style.display = 'none';
 
             closeWebsiteBuilder();
 
 
             resultContainer.innerHTML = `
 
-                <div
-                    style="
-                        background:#e0f2fe;
-                        padding:12px;
-                        border-radius:8px;
-                        color:#0369a1;
-                        font-weight:bold;
-                        text-align:center;
-                        margin-bottom:10px;
-                    ">
-
-                    🎉 Your new website has been
-                    created successfully!
+                <div style="
+                    background: #e0f2fe;
+                    padding: 12px;
+                    border-radius: 8px;
+                    color: #0369a1;
+                    font-weight: bold;
+                    text-align: center;
+                    margin-bottom: 10px;
+                ">
+                    🎉 Your new website has been created successfully!
                     (Meyyee Sites Live)
-
                 </div>
-
 
                 <div
                     class="user-website-card"
                     style="
-                        background-color:${bgColor};
-                        border:2px solid #cbd5e1;
+                        background-color: ${bgColor};
+                        border: 2px solid #cbd5e1;
+                    "
+                >
+
+                    <h2>${title}</h2>
+
+                    <hr style="
+                        margin: 15px 0;
+                        border: 0;
+                        border-top: 1px solid rgba(0,0,0,0.1);
                     ">
 
-                    <h2>
-                        ${escapeHTML(title)}
-                    </h2>
+                    <p>${content.replace(/\n/g, '<br>')}</p>
 
-                    <hr
-                        style="
-                            margin:15px 0;
-                            border:0;
-                            border-top:
-                            1px solid rgba(0,0,0,0.1);
-                        "
-                    >
-
-                    <p>
-                        ${escapeHTML(content)
-                            .replace(/\n/g, '<br>')}
-                    </p>
-
-                    <div
-                        style="
-                            margin-top:20px;
-                            font-size:0.85rem;
-                            color:#64748b;
-                        ">
-
+                    <div style="
+                        margin-top: 20px;
+                        font-size: 0.85rem;
+                        color: #64748b;
+                    ">
                         Published via
-                        <strong>
-                            Meyyee Universal Truth Engine
-                        </strong>
-
+                        <strong>Meyyee Universal Truth Engine</strong>
                     </div>
 
                 </div>
-
             `;
-
         }
 
-
-        /* ================================
-           HTML SAFETY
-        ================================= */
-
-        function escapeHTML(text) {
-
-            const div =
-                document.createElement('div');
-
-            div.textContent = text;
-
-            return div.innerHTML;
-
-        }
-
-
-        /* ================================
-           VOICE SEARCH
-        ================================= */
 
         function startVoiceSearch() {
 
@@ -917,125 +693,75 @@
                 );
 
                 return;
-
             }
 
 
-            const recognition =
-                new SpeechRecognition();
+            const recognition = new SpeechRecognition();
+
+            recognition.lang = 'en-US';
 
 
-            recognition.lang = 'en-IN';
+            recognition.onstart = function() {
 
-            recognition.continuous = false;
-
-            recognition.interimResults = false;
-
-
-            recognition.onstart = function () {
-
-                document.getElementById(
-                    'userInput'
-                ).placeholder =
+                document.getElementById('userInput').placeholder =
                     "Listening... Speak now 🎙️";
-
             };
 
 
-            recognition.onresult = function (
-                event
-            ) {
+            recognition.onresult = function(event) {
 
                 const spokenText =
-                    event.results[0][0]
-                        .transcript;
+                    event.results[0][0].transcript;
 
+                document.getElementById('userInput').value =
+                    spokenText;
 
-                document.getElementById(
-                    'userInput'
-                ).value = spokenText;
-
-
-                document.getElementById(
-                    'userInput'
-                ).placeholder =
+                document.getElementById('userInput').placeholder =
                     "Search truth";
 
-
                 handleSearch();
-
             };
 
 
-            recognition.onerror = function () {
+            recognition.onerror = function() {
 
-                document.getElementById(
-                    'userInput'
-                ).placeholder =
+                document.getElementById('userInput').placeholder =
                     "Search truth";
 
                 alert(
                     "Could not hear voice, please try again."
                 );
-
-            };
-
-
-            recognition.onend = function () {
-
-                document.getElementById(
-                    'userInput'
-                ).placeholder =
-                    "Search truth";
-
             };
 
 
             recognition.start();
-
         }
 
 
-        /* ================================
-           SEARCH ENGINE
-        ================================= */
-
         function handleSearch() {
 
-            const input =
-                document.getElementById(
-                    'userInput'
-                );
-
             const query =
-                input.value.trim().toLowerCase();
+                document.getElementById('userInput')
+                    .value
+                    .trim()
+                    .toLowerCase();
+
 
             const resultContainer =
-                document.getElementById(
-                    'resultContainer'
-                );
+                document.getElementById('resultContainer');
 
 
-            document.body.classList.add(
-                'searched'
-            );
+            document.body.classList.add('searched');
 
 
             const welcomeSec =
-                document.getElementById(
-                    'welcomeSection'
-                );
+                document.getElementById('welcomeSection');
 
 
             if (welcomeSec) {
-
-                welcomeSec.style.display =
-                    'none';
-
+                welcomeSec.style.display = 'none';
             }
 
-
-            /* Empty Search */
 
             if (query === "") {
 
@@ -1044,35 +770,30 @@
                     <div
                         class="result-box"
                         style="
-                            text-align:center;
-                            background:#fff;
-                            border:1px solid #cbd5e1;
-                        ">
+                            text-align: center;
+                            background: #fff;
+                            border: 1px solid #cbd5e1;
+                        "
+                    >
 
-                        <strong>
-                            Search Result:
-                        </strong>
-
+                        <strong>Search Result:</strong>
                         (Empty search)
 
                         <br><br>
 
-                        <strong>
-                            Meyyee Engine:
-                        </strong>
-
+                        <strong>Meyyee Engine:</strong>
                         Please enter a search query.
 
                     </div>
-
                 `;
 
                 return;
-
             }
 
 
-            /* Thirukkural Search */
+            /* ================================
+               THIRUKKURAL RESULTS
+               ================================ */
 
             if (
                 query.includes("thirukkural") ||
@@ -1085,8 +806,7 @@
                     <div class="result-box">
 
                         <div class="board-title">
-                            📜 குறள் எண்: 1 -
-                            கடவுள் வாழ்த்து
+                            📜 குறள் எண்: 1 - கடவுள் வாழ்த்து
                         </div>
 
                         <div class="kural-lines">
@@ -1098,13 +818,9 @@
 
                         <div class="meaning-box">
 
-                            <strong>
-                                தெளிவுரை:
-                            </strong>
+                            <strong>தெளிவுரை:</strong>
 
-                            அகரத்தை முதன்மையாக கொண்டுள்ள
-                            எழுத்துமுறை அனைத்திற்கும்
-                            ஆதி பகவன் முதன்மையானவன்.
+                            அகரத்தை முதன்மையாக கொண்டுள்ள எழுத்துமுறை அனைத்திற்கும் சிவனின் சித்திரை எழுத்தே முதன்மை ஆனது.
 
                         </div>
 
@@ -1126,14 +842,9 @@
 
                         <div class="meaning-box">
 
-                            <strong>
-                                தெளிவுரை:
-                            </strong>
+                            <strong>தெளிவுரை:</strong>
 
-                            ஒருவர் கற்ற கல்வியின்
-                            பயன் உயர்ந்த அறிவுடைய
-                            இறைவனின் திருவடிகளை
-                            வணங்குவதில் உள்ளது.
+                            முருகனின் நல்ல பாதங்களை தொழாதவர் படித்ததனால் உண்டாகிய பயன்தான் என்னச் சொல். இங்கு வாலறிவன் என்பது முருகனை குறிக்கும்.
 
                         </div>
 
@@ -1155,14 +866,9 @@
 
                         <div class="meaning-box">
 
-                            <strong>
-                                தெளிவுரை:
-                            </strong>
+                            <strong>தெளிவுரை:</strong>
 
-                            மலரின் மேல் வீற்றிருக்கும்
-                            இறைவனின் திருவடிகளைச்
-                            சேர்ந்தவர்கள் இவ்வுலகில்
-                            நீண்ட காலம் வாழ்வார்கள்.
+                            பிரம்மனாகிய முருகனின் அடிகளை சேர்ந்தவர் தான் இந்த நிலத்தின் மீது நீண்ட காலம் வாழ்வார். இங்கு மலர்மிசை ஏகினான் என்பது தாமரை மலர் மீது வீற்றிருக்கும் பிரம்மாவை குறிக்கும் பிரம்மா என்றால் முருகனை குறிக்கும்.
 
                         </div>
 
@@ -1172,9 +878,6 @@
 
             }
 
-
-            /* Kural 1 */
-
             else if (query === "1") {
 
                 resultContainer.innerHTML = `
@@ -1182,8 +885,7 @@
                     <div class="result-box">
 
                         <div class="board-title">
-                            📜 குறள் எண்: 1 -
-                            கடவுள் வாழ்த்து
+                            📜 குறள் எண்: 1 - கடவுள் வாழ்த்து
                         </div>
 
                         <div class="kural-lines">
@@ -1195,14 +897,9 @@
 
                         <div class="meaning-box">
 
-                            <strong>
-                                தெளிவுரை:
-                            </strong>
+                            <strong>தெளிவுரை:</strong>
 
-                            அகரத்தை முதன்மையாகக்
-                            கொண்டுள்ள எழுத்துக்கள்
-                            அனைத்திற்கும் ஆதி பகவன்
-                            முதன்மையானவன்.
+                            அகரத்தை முதன்மையாக கொண்டுள்ள எழுத்துமுறை அனைத்திற்கும் சிவனின் சித்திரை எழுத்தே முதன்மை ஆனது.
 
                         </div>
 
@@ -1211,9 +908,6 @@
                 `;
 
             }
-
-
-            /* Kural 2 */
 
             else if (query === "2") {
 
@@ -1234,15 +928,9 @@
 
                         <div class="meaning-box">
 
-                            <strong>
-                                தெளிவுரை:
-                            </strong>
+                            <strong>தெளிவுரை:</strong>
 
-                            உயர்ந்த அறிவுடைய
-                            இறைவனின் திருவடிகளை
-                            வணங்காதவர்களுக்கு
-                            அவர்கள் கற்ற கல்வியால்
-                            என்ன பயன்?
+                            முருகனின் நல்ல பாதங்களை தொழாதவர் படித்ததனால் உண்டாகிய பயன்தான் என்னச் சொல். இங்கு வாலறிவன் என்பது முருகனை குறிக்கும்.
 
                         </div>
 
@@ -1251,9 +939,6 @@
                 `;
 
             }
-
-
-            /* Kural 3 */
 
             else if (query === "3") {
 
@@ -1274,14 +959,9 @@
 
                         <div class="meaning-box">
 
-                            <strong>
-                                தெளிவுரை:
-                            </strong>
+                            <strong>தெளிவுரை:</strong>
 
-                            மலரின் மேல் வீற்றிருக்கும்
-                            இறைவனின் திருவடிகளைச்
-                            சேர்ந்தவர்கள் இவ்வுலகில்
-                            நீண்ட காலம் வாழ்வார்கள்.
+                            பிரம்மனாகிய முருகனின் அடிகளை சேர்ந்தவர் தான் இந்த நிலத்தின் மீது நீண்ட காலம் வாழ்வார். இங்கு மலர்மிசை ஏகினான் என்பது தாமரை மலர் மீது வீற்றிருக்கும் பிரம்மாவை குறிக்கும் பிரம்மா என்றால் முருகனை குறிக்கும்.
 
                         </div>
 
@@ -1291,9 +971,6 @@
 
             }
 
-
-            /* Other Searches */
-
             else {
 
                 resultContainer.innerHTML = `
@@ -1301,53 +978,36 @@
                     <div
                         class="result-box"
                         style="
-                            text-align:center;
-                            background:#fff;
-                            border:1px solid #cbd5e1;
-                        ">
+                            text-align: center;
+                            background: #fff;
+                            border: 1px solid #cbd5e1;
+                        "
+                    >
 
-                        <strong>
-                            Search Result:
-                        </strong>
-
-                        "${escapeHTML(query)}"
+                        <strong>Search Result:</strong>
+                        "${query}"
 
                         <br><br>
 
-                        <strong>
-                            Meyyee Engine:
-                        </strong>
-
-                        Searching for your
-                        Universal Truth...
+                        <strong>Meyyee Engine:</strong>
+                        Searching for your Universal Truth...
 
                     </div>
 
                 `;
-
             }
-
         }
 
 
-        /* ================================
-           ENTER KEY SEARCH
-        ================================= */
-
         document
             .getElementById('userInput')
-            .addEventListener(
-                'keypress',
-                function (event) {
+            .addEventListener("keypress", function(event) {
 
-                    if (event.key === "Enter") {
-
-                        handleSearch();
-
-                    }
-
+                if (event.key === "Enter") {
+                    handleSearch();
                 }
-            );
+
+            });
 
     </script>
 
