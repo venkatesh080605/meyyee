@@ -17,6 +17,11 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        html {
+            width: 100%;
+            min-height: 100%;
+        }
+
         body {
             background-color: #ffffff;
             color: #111827;
@@ -25,6 +30,7 @@
             align-items: center;
             justify-content: flex-start;
             min-height: 100vh;
+            width: 100%;
             overflow-x: hidden;
             position: relative;
             padding: 40px 15px;
@@ -102,7 +108,6 @@
             width: 100%;
             transition: all 0.4s ease;
             margin-top: 5vh;
-            cursor: pointer;
         }
 
         body.searched .search-section {
@@ -115,7 +120,6 @@
             padding-bottom: 20px;
             width: 100%;
             max-width: 900px;
-            cursor: default;
         }
 
         h1 {
@@ -177,7 +181,6 @@
             margin-bottom: 30px;
             transition: all 0.3s ease;
             position: relative;
-            cursor: pointer;
         }
 
         body.searched .search-box {
@@ -195,7 +198,6 @@
             background: transparent;
             min-width: 0;
             padding-left: 10px;
-            cursor: text;
         }
 
         .mic-btn,
@@ -227,6 +229,7 @@
             flex-direction: column;
             align-items: center;
             transition: all 0.3s ease;
+            width: 100%;
         }
 
         .video-container {
@@ -600,46 +603,281 @@
         @media (max-width: 600px) {
 
             body {
-                padding: 70px 12px 30px;
+                width: 100%;
+                min-height: 100vh;
+                padding: 68px 12px 30px;
             }
 
             .top-nav {
                 top: 12px;
-                right: 12px;
-                left: 12px;
+                left: 10px;
+                right: 10px;
+
+                display: flex;
                 justify-content: flex-end;
+                align-items: center;
+
+                gap: 7px;
             }
 
             .nav-btn,
             .account-btn {
-                padding: 7px 11px;
-                font-size: 0.8rem;
+                padding: 7px 10px;
+                font-size: 0.76rem;
+                white-space: nowrap;
+            }
+
+            .container {
+                width: 100%;
+                max-width: 800px;
+                margin-top: 0;
+            }
+
+            /* HOME SEARCH */
+
+            .search-section {
+                width: 100%;
+                margin-top: 7vh;
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .search-section > div:first-child {
+                width: 100%;
+                text-align: center;
             }
 
             h1 {
-                font-size: 3rem;
+                font-size: clamp(2.5rem, 13vw, 3.8rem);
                 letter-spacing: 4px;
+                line-height: 1.1;
+                margin-bottom: 6px;
+                white-space: nowrap;
             }
 
-            body.searched h1 {
-                font-size: 1.5rem;
+            .subtitle {
+                font-size: 0.70rem;
+                letter-spacing: 1.5px;
+                margin-bottom: 27px;
             }
 
-            body.searched .search-section {
-                gap: 10px;
-            }
-
-            body.searched .search-box {
-                max-width: 100%;
-            }
+            /* SEARCH BOX */
 
             .search-box {
-                padding-left: 18px;
+                width: 100%;
+                max-width: 620px;
+                min-height: 52px;
+
+                padding: 7px 8px 7px 16px;
+
+                border-radius: 28px;
+                margin-bottom: 27px;
+            }
+
+            .search-input {
+                font-size: 16px;
+                padding-left: 3px;
+                min-width: 0;
+            }
+
+            .mic-btn,
+            .search-btn {
+                width: 38px;
+                height: 38px;
+                padding: 5px;
+                font-size: 1.08rem;
+            }
+
+            /* WELCOME */
+
+            #welcomeSection {
+                width: 100%;
+            }
+
+            .video-container {
+                width: 130px;
+                height: 130px;
+                max-width: 40vw;
+                max-height: 40vw;
+            }
+
+            .welcome-text {
+                font-size: 1.05rem;
+                letter-spacing: 1.5px;
+                margin-top: 5px;
+                margin-bottom: 15px;
+            }
+
+            /* RESULTS */
+
+            #resultContainer {
+                width: 100%;
+                max-width: 680px;
+                margin-top: 18px;
+                gap: 15px;
+            }
+
+            .result-box {
+                width: 100%;
+                padding: 18px 14px;
+                font-size: 0.95rem;
+                overflow-wrap: break-word;
+                word-break: normal;
+            }
+
+            .board-title {
+                font-size: 1.05rem;
+                line-height: 1.4;
+            }
+
+            .kural-lines {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+
+            .meaning-box {
+                font-size: 0.92rem;
+                line-height: 1.65;
+                padding: 10px;
+            }
+
+            .user-website-card {
+                width: 100%;
+                padding: 20px 14px;
+                overflow-wrap: break-word;
+            }
+
+            /* MODALS */
+
+            .modal-overlay {
+                padding: 12px;
             }
 
             .modal-content {
-                padding: 22px;
+                width: 100%;
+                max-width: 500px;
+                max-height: 90vh;
+                padding: 20px 16px;
             }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                font-size: 16px;
+            }
+
+            /* SEARCHED LAYOUT */
+
+            body.searched .search-section {
+                width: 100%;
+                max-width: 900px;
+
+                margin-top: 0;
+
+                display: flex;
+                flex-direction: row;
+
+                align-items: center;
+                justify-content: flex-start;
+
+                gap: 9px;
+                padding-bottom: 14px;
+            }
+
+            body.searched .search-section > div:first-child {
+                width: auto;
+                flex-shrink: 0;
+            }
+
+            body.searched h1 {
+                font-size: 1.35rem;
+                letter-spacing: 2px;
+                margin: 0;
+            }
+
+            body.searched .search-box {
+                flex: 1;
+                width: auto;
+                max-width: none;
+
+                min-height: 45px;
+
+                margin-bottom: 0;
+
+                padding: 5px 6px 5px 11px;
+            }
+
+            body.searched .search-input {
+                font-size: 15px;
+            }
+
+            body.searched .mic-btn,
+            body.searched .search-btn {
+                width: 34px;
+                height: 34px;
+                font-size: 0.98rem;
+            }
+
+        }
+
+        /* ================================
+           VERY SMALL PHONES
+        ================================= */
+
+        @media (max-width: 380px) {
+
+            body {
+                padding-left: 9px;
+                padding-right: 9px;
+            }
+
+            .top-nav {
+                left: 8px;
+                right: 8px;
+            }
+
+            .nav-btn,
+            .account-btn {
+                padding: 6px 8px;
+                font-size: 0.70rem;
+            }
+
+            h1 {
+                font-size: 2.4rem;
+                letter-spacing: 3px;
+            }
+
+            .subtitle {
+                font-size: 0.62rem;
+                letter-spacing: 1.2px;
+            }
+
+            .search-box {
+                min-height: 49px;
+                padding-left: 13px;
+            }
+
+            .mic-btn,
+            .search-btn {
+                width: 35px;
+                height: 35px;
+            }
+
+            .video-container {
+                width: 115px;
+                height: 115px;
+            }
+
+            body.searched h1 {
+                font-size: 1.18rem;
+            }
+
+            body.searched .search-section {
+                gap: 6px;
+            }
+
         }
 
     </style>
@@ -651,7 +889,7 @@
          INTRO ANIMATION
     =========================================== -->
 
-    <div id="intro-animation" onclick="closeIntro()">
+    <div id="intro-animation">
 
         <div class="anim-wrapper">
 
@@ -701,8 +939,7 @@
 
         <div
             class="search-section"
-            id="searchSection"
-            onclick="handleSearch()">
+            id="searchSection">
 
             <div>
 
@@ -718,22 +955,21 @@
 
 
             <div
-                class="search-box"
-                onclick="handleSearch()">
+                class="search-box">
 
                 <input
                     type="text"
                     id="userInput"
                     class="search-input"
                     placeholder="Search truth"
-                    onfocus="handleSearch()"
-                    onclick="event.stopPropagation(); handleSearch();"
+                    autocomplete="off"
                 >
 
 
                 <button
+                    type="button"
                     class="mic-btn"
-                    onclick="event.stopPropagation(); startVoiceSearch();"
+                    onclick="startVoiceSearch();"
                     title="Search by Voice">
 
                     🎤
@@ -742,8 +978,9 @@
 
 
                 <button
+                    type="button"
                     class="search-btn"
-                    onclick="event.stopPropagation(); handleSearch();"
+                    onclick="handleSearch();"
                     title="Search">
 
                     🔎
@@ -788,7 +1025,7 @@
 
         <!-- ==========================================
              RESULTS
-        =========================================== -->
+        ========================================== -->
 
         <div id="resultContainer"></div>
 
@@ -1086,9 +1323,9 @@
 
         /* ==========================================
            PAGE LOAD
-        =========================================== */
+        ========================================== */
 
-        window.onload = async function() {
+        window.addEventListener("load", async function() {
 
             setTimeout(() => {
 
@@ -1115,7 +1352,7 @@
 
 
             supabaseClient.auth.onAuthStateChange(
-                async function(event, session) {
+                function(event, session) {
 
                     currentUser =
                         session ? session.user : null;
@@ -1125,12 +1362,12 @@
                 }
             );
 
-        };
+        });
 
 
         /* ==========================================
            INTRO
-        =========================================== */
+        ========================================== */
 
         function closeIntro() {
 
@@ -1156,7 +1393,7 @@
 
         /* ==========================================
            CHECK USER
-        =========================================== */
+        ========================================== */
 
         async function checkUser() {
 
@@ -1197,7 +1434,7 @@
 
         /* ==========================================
            ACCOUNT BUTTON
-        =========================================== */
+        ========================================== */
 
         function updateAccountButton() {
 
@@ -1212,25 +1449,20 @@
             }
 
 
-            if (currentUser) {
+            /*
+             * Email is NOT shown on the main button.
+             * It stays as "Account".
+             */
 
-                button.innerHTML =
-                    "👤 " +
-                    (currentUser.email || "Account");
-
-            } else {
-
-                button.innerHTML =
-                    "👤 Account";
-
-            }
+            button.innerHTML =
+                "👤 Account";
 
         }
 
 
         /* ==========================================
            OPEN ACCOUNT
-        =========================================== */
+        ========================================== */
 
         function openAccountModal() {
 
@@ -1255,7 +1487,7 @@
 
         /* ==========================================
            ACCOUNT MODAL STATE
-        =========================================== */
+        ========================================== */
 
         function updateAccountModal() {
 
@@ -1302,7 +1534,7 @@
 
         /* ==========================================
            LOGIN TAB
-        =========================================== */
+        ========================================== */
 
         function showLogin() {
 
@@ -1329,6 +1561,14 @@
             ).onclick = loginUser;
 
 
+            document.getElementById(
+                'authPassword'
+            ).setAttribute(
+                "autocomplete",
+                "current-password"
+            );
+
+
             clearAuthMessage();
 
         }
@@ -1336,7 +1576,7 @@
 
         /* ==========================================
            SIGNUP TAB
-        =========================================== */
+        ========================================== */
 
         function showSignup() {
 
@@ -1363,6 +1603,14 @@
             ).onclick = signupUser;
 
 
+            document.getElementById(
+                'authPassword'
+            ).setAttribute(
+                "autocomplete",
+                "new-password"
+            );
+
+
             clearAuthMessage();
 
         }
@@ -1370,7 +1618,7 @@
 
         /* ==========================================
            AUTH MESSAGE
-        =========================================== */
+        ========================================== */
 
         function showAuthMessage(
             message,
@@ -1409,7 +1657,7 @@
 
         /* ==========================================
            SIGN UP
-        =========================================== */
+        ========================================== */
 
         async function signupUser() {
 
@@ -1471,7 +1719,12 @@
 
                         email: email,
 
-                        password: password
+                        password: password,
+
+                        options: {
+                            emailRedirectTo:
+                                "https://meyyee.site"
+                        }
 
                     });
 
@@ -1522,8 +1775,17 @@
 
                 button.disabled = false;
 
-                button.textContent =
-                    "Create Account";
+                if (authMode === "signup") {
+
+                    button.textContent =
+                        "Create Account";
+
+                } else {
+
+                    button.textContent =
+                        "Login";
+
+                }
 
             }
 
@@ -1532,7 +1794,7 @@
 
         /* ==========================================
            LOGIN
-        =========================================== */
+        ========================================== */
 
         async function loginUser() {
 
@@ -1643,7 +1905,7 @@
 
         /* ==========================================
            LOGOUT
-        =========================================== */
+        ========================================== */
 
         async function logoutUser() {
 
@@ -1699,7 +1961,7 @@
 
         /* ==========================================
            WEBSITE BUILDER
-        =========================================== */
+        ========================================== */
 
         function openWebsiteBuilder() {
 
@@ -1734,7 +1996,7 @@
 
         /* ==========================================
            HTML SECURITY
-        =========================================== */
+        ========================================== */
 
         function escapeHTML(text) {
 
@@ -1750,7 +2012,7 @@
 
         /* ==========================================
            CREATE WEBSITE
-        =========================================== */
+        ========================================== */
 
         function generateUserWebsite() {
 
@@ -1900,7 +2162,7 @@
 
         /* ==========================================
            VOICE SEARCH
-        =========================================== */
+        ========================================== */
 
         function startVoiceSearch() {
 
@@ -1987,7 +2249,7 @@
 
         /* ==========================================
            SEARCH ENGINE
-        =========================================== */
+        ========================================== */
 
         function handleSearch() {
 
@@ -2344,15 +2606,17 @@
 
         /* ==========================================
            ENTER KEY SEARCH
-        =========================================== */
+        ========================================== */
 
         document
             .getElementById('userInput')
             .addEventListener(
-                "keypress",
+                "keydown",
                 function(event) {
 
                     if (event.key === "Enter") {
+
+                        event.preventDefault();
 
                         handleSearch();
 
@@ -2364,7 +2628,7 @@
 
         /* ==========================================
            CLOSE MODALS WHEN CLICKING OUTSIDE
-        =========================================== */
+        ========================================== */
 
         document
             .getElementById('websiteModal')
