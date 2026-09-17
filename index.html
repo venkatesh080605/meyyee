@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     >
 
     <title>Meyyee - Universal Truth Engine</title>
@@ -20,7 +21,12 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family:
+                'Segoe UI',
+                Tahoma,
+                Geneva,
+                Verdana,
+                sans-serif;
         }
 
 
@@ -261,48 +267,61 @@
 
 
         /* ==========================================
-           EXACT MEYYEE CLOUD SEARCH
+           MEYYEE CLOUD SEARCH
+           
+           IMPORTANT:
+           ORIGINAL 620 x 100 SHAPE IS PRESERVED.
+           Only the container is made responsive.
         ========================================== */
 
         .search-box {
 
             position: relative;
 
-            width: 100%;
+            width: min(92vw, 760px);
 
-            max-width: 620px;
+            /*
+             * SAME RATIO AS ORIGINAL SVG:
+             * 620 / 100 = 6.2
+             *
+             * This prevents the cloud from becoming
+             * vertically or horizontally distorted.
+             */
+            aspect-ratio: 620 / 100;
 
-            height: 100px;
+            height: auto;
 
             margin-bottom: 30px;
+
+            flex-shrink: 0;
 
             transition: all 0.3s ease;
         }
 
 
-        body.searched .search-box {
-
-            max-width: 500px;
-
-            height: 70px;
-
-            margin-bottom: 0;
-        }
-
+        /* ==========================================
+           ORIGINAL CLOUD SVG
+           DO NOT CHANGE THE PATH
+        ========================================== */
 
         .cloud-outline {
 
             position: absolute;
 
-            left: 0;
-            top: 0;
+            inset: 0;
 
             width: 100%;
             height: 100%;
 
+            display: block;
+
             pointer-events: none;
         }
 
+
+        /* ==========================================
+           SEARCH INPUT
+        ========================================== */
 
         .search-input {
 
@@ -312,11 +331,11 @@
 
             left: 12%;
 
-            top: 25px;
+            top: 25%;
 
             width: 76%;
 
-            height: 50px;
+            height: 50%;
 
             border: none;
 
@@ -326,11 +345,17 @@
 
             text-align: center;
 
-            font-size: 1.05rem;
+            font-size: clamp(
+                14px,
+                1.7vw,
+                20px
+            );
 
             color: #1e293b;
 
             min-width: 0;
+
+            padding: 0 8px;
         }
 
 
@@ -341,6 +366,10 @@
             opacity: 1;
         }
 
+
+        /* ==========================================
+           SEARCH BUTTONS
+        ========================================== */
 
         .mic-btn,
         .search-btn {
@@ -355,67 +384,90 @@
 
             outline: none;
 
-            font-size: 1.25rem;
-
             cursor: pointer;
 
-            width: 40px;
+            width: clamp(
+                34px,
+                5vw,
+                52px
+            );
 
-            height: 40px;
+            height: clamp(
+                34px,
+                5vw,
+                52px
+            );
 
-            display: inline-flex;
+            display: flex;
 
             align-items: center;
 
             justify-content: center;
 
-            transition: transform 0.2s;
+            font-size: clamp(
+                17px,
+                2vw,
+                27px
+            );
+
+            transition:
+                transform 0.2s ease;
         }
 
 
         .mic-btn {
 
-            left: 10%;
+            left: 7%;
 
-            top: 30px;
+            top: 25%;
         }
 
 
         .search-btn {
 
-            right: 10%;
+            right: 7%;
 
-            top: 30px;
+            top: 25%;
         }
 
 
         .mic-btn:hover,
         .search-btn:hover {
 
-            transform: scale(1.15);
+            transform: scale(1.12);
+        }
+
+
+        /* ==========================================
+           SEARCHED STATE
+        ========================================== */
+
+        body.searched .search-box {
+
+            width: min(78vw, 700px);
+
+            margin-bottom: 0;
         }
 
 
         body.searched .search-input {
 
-            top: 15px;
-
-            font-size: 0.95rem;
-
-            height: 40px;
+            font-size: clamp(
+                13px,
+                1.5vw,
+                18px
+            );
         }
 
 
         body.searched .mic-btn,
         body.searched .search-btn {
 
-            top: 15px;
-
-            width: 35px;
-
-            height: 35px;
-
-            font-size: 1rem;
+            font-size: clamp(
+                15px,
+                1.7vw,
+                22px
+            );
         }
 
 
@@ -549,7 +601,12 @@
             opacity: 0;
 
             transition:
-                transform 3s cubic-bezier(0.1, 0.9, 0.2, 1),
+                transform 3s cubic-bezier(
+                    0.1,
+                    0.9,
+                    0.2,
+                    1
+                ),
                 opacity 1s ease;
         }
 
@@ -704,7 +761,8 @@
             text-align: left;
 
             box-shadow:
-                0 15px 35px rgba(0,0,0,0.2);
+                0 15px 35px
+                rgba(0,0,0,0.2);
 
             max-height: 90vh;
 
@@ -998,7 +1056,12 @@
 
             line-height: 1.7;
 
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(
+                255,
+                255,
+                255,
+                0.4
+            );
 
             padding: 12px;
 
@@ -1021,6 +1084,24 @@
             text-align: center;
 
             margin-top: 15px;
+        }
+
+
+        /* ==========================================
+           TABLET
+        ========================================== */
+
+        @media (min-width: 601px)
+        and (max-width: 1024px) {
+
+            .search-box {
+
+                width: min(
+                    92vw,
+                    720px
+                );
+            }
+
         }
 
 
@@ -1119,15 +1200,21 @@
             }
 
 
-            /* MOBILE CLOUD */
+            /* ==================================
+               MOBILE CLOUD
+               
+               SAME 620:100 RATIO
+               ================================== */
 
             .search-box {
 
-                width: 100%;
+                width: 94vw;
 
-                max-width: 620px;
+                max-width: 760px;
 
-                height: 82px;
+                aspect-ratio: 620 / 100;
+
+                height: auto;
 
                 margin-bottom: 25px;
             }
@@ -1135,43 +1222,42 @@
 
             .search-input {
 
-                top: 20px;
+                left: 14%;
 
-                left: 12%;
+                top: 24%;
 
-                width: 76%;
+                width: 72%;
 
-                height: 42px;
+                height: 52%;
 
                 font-size: 16px;
+
+                padding: 0 4px;
+            }
+
+
+            .mic-btn,
+            .search-btn {
+
+                width: 38px;
+
+                height: 38px;
+
+                top: 24%;
+
+                font-size: 17px;
             }
 
 
             .mic-btn {
 
-                left: 9%;
-
-                top: 24px;
-
-                width: 35px;
-
-                height: 35px;
-
-                font-size: 1rem;
+                left: 6%;
             }
 
 
             .search-btn {
 
-                right: 9%;
-
-                top: 24px;
-
-                width: 35px;
-
-                height: 35px;
-
-                font-size: 1rem;
+                right: 6%;
             }
 
 
@@ -1220,6 +1306,8 @@
                 font-size: 0.95rem;
 
                 overflow-wrap: break-word;
+
+                word-break: normal;
             }
 
 
@@ -1289,7 +1377,9 @@
             }
 
 
-            /* SEARCHED MOBILE */
+            /* ==================================
+               SEARCHED MOBILE
+            ================================== */
 
             body.searched .search-section {
 
@@ -1313,7 +1403,8 @@
             }
 
 
-            body.searched .search-section > div:first-child {
+            body.searched
+            .search-section > div:first-child {
 
                 width: auto;
 
@@ -1339,26 +1430,30 @@
 
                 max-width: none;
 
-                height: 60px;
+                aspect-ratio: 620 / 100;
+
+                height: auto;
 
                 margin-bottom: 0;
+
+                min-width: 0;
             }
 
 
             body.searched .search-input {
 
-                top: 10px;
+                top: 24%;
 
                 font-size: 14px;
 
-                height: 38px;
+                height: 52%;
             }
 
 
             body.searched .mic-btn,
             body.searched .search-btn {
 
-                top: 14px;
+                top: 24%;
 
                 width: 30px;
 
@@ -1419,7 +1514,28 @@
 
             .search-box {
 
-                height: 76px;
+                width: 96vw;
+
+                aspect-ratio: 620 / 100;
+
+                height: auto;
+            }
+
+
+            .search-input {
+
+                font-size: 15px;
+            }
+
+
+            .mic-btn,
+            .search-btn {
+
+                width: 34px;
+
+                height: 34px;
+
+                font-size: 15px;
             }
 
 
@@ -1434,6 +1550,46 @@
             body.searched h1 {
 
                 font-size: 1.12rem;
+            }
+
+        }
+
+
+        /* ==========================================
+           LARGE DESKTOP
+        ========================================== */
+
+        @media (min-width: 1440px) {
+
+            .search-box {
+
+                width: min(
+                    75vw,
+                    900px
+                );
+            }
+
+        }
+
+
+        /* ==========================================
+           LARGE TV
+        ========================================== */
+
+        @media (min-width: 2000px) {
+
+            .search-box {
+
+                width: min(
+                    70vw,
+                    1100px
+                );
+            }
+
+
+            h1 {
+
+                font-size: 5rem;
             }
 
         }
@@ -1548,12 +1704,17 @@
             <div class="search-box">
 
 
-                <!-- EXACT CLOUD SHAPE -->
+                <!-- =================================
+                     ORIGINAL MEYYEE CLOUD SHAPE
+
+                     THIS PATH IS KEPT EXACTLY
+                     AS PROVIDED BY YOU.
+                ================================== -->
 
                 <svg
                     class="cloud-outline"
                     viewBox="0 0 620 100"
-                    preserveAspectRatio="none"
+                    preserveAspectRatio="xMidYMid meet"
                     aria-hidden="true">
 
                     <defs>
@@ -1590,6 +1751,11 @@
                     </defs>
 
 
+                    <!--
+                         ORIGINAL PATH
+                         DO NOT CHANGE
+                    -->
+
                     <path
                         d="
                          M 38 49
@@ -1620,7 +1786,11 @@
 
                         stroke="url(#cloudGradient)"
 
-                        stroke-width="3"/>
+                        stroke-width="3"
+
+                        stroke-linejoin="round"
+
+                        stroke-linecap="round"/>
 
                 </svg>
 
@@ -2038,7 +2208,6 @@
 
                 await checkUser();
 
-
             }
         );
 
@@ -2131,6 +2300,26 @@
 
 
         /* ==========================================
+           CHECK GUEST
+        ========================================== */
+
+        function isGuestUser(user) {
+
+            if (!user) {
+                return false;
+            }
+
+
+            return (
+                user.is_anonymous === true ||
+                user.app_metadata?.provider ===
+                    "anonymous"
+            );
+
+        }
+
+
+        /* ==========================================
            ACCOUNT UI
         ========================================== */
 
@@ -2199,13 +2388,7 @@
             }
 
 
-            const isGuest =
-                currentUser.is_anonymous === true ||
-                currentUser.app_metadata?.provider ===
-                    "anonymous";
-
-
-            if (isGuest) {
+            if (isGuestUser(currentUser)) {
 
                 accountType.textContent =
                     "👤 Guest Account";
@@ -2263,60 +2446,70 @@
 
         async function continueWithGoogle() {
 
+            const button =
+                document.getElementById(
+                    "googleLoginButton"
+                );
+
+
             try {
+
+                if (button) {
+
+                    button.disabled = true;
+
+                    button.textContent =
+                        "Connecting...";
+                }
 
 
                 /*
-                   If already Guest,
-                   connect Guest account to Google.
-                */
+                 * If current account is Guest,
+                 * try to link that guest account
+                 * with Google.
+                 */
 
-                if (currentUser) {
+                if (
+                    currentUser &&
+                    isGuestUser(currentUser)
+                ) {
 
-                    const isGuest =
-                        currentUser.is_anonymous === true ||
-                        currentUser.app_metadata?.provider ===
-                            "anonymous";
+                    const {
+                        error
+                    } =
+                        await supabaseClient.auth
+                            .linkIdentity({
 
+                                provider: "google",
 
-                    if (isGuest) {
+                                options: {
 
-                        const {
-                            error
-                        } =
-                            await supabaseClient.auth
-                                .linkIdentity({
+                                    redirectTo:
+                                        window.location.origin
 
-                                    provider: "google",
+                                }
 
-                                    options: {
-
-                                        redirectTo:
-                                            window.location.origin
-
-                                    }
-
-                                });
+                            });
 
 
-                        if (!error) {
+                    if (!error) {
 
-                            return;
-
-                        }
-
-
-                        console.error(
-                            "Guest linking failed:",
-                            error
-                        );
+                        return;
 
                     }
+
+
+                    console.warn(
+                        "Guest linking unavailable:",
+                        error
+                    );
 
                 }
 
 
-                /* NORMAL GOOGLE LOGIN */
+                /*
+                 * Normal Google sign-in
+                 */
 
                 const {
                     error
@@ -2345,12 +2538,25 @@
 
             } catch (error) {
 
-                console.error(error);
+                console.error(
+                    "Google login error:",
+                    error
+                );
 
 
                 alert(
                     "Google login could not be started. Please try again."
                 );
+
+
+                if (button) {
+
+                    button.disabled = false;
+
+                    button.textContent =
+                        "🌐 Continue with Google";
+
+                }
 
             }
 
@@ -2363,30 +2569,37 @@
 
         async function continueAsGuest() {
 
+            const button =
+                document.getElementById(
+                    "guestLoginButton"
+                );
+
+
             try {
 
-
                 /*
-                   Already Guest?
-                   Keep same account.
-                */
+                 * Already Guest:
+                 * keep same guest account.
+                 */
 
-                if (currentUser) {
+                if (
+                    currentUser &&
+                    isGuestUser(currentUser)
+                ) {
 
-                    const isGuest =
-                        currentUser.is_anonymous === true ||
-                        currentUser.app_metadata?.provider ===
-                            "anonymous";
+                    closeAccountModal();
+
+                    return;
+
+                }
 
 
-                    if (isGuest) {
+                if (button) {
 
-                        closeAccountModal();
+                    button.disabled = true;
 
-                        return;
-
-                    }
-
+                    button.textContent =
+                        "Creating Guest Account...";
                 }
 
 
@@ -2406,7 +2619,7 @@
 
 
                 currentUser =
-                    data.user;
+                    data.user || null;
 
 
                 updateAccountUI();
@@ -2426,6 +2639,16 @@
                 alert(
                     "Guest account could not be created. Please make sure Anonymous Sign-ins are enabled in Supabase."
                 );
+
+
+                if (button) {
+
+                    button.disabled = false;
+
+                    button.textContent =
+                        "👤 Continue as Guest";
+
+                }
 
             }
 
@@ -2465,7 +2688,10 @@
 
             } catch (error) {
 
-                console.error(error);
+                console.error(
+                    "Logout error:",
+                    error
+                );
 
 
                 alert(
@@ -2483,11 +2709,9 @@
 
         function openWebsiteBuilder() {
 
-
             /*
-              Login இல்லாமல் Create Website
-              click செய்தால் Account popup.
-            */
+             * Login / Guest account required.
+             */
 
             if (!currentUser) {
 
@@ -2537,7 +2761,6 @@
         ========================================== */
 
         function generateUserWebsite() {
-
 
             if (!currentUser) {
 
@@ -2707,13 +2930,16 @@
                 new SpeechRecognition();
 
 
-            recognition.lang = "en-IN";
+            recognition.lang =
+                "en-IN";
 
 
-            recognition.interimResults = false;
+            recognition.interimResults =
+                false;
 
 
-            recognition.maxAlternatives = 1;
+            recognition.maxAlternatives =
+                1;
 
 
             recognition.onstart =
@@ -2768,6 +2994,25 @@
                 };
 
 
+            recognition.onend =
+                function() {
+
+                    const input =
+                        document.getElementById(
+                            "userInput"
+                        );
+
+
+                    if (input) {
+
+                        input.placeholder =
+                            "Search truth";
+
+                    }
+
+                };
+
+
             recognition.start();
 
         }
@@ -2779,12 +3024,21 @@
 
         function handleSearch() {
 
-            const query =
+            const input =
                 document.getElementById(
                     "userInput"
-                ).value
-                .trim()
-                .toLowerCase();
+                );
+
+
+            if (!input) {
+                return;
+            }
+
+
+            const query =
+                input.value
+                    .trim()
+                    .toLowerCase();
 
 
             const resultContainer =
@@ -2813,10 +3067,8 @@
 
 
             /*
-               Empty search:
-               Search button / Enter மட்டும்
-               action எடுத்தால் தான் இது வரும்.
-            */
+             * Empty search.
+             */
 
             if (query === "") {
 
@@ -2855,7 +3107,6 @@
                 query.includes("kural") ||
                 query.includes("search truth")
             ) {
-
 
                 resultContainer.innerHTML = `
 
@@ -3194,24 +3445,6 @@
                         event.target === this
                     ) {
 
-                        closeWebsiteBuilder();
-
-                    }
-
-                }
-            );
-
-
-        document
-            .getElementById("accountModal")
-            .addEventListener(
-                "click",
-                function(event) {
-
-                    if (
-                        event.target === this
-                    ) {
-
                         closeAccountModal();
 
                     }
@@ -3222,4 +3455,5 @@
     </script>
 
 </body>
+
 </html>
