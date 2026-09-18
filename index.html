@@ -32,21 +32,15 @@
 
 
         body {
-
             background-color: #ffffff;
-
             color: #111827;
 
             display: flex;
-
             flex-direction: column;
-
             align-items: center;
-
             justify-content: flex-start;
 
             min-height: 100vh;
-
             width: 100%;
 
             overflow-x: hidden;
@@ -60,7 +54,7 @@
 
 
         /* ==========================================
-           TOP RIGHT NAVIGATION
+           TOP NAVIGATION
         ========================================== */
 
         .top-nav {
@@ -68,7 +62,6 @@
             position: absolute;
 
             top: 15px;
-
             right: 25px;
 
             display: flex;
@@ -130,8 +123,6 @@
             font-weight: 600;
 
             white-space: nowrap;
-
-            transition: all 0.2s;
         }
 
 
@@ -159,7 +150,7 @@
 
             width: 100%;
 
-            max-width: 900px;
+            max-width: 800px;
 
             transition: all 0.4s ease;
 
@@ -208,10 +199,6 @@
             max-width: 900px;
         }
 
-
-        /* ==========================================
-           MEYYEE TITLE
-        ========================================== */
 
         h1 {
 
@@ -263,6 +250,8 @@
             margin-bottom: 35px;
 
             text-transform: uppercase;
+
+            transition: opacity 0.3s;
         }
 
 
@@ -273,26 +262,20 @@
 
 
         /* ==========================================
-           MEYYEE LANDSCAPE CLOUD SEARCH
-           
-           IMPORTANT:
-           Cloud keeps 620:100 ratio.
-           This prevents shape distortion.
+           MEYYEE CLOUD SEARCH
         ========================================== */
 
         .search-box {
 
             position: relative;
 
-            width: min(94vw, 760px);
+            width: 100%;
 
-            aspect-ratio: 620 / 100;
+            max-width: 620px;
 
-            height: auto;
+            height: 100px;
 
             margin-bottom: 30px;
-
-            flex-shrink: 0;
 
             transition: all 0.3s ease;
         }
@@ -300,43 +283,27 @@
 
         body.searched .search-box {
 
-            width: min(58vw, 500px);
-
             max-width: 500px;
 
-            aspect-ratio: 620 / 100;
-
-            height: auto;
+            height: 70px;
 
             margin-bottom: 0;
         }
 
-
-        /* ==========================================
-           CLOUD OUTLINE
-        ========================================== */
 
         .cloud-outline {
 
             position: absolute;
 
             left: 0;
-
             top: 0;
 
             width: 100%;
-
             height: 100%;
-
-            display: block;
 
             pointer-events: none;
         }
 
-
-        /* ==========================================
-           SEARCH INPUT
-        ========================================== */
 
         .search-input {
 
@@ -344,13 +311,13 @@
 
             z-index: 2;
 
-            left: 14%;
+            left: 12%;
 
-            top: 25%;
+            top: 25px;
 
-            width: 72%;
+            width: 76%;
 
-            height: 50%;
+            height: 50px;
 
             border: none;
 
@@ -375,10 +342,6 @@
             opacity: 1;
         }
 
-
-        /* ==========================================
-           MIC + SEARCH
-        ========================================== */
 
         .mic-btn,
         .search-btn {
@@ -413,17 +376,17 @@
 
         .mic-btn {
 
-            left: 6%;
+            left: 10%;
 
-            top: 30%;
+            top: 30px;
         }
 
 
         .search-btn {
 
-            right: 6%;
+            right: 10%;
 
-            top: 30%;
+            top: 30px;
         }
 
 
@@ -436,12 +399,18 @@
 
         body.searched .search-input {
 
+            top: 15px;
+
             font-size: 0.95rem;
+
+            height: 40px;
         }
 
 
         body.searched .mic-btn,
         body.searched .search-btn {
+
+            top: 15px;
 
             width: 35px;
 
@@ -526,11 +495,9 @@
             position: fixed;
 
             top: 0;
-
             left: 0;
 
             width: 100%;
-
             height: 100%;
 
             background-color: #ffffff;
@@ -554,7 +521,6 @@
             position: relative;
 
             width: 300px;
-
             height: 350px;
 
             display: flex;
@@ -572,7 +538,6 @@
             position: absolute;
 
             width: 150px;
-
             height: 150px;
 
             background-image:
@@ -593,7 +558,6 @@
         .piece-tl {
 
             top: 0;
-
             left: 0;
 
             background-position: 0 0;
@@ -607,7 +571,6 @@
         .piece-tr {
 
             top: 0;
-
             right: 0;
 
             background-position: -150px 0;
@@ -621,7 +584,6 @@
         .piece-bl {
 
             bottom: 50px;
-
             left: 0;
 
             background-position: 0 -150px;
@@ -635,7 +597,6 @@
         .piece-br {
 
             bottom: 50px;
-
             right: 0;
 
             background-position: -150px -150px;
@@ -702,7 +663,7 @@
 
 
         /* ==========================================
-           MODALS
+           MODAL
         ========================================== */
 
         .modal-overlay {
@@ -712,11 +673,9 @@
             position: fixed;
 
             top: 0;
-
             left: 0;
 
             width: 100%;
-
             height: 100%;
 
             background: rgba(0, 0, 0, 0.5);
@@ -872,7 +831,7 @@
 
             width: 100%;
 
-            height: 48px;
+            height: 50px;
 
             border-radius: 8px;
 
@@ -885,6 +844,14 @@
             margin-bottom: 12px;
 
             transition: 0.2s;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
         }
 
 
@@ -901,6 +868,8 @@
         .google-option:hover {
 
             background: #f8fafc;
+
+            border-color: #94a3b8;
         }
 
 
@@ -1067,40 +1036,6 @@
 
 
         /* ==========================================
-           TABLET / IPAD
-        ========================================== */
-
-        @media (min-width: 601px) and (max-width: 1100px) {
-
-            body {
-
-                padding-left: 20px;
-
-                padding-right: 20px;
-            }
-
-
-            .container {
-
-                max-width: 900px;
-            }
-
-
-            .search-box {
-
-                width: min(88vw, 720px);
-            }
-
-
-            .top-nav {
-
-                right: 20px;
-            }
-
-        }
-
-
-        /* ==========================================
            MOBILE
         ========================================== */
 
@@ -1118,8 +1053,6 @@
                     30px;
             }
 
-
-            /* TOP RIGHT */
 
             .top-nav {
 
@@ -1148,13 +1081,11 @@
 
                 width: 100%;
 
-                max-width: 900px;
+                max-width: 800px;
 
                 margin-top: 0;
             }
 
-
-            /* HOME SEARCH */
 
             .search-section {
 
@@ -1205,13 +1136,11 @@
 
             .search-box {
 
-                width: 94vw;
+                width: 100%;
 
-                max-width: 760px;
+                max-width: 620px;
 
-                aspect-ratio: 620 / 100;
-
-                height: auto;
+                height: 82px;
 
                 margin-bottom: 25px;
             }
@@ -1219,13 +1148,13 @@
 
             .search-input {
 
-                left: 14%;
+                top: 20px;
 
-                top: 25%;
+                left: 12%;
 
-                width: 72%;
+                width: 76%;
 
-                height: 50%;
+                height: 42px;
 
                 font-size: 16px;
             }
@@ -1233,9 +1162,9 @@
 
             .mic-btn {
 
-                left: 6%;
+                left: 9%;
 
-                top: 30%;
+                top: 24px;
 
                 width: 35px;
 
@@ -1247,9 +1176,9 @@
 
             .search-btn {
 
-                right: 6%;
+                right: 9%;
 
-                top: 30%;
+                top: 24px;
 
                 width: 35px;
 
@@ -1258,8 +1187,6 @@
                 font-size: 1rem;
             }
 
-
-            /* WELCOME */
 
             .video-container {
 
@@ -1282,8 +1209,6 @@
                 margin-bottom: 15px;
             }
 
-
-            /* RESULTS */
 
             #resultContainer {
 
@@ -1349,8 +1274,6 @@
             }
 
 
-            /* MODALS */
-
             .modal-overlay {
 
                 padding: 12px;
@@ -1381,8 +1304,6 @@
 
             /* ======================================
                SEARCHED MOBILE
-               
-               Keep cloud landscape shape.
             ====================================== */
 
             body.searched .search-section {
@@ -1395,13 +1316,13 @@
 
                 display: flex;
 
-                flex-direction: column;
+                flex-direction: row;
 
                 align-items: center;
 
-                justify-content: center;
+                justify-content: flex-start;
 
-                gap: 5px;
+                gap: 8px;
 
                 padding-bottom: 14px;
             }
@@ -1409,11 +1330,9 @@
 
             body.searched .search-section > div:first-child {
 
-                width: 100%;
+                width: auto;
 
                 flex-shrink: 0;
-
-                text-align: center;
             }
 
 
@@ -1423,42 +1342,40 @@
 
                 letter-spacing: 2px;
 
-                margin: 0 0 5px 0;
+                margin: 0;
             }
 
 
             body.searched .search-box {
 
-                width: 94vw;
+                flex: 1;
 
-                max-width: 760px;
+                width: auto;
 
-                aspect-ratio: 620 / 100;
+                max-width: none;
 
-                height: auto;
+                height: 60px;
 
                 margin-bottom: 0;
+
+                min-width: 0;
             }
 
 
             body.searched .search-input {
 
-                left: 14%;
-
-                top: 25%;
-
-                width: 72%;
-
-                height: 50%;
+                top: 10px;
 
                 font-size: 14px;
+
+                height: 38px;
             }
 
 
             body.searched .mic-btn,
             body.searched .search-btn {
 
-                top: 30%;
+                top: 14px;
 
                 width: 30px;
 
@@ -1519,18 +1436,7 @@
 
             .search-box {
 
-                width: 96vw;
-
-                aspect-ratio: 620 / 100;
-            }
-
-
-            .mic-btn,
-            .search-btn {
-
-                width: 32px;
-
-                height: 32px;
+                height: 76px;
             }
 
 
@@ -1545,42 +1451,6 @@
             body.searched h1 {
 
                 font-size: 1.12rem;
-            }
-
-        }
-
-
-        /* ==========================================
-           LARGE TV / WIDE SCREENS
-        ========================================== */
-
-        @media (min-width: 1600px) {
-
-            .container {
-
-                max-width: 1100px;
-            }
-
-
-            .search-box {
-
-                width: min(55vw, 900px);
-            }
-
-
-            h1 {
-
-                font-size: 4.8rem;
-
-                letter-spacing: 8px;
-            }
-
-
-            .subtitle {
-
-                font-size: 1rem;
-
-                letter-spacing: 3px;
             }
 
         }
@@ -1610,9 +1480,7 @@
             <div class="piece piece-br"></div>
 
             <div class="anim-title">
-
                 MEYYEE
-
             </div>
 
         </div>
@@ -1622,14 +1490,10 @@
 
     <!-- ==========================================
          TOP RIGHT
-         ACCOUNT
-         CREATE WEBSITE
     ========================================== -->
 
     <div class="top-nav">
 
-
-        <!-- ACCOUNT -->
 
         <button
             class="account-btn"
@@ -1640,9 +1504,6 @@
 
         </button>
 
-
-        <!-- CREATE WEBSITE
-             ACCOUNT KEELA -->
 
         <button
             class="nav-btn"
@@ -1666,7 +1527,7 @@
 
 
         <!-- ======================================
-             SEARCH SECTION
+             SEARCH
         ======================================= -->
 
         <div
@@ -1677,9 +1538,7 @@
             <div>
 
                 <h1>
-
                     MEYYEE
-
                 </h1>
 
 
@@ -1693,20 +1552,21 @@
 
 
             <!-- ==================================
-                 LANDSCAPE CLOUD SEARCH
+                 CLOUD SEARCH BOX
             =================================== -->
 
             <div class="search-box">
 
 
                 <!-- =================================
-                     MEYYEE LANDSCAPE CLOUD
+                     MEYYEE CLOUD
+                     CORRECTED CLOUD SHAPE
                 ================================== -->
 
                 <svg
                     class="cloud-outline"
                     viewBox="0 0 620 100"
-                    preserveAspectRatio="xMidYMid meet"
+                    preserveAspectRatio="none"
                     aria-hidden="true">
 
 
@@ -1717,145 +1577,66 @@
                             x1="0%"
                             y1="0%"
                             x2="100%"
-                            y2="0%"
-                        >
+                            y2="0%">
 
                             <stop
                                 offset="0%"
-                                stop-color="#ef4444"
-                            />
-
+                                stop-color="#ef4444"/>
 
                             <stop
                                 offset="25%"
-                                stop-color="#f59e0b"
-                            />
-
+                                stop-color="#f59e0b"/>
 
                             <stop
                                 offset="50%"
-                                stop-color="#2563eb"
-                            />
-
+                                stop-color="#2563eb"/>
 
                             <stop
                                 offset="75%"
-                                stop-color="#4f46e5"
-                            />
-
+                                stop-color="#4f46e5"/>
 
                             <stop
                                 offset="100%"
-                                stop-color="#7c3aed"
-                            />
+                                stop-color="#7c3aed"/>
 
                         </linearGradient>
 
                     </defs>
 
 
-                    <!--
-                    =================================
-                    ORIGINAL MEYYEE LANDSCAPE SHAPE
-
-                    LARGE ROUNDED CLOUD WAVES
-                    =================================
-                    -->
+                    <!-- =================================
+                         CLOUD SHAPE
+                    ================================== -->
 
                     <path
                         d="
-                        M 28 50
+                          M 35 50
 
-                        C 42 50,
-                          48 39,
-                          62 32
+                          C 48 48, 48 34, 70 31
+                          C 92 27, 108 39, 126 31
+                          C 145 22, 166 22, 184 31
+                          C 202 40, 215 24, 235 25
+                          C 255 26, 266 40, 284 31
+                          C 304 21, 326 22, 344 31
+                          C 363 40, 376 24, 397 25
+                          C 418 26, 430 40, 448 31
+                          C 467 22, 489 25, 505 33
+                          C 522 42, 535 30, 553 34
+                          C 572 38, 574 49, 587 50
 
-                        C 82 22,
-                          105 25,
-                          122 32
+                          C 574 51, 572 62, 553 66
+                          C 535 70, 522 58, 505 67
+                          C 489 75, 467 78, 448 69
+                          C 430 60, 418 74, 397 75
+                          C 376 76, 363 60, 344 69
+                          C 326 78, 304 79, 284 69
+                          C 266 60, 255 74, 235 75
+                          C 215 76, 202 60, 184 69
+                          C 166 78, 145 78, 126 69
+                          C 108 61, 92 73, 70 69
+                          C 48 66, 48 52, 35 50
 
-                        C 137 39,
-                          151 40,
-                          166 32
-
-                        C 184 22,
-                          207 20,
-                          225 28
-
-                        C 240 34,
-                          250 41,
-                          266 35
-
-                        C 285 27,
-                          305 19,
-                          325 27
-
-                        C 342 34,
-                          350 41,
-                          366 35
-
-                        C 383 27,
-                          406 20,
-                          425 28
-
-                        C 440 34,
-                          451 40,
-                          466 33
-
-                        C 483 25,
-                          507 22,
-                          528 32
-
-                        C 544 39,
-                          551 49,
-                          568 50
-
-
-                        C 551 51,
-                          544 61,
-                          528 68
-
-                        C 507 78,
-                          483 75,
-                          466 67
-
-                        C 451 60,
-                          440 66,
-                          425 72
-
-                        C 406 80,
-                          383 73,
-                          366 65
-
-                        C 350 59,
-                          342 66,
-                          325 73
-
-                        C 305 81,
-                          285 73,
-                          266 65
-
-                        C 250 59,
-                          240 66,
-                          225 72
-
-                        C 207 80,
-                          184 78,
-                          166 68
-
-                        C 151 60,
-                          137 61,
-                          122 68
-
-                        C 105 75,
-                          82 78,
-                          62 68
-
-                        C 48 61,
-                          42 50,
-                          28 50
-
-                        Z
+                          Z
                         "
 
                         fill="none"
@@ -1864,17 +1645,12 @@
 
                         stroke-width="3"
 
-                        stroke-linecap="round"
-
-                        stroke-linejoin="round"
                     />
 
                 </svg>
 
 
-                <!-- =================================
-                     MICROPHONE
-                ================================== -->
+                <!-- VOICE -->
 
                 <button
                     type="button"
@@ -1887,9 +1663,7 @@
                 </button>
 
 
-                <!-- =================================
-                     SEARCH INPUT
-                ================================== -->
+                <!-- SEARCH INPUT -->
 
                 <input
                     type="text"
@@ -1902,9 +1676,7 @@
                 >
 
 
-                <!-- =================================
-                     SEARCH BUTTON
-                ================================== -->
+                <!-- SEARCH -->
 
                 <button
                     type="button"
@@ -1939,8 +1711,7 @@
 
                     <source
                         src="myvideo.mp4.mp4"
-                        type="video/mp4"
-                    >
+                        type="video/mp4">
 
                     Your browser does not support
                     the video tag.
@@ -2005,8 +1776,7 @@
                 <input
                     type="text"
                     id="siteTitleInput"
-                    placeholder="e.g., My Personal Site"
-                >
+                    placeholder="e.g., My Personal Site">
 
             </div>
 
@@ -2019,8 +1789,7 @@
 
                 <textarea
                     id="siteContentInput"
-                    placeholder="Write details about your website here..."
-                ></textarea>
+                    placeholder="Write details about your website here..."></textarea>
 
             </div>
 
@@ -2056,7 +1825,6 @@
 
             <div class="modal-actions">
 
-
                 <button
                     class="btn-secondary"
                     onclick="closeWebsiteBuilder()">
@@ -2074,7 +1842,6 @@
 
                 </button>
 
-
             </div>
 
 
@@ -2086,6 +1853,7 @@
     <!-- ==========================================
          ACCOUNT MODAL
          GOOGLE + GUEST ONLY
+         NO PASSWORD
     ========================================== -->
 
     <div
@@ -2097,9 +1865,7 @@
 
 
             <h3>
-
                 👤 Meyyee Account
-
             </h3>
 
 
@@ -2130,7 +1896,11 @@
                     id="googleLoginButton"
                     onclick="continueWithGoogle()">
 
-                    🌐 Continue with Google
+                    <span style="font-size:20px;">
+                        G
+                    </span>
+
+                    Continue with Google
 
                 </button>
 
@@ -2172,21 +1942,17 @@
 
             <!-- ==================================
                  LOGGED IN
-            =================================== -->
+            ================================== -->
 
             <div
                 id="loggedInSection"
-                style="display:none;"
-            >
+                style="display:none;">
 
 
                 <div class="user-info">
 
-
                     <strong id="accountTypeDisplay">
-
                         Account
-
                     </strong>
 
 
@@ -2195,12 +1961,10 @@
 
                     <span id="userEmailDisplay"></span>
 
-
                 </div>
 
 
                 <div class="modal-actions">
-
 
                     <button
                         class="btn-secondary"
@@ -2218,7 +1982,6 @@
                         Logout
 
                     </button>
-
 
                 </div>
 
@@ -2305,6 +2068,7 @@
 
                 await checkUser();
 
+
             }
         );
 
@@ -2322,9 +2086,7 @@
 
 
             if (!intro) {
-
                 return;
-
             }
 
 
@@ -2377,6 +2139,10 @@
                     error
                 );
 
+                currentUser = null;
+
+                updateAccountUI();
+
             }
 
         }
@@ -2387,7 +2153,6 @@
         ========================================== */
 
         supabaseClient.auth.onAuthStateChange(
-
             function(event, session) {
 
                 currentUser =
@@ -2396,7 +2161,6 @@
                 updateAccountUI();
 
             }
-
         );
 
 
@@ -2407,15 +2171,14 @@
         function isGuestUser(user) {
 
             if (!user) {
-
                 return false;
-
             }
 
 
             return (
                 user.is_anonymous === true ||
-                user.app_metadata?.provider === "anonymous"
+                user.app_metadata?.provider ===
+                    "anonymous"
             );
 
         }
@@ -2452,7 +2215,6 @@
 
 
             if (!currentUser) {
-
 
                 if (loggedOut) {
 
@@ -2491,8 +2253,11 @@
             }
 
 
-            if (isGuestUser(currentUser)) {
+            const guest =
+                isGuestUser(currentUser);
 
+
+            if (guest) {
 
                 accountType.textContent =
                     "👤 Guest Account";
@@ -2501,9 +2266,7 @@
                 emailDisplay.textContent =
                     "You are using Meyyee as a guest.";
 
-
             } else {
-
 
                 accountType.textContent =
                     "🌐 Google Account";
@@ -2556,10 +2319,13 @@
 
 
                 /*
-                 * If current account is Guest,
-                 * connect that Guest account
-                 * to Google.
-                 */
+                   If current account is Guest,
+                   try to LINK the Guest account
+                   with Google.
+
+                   This helps preserve the same
+                   Supabase user/data.
+                */
 
                 if (
                     currentUser &&
@@ -2601,8 +2367,8 @@
 
 
                 /*
-                 * Normal Google login.
-                 */
+                   Normal Google login
+                */
 
                 const {
                     error
@@ -2631,7 +2397,10 @@
 
             } catch (error) {
 
-                console.error(error);
+                console.error(
+                    "Google login error:",
+                    error
+                );
 
 
                 alert(
@@ -2653,9 +2422,9 @@
 
 
                 /*
-                 * If already Guest,
-                 * keep same Guest account.
-                 */
+                   If already Guest,
+                   keep same account.
+                */
 
                 if (
                     currentUser &&
@@ -2668,6 +2437,10 @@
 
                 }
 
+
+                /*
+                   Create Anonymous Guest
+                */
 
                 const {
                     data,
@@ -2685,7 +2458,7 @@
 
 
                 currentUser =
-                    data.user;
+                    data.user || null;
 
 
                 updateAccountUI();
@@ -2744,7 +2517,10 @@
 
             } catch (error) {
 
-                console.error(error);
+                console.error(
+                    "Logout error:",
+                    error
+                );
 
 
                 alert(
@@ -2764,9 +2540,9 @@
 
 
             /*
-             * Login இல்லாமல் Create Website
-             * click செய்தால் Account popup.
-             */
+              Login இல்லாமல் Create Website
+              click செய்தால் Account popup.
+            */
 
             if (!currentUser) {
 
@@ -2783,10 +2559,6 @@
 
         }
 
-
-        /* ==========================================
-           CLOSE WEBSITE BUILDER
-        ========================================== */
 
         function closeWebsiteBuilder() {
 
@@ -2990,16 +2762,13 @@
                 new SpeechRecognition();
 
 
-            recognition.lang =
-                "en-IN";
+            recognition.lang = "en-IN";
 
 
-            recognition.interimResults =
-                false;
+            recognition.interimResults = false;
 
 
-            recognition.maxAlternatives =
-                1;
+            recognition.maxAlternatives = 1;
 
 
             recognition.onstart =
@@ -3098,9 +2867,11 @@
             }
 
 
-            /* ======================================
-               EMPTY SEARCH
-            ====================================== */
+            /*
+               Empty search:
+               Search button / Enter
+               action எடுத்தால் மட்டும்.
+            */
 
             if (query === "") {
 
@@ -3502,7 +3273,6 @@
 
                 }
             );
-
 
     </script>
 
