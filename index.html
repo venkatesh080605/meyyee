@@ -57,14 +57,12 @@
         ========================================== */
 
         .top-nav {
-
             position: absolute;
 
             top: 15px;
             right: 25px;
 
             display: flex;
-
             flex-direction: column;
 
             gap: 8px;
@@ -76,7 +74,6 @@
 
 
         .nav-btn {
-
             background: #f1f5f9;
 
             border: 1px solid #cbd5e1;
@@ -98,15 +95,12 @@
 
 
         .nav-btn:hover {
-
             background: #e2e8f0;
-
             border-color: #94a3b8;
         }
 
 
         .account-btn {
-
             background: #2563eb;
 
             color: white;
@@ -126,7 +120,6 @@
 
 
         .account-btn:hover {
-
             background: #1d4ed8;
         }
 
@@ -136,7 +129,6 @@
         ========================================== */
 
         .container {
-
             display: flex;
 
             flex-direction: column;
@@ -162,7 +154,6 @@
         ========================================== */
 
         .search-section {
-
             display: flex;
 
             flex-direction: column;
@@ -178,7 +169,6 @@
 
 
         body.searched .search-section {
-
             margin-top: 0;
 
             flex-direction: row;
@@ -200,7 +190,6 @@
 
 
         h1 {
-
             font-size: 3.8rem;
 
             letter-spacing: 6px;
@@ -229,7 +218,6 @@
 
 
         body.searched h1 {
-
             font-size: 2rem;
 
             letter-spacing: 3px;
@@ -239,7 +227,6 @@
 
 
         .subtitle {
-
             font-size: 0.9rem;
 
             letter-spacing: 2px;
@@ -255,7 +242,6 @@
 
 
         body.searched .subtitle {
-
             display: none;
         }
 
@@ -265,7 +251,6 @@
         ========================================== */
 
         .search-box {
-
             position: relative;
 
             width: 100%;
@@ -277,21 +262,27 @@
             margin-bottom: 30px;
 
             transition: all 0.3s ease;
+
+            flex-shrink: 0;
         }
 
 
         body.searched .search-box {
-
             max-width: 500px;
 
-            height: 70px;
+            height: 100px;
 
             margin-bottom: 0;
         }
 
 
-        .cloud-outline {
+        /*
+           IMPORTANT:
+           Only ONE cloud image.
+           Do NOT put SVG/path inside here.
+        */
 
+        .cloud-outline {
             position: absolute;
 
             left: 0;
@@ -300,14 +291,21 @@
             width: 100%;
             height: 100%;
 
+            display: block;
+
             pointer-events: none;
 
-            display: block;
+            z-index: 1;
+
+            object-fit: fill;
         }
 
 
-        .search-input {
+        /* ==========================================
+           SEARCH INPUT
+        ========================================== */
 
+        .search-input {
             position: absolute;
 
             z-index: 2;
@@ -333,20 +331,24 @@
             color: #1e293b;
 
             min-width: 0;
+
+            padding: 0 45px;
         }
 
 
         .search-input::placeholder {
-
             color: #64748b;
 
             opacity: 1;
         }
 
 
+        /* ==========================================
+           SEARCH BUTTONS
+        ========================================== */
+
         .mic-btn,
         .search-btn {
-
             position: absolute;
 
             z-index: 3;
@@ -376,7 +378,6 @@
 
 
         .mic-btn {
-
             left: 10%;
 
             top: 30px;
@@ -384,7 +385,6 @@
 
 
         .search-btn {
-
             right: 10%;
 
             top: 30px;
@@ -393,14 +393,12 @@
 
         .mic-btn:hover,
         .search-btn:hover {
-
             transform: scale(1.15);
         }
 
 
         body.searched .search-input {
-
-            top: 15px;
+            top: 25px;
 
             font-size: 0.95rem;
 
@@ -410,8 +408,7 @@
 
         body.searched .mic-btn,
         body.searched .search-btn {
-
-            top: 15px;
+            top: 30px;
 
             width: 35px;
 
@@ -426,7 +423,6 @@
         ========================================== */
 
         #welcomeSection {
-
             display: flex;
 
             flex-direction: column;
@@ -440,7 +436,6 @@
 
 
         .video-container {
-
             width: 150px;
 
             height: 150px;
@@ -458,7 +453,6 @@
 
 
         .video-container video {
-
             width: 100%;
 
             height: 100%;
@@ -472,7 +466,6 @@
 
 
         .welcome-text {
-
             font-size: 1.3rem;
 
             font-weight: bold;
@@ -492,7 +485,6 @@
         ========================================== */
 
         #intro-animation {
-
             position: fixed;
 
             top: 0;
@@ -518,7 +510,6 @@
 
 
         .anim-wrapper {
-
             position: relative;
 
             width: 300px;
@@ -535,7 +526,6 @@
 
 
         .piece {
-
             position: absolute;
 
             width: 150px;
@@ -557,7 +547,6 @@
 
 
         .piece-tl {
-
             top: 0;
             left: 0;
 
@@ -570,7 +559,6 @@
 
 
         .piece-tr {
-
             top: 0;
             right: 0;
 
@@ -583,7 +571,6 @@
 
 
         .piece-bl {
-
             bottom: 50px;
             left: 0;
 
@@ -596,7 +583,6 @@
 
 
         .piece-br {
-
             bottom: 50px;
             right: 0;
 
@@ -609,7 +595,6 @@
 
 
         .anim-title {
-
             position: absolute;
 
             bottom: -5px;
@@ -646,7 +631,6 @@
 
 
         #intro-animation.animate .piece {
-
             transform:
                 translate(0, 0)
                 rotate(0deg);
@@ -656,7 +640,6 @@
 
 
         #intro-animation.animate .anim-title {
-
             opacity: 1;
 
             transform: translateY(0);
@@ -668,7 +651,6 @@
         ========================================== */
 
         .modal-overlay {
-
             display: none;
 
             position: fixed;
@@ -692,7 +674,6 @@
 
 
         .modal-content {
-
             background: #ffffff;
 
             padding: 30px;
@@ -715,7 +696,6 @@
 
 
         .modal-content h3 {
-
             margin-bottom: 20px;
 
             color: #1e293b;
@@ -723,13 +703,11 @@
 
 
         .form-group {
-
             margin-bottom: 15px;
         }
 
 
         .form-group label {
-
             display: block;
 
             font-size: 0.9rem;
@@ -745,7 +723,6 @@
         .form-group input,
         .form-group textarea,
         .form-group select {
-
             width: 100%;
 
             padding: 10px;
@@ -761,7 +738,6 @@
 
 
         .form-group textarea {
-
             resize: vertical;
 
             height: 100px;
@@ -769,7 +745,6 @@
 
 
         .modal-actions {
-
             display: flex;
 
             justify-content: flex-end;
@@ -783,7 +758,6 @@
 
 
         .btn-primary {
-
             background: #2563eb;
 
             color: white;
@@ -801,13 +775,11 @@
 
 
         .btn-primary:hover {
-
             background: #1d4ed8;
         }
 
 
         .btn-secondary {
-
             background: #e2e8f0;
 
             color: #334155;
@@ -829,7 +801,6 @@
         ========================================== */
 
         .account-option {
-
             width: 100%;
 
             height: 48px;
@@ -849,7 +820,6 @@
 
 
         .google-option {
-
             background: #ffffff;
 
             color: #1e293b;
@@ -859,13 +829,11 @@
 
 
         .google-option:hover {
-
             background: #f8fafc;
         }
 
 
         .guest-option {
-
             background: #2563eb;
 
             color: #ffffff;
@@ -875,13 +843,11 @@
 
 
         .guest-option:hover {
-
             background: #1d4ed8;
         }
 
 
         .account-note {
-
             text-align: center;
 
             color: #94a3b8;
@@ -895,7 +861,6 @@
 
 
         .user-info {
-
             background: #eff6ff;
 
             padding: 15px;
@@ -917,7 +882,6 @@
         ========================================== */
 
         #resultContainer {
-
             width: 100%;
 
             max-width: 680px;
@@ -933,7 +897,6 @@
 
 
         .result-box {
-
             width: 100%;
 
             background: linear-gradient(
@@ -961,7 +924,6 @@
 
 
         .board-title {
-
             text-align: center;
 
             color: #78350f;
@@ -979,7 +941,6 @@
 
 
         .kural-lines {
-
             font-weight: bold;
 
             color: #451a03;
@@ -995,7 +956,6 @@
 
 
         .meaning-box {
-
             color: #2c1d0c;
 
             line-height: 1.7;
@@ -1009,7 +969,6 @@
 
 
         .user-website-card {
-
             width: 100%;
 
             border-radius: 12px;
@@ -1033,7 +992,6 @@
         @media (max-width: 600px) {
 
             body {
-
                 width: 100%;
 
                 min-height: 100vh;
@@ -1046,7 +1004,6 @@
 
 
             .top-nav {
-
                 top: 10px;
 
                 right: 10px;
@@ -1057,7 +1014,6 @@
 
             .nav-btn,
             .account-btn {
-
                 padding:
                     7px
                     11px;
@@ -1069,7 +1025,6 @@
 
 
             .container {
-
                 width: 100%;
 
                 max-width: 800px;
@@ -1079,7 +1034,6 @@
 
 
             .search-section {
-
                 width: 100%;
 
                 margin-top: 7vh;
@@ -1093,7 +1047,6 @@
 
 
             h1 {
-
                 font-size:
                     clamp(
                         2.5rem,
@@ -1112,7 +1065,6 @@
 
 
             .subtitle {
-
                 font-size: 0.70rem;
 
                 letter-spacing: 1.5px;
@@ -1121,10 +1073,11 @@
             }
 
 
-            /* MOBILE CLOUD */
+            /* ======================================
+               MOBILE CLOUD
+            ====================================== */
 
             .search-box {
-
                 width: 100%;
 
                 max-width: 620px;
@@ -1135,25 +1088,36 @@
             }
 
 
-            .search-input {
+            .cloud-outline {
+                width: 100%;
 
+                height: 100%;
+
+                object-fit: fill;
+            }
+
+
+            .search-input {
                 top: 20px;
 
-                left: 12%;
+                left: 10%;
 
-                width: 76%;
+                width: 80%;
 
                 height: 42px;
 
-                font-size: 16px;
+                font-size: 15px;
+
+                padding:
+                    0
+                    35px;
             }
 
 
             .mic-btn {
+                left: 8%;
 
-                left: 9%;
-
-                top: 24px;
+                top: 23px;
 
                 width: 35px;
 
@@ -1164,10 +1128,9 @@
 
 
             .search-btn {
+                right: 8%;
 
-                right: 9%;
-
-                top: 24px;
+                top: 23px;
 
                 width: 35px;
 
@@ -1178,7 +1141,6 @@
 
 
             .video-container {
-
                 width: 130px;
 
                 height: 130px;
@@ -1190,7 +1152,6 @@
 
 
             .welcome-text {
-
                 font-size: 1.05rem;
 
                 letter-spacing: 1.5px;
@@ -1200,7 +1161,6 @@
 
 
             #resultContainer {
-
                 width: 100%;
 
                 max-width: 680px;
@@ -1212,7 +1172,6 @@
 
 
             .result-box {
-
                 width: 100%;
 
                 padding:
@@ -1226,7 +1185,6 @@
 
 
             .board-title {
-
                 font-size: 1.05rem;
 
                 line-height: 1.4;
@@ -1234,7 +1192,6 @@
 
 
             .kural-lines {
-
                 font-size: 1rem;
 
                 line-height: 1.7;
@@ -1242,7 +1199,6 @@
 
 
             .meaning-box {
-
                 font-size: 0.92rem;
 
                 line-height: 1.65;
@@ -1252,7 +1208,6 @@
 
 
             .user-website-card {
-
                 width: 100%;
 
                 padding:
@@ -1264,13 +1219,11 @@
 
 
             .modal-overlay {
-
                 padding: 12px;
             }
 
 
             .modal-content {
-
                 width: 100%;
 
                 max-width: 500px;
@@ -1286,15 +1239,15 @@
             .form-group input,
             .form-group textarea,
             .form-group select {
-
                 font-size: 16px;
             }
 
 
-            /* SEARCHED MOBILE */
+            /* ======================================
+               SEARCHED MOBILE
+            ====================================== */
 
             body.searched .search-section {
-
                 width: 100%;
 
                 max-width: 900px;
@@ -1316,7 +1269,6 @@
 
 
             body.searched .search-section > div:first-child {
-
                 width: auto;
 
                 flex-shrink: 0;
@@ -1324,7 +1276,6 @@
 
 
             body.searched h1 {
-
                 font-size: 1.25rem;
 
                 letter-spacing: 2px;
@@ -1334,7 +1285,6 @@
 
 
             body.searched .search-box {
-
                 flex: 1;
 
                 width: auto;
@@ -1348,17 +1298,37 @@
 
 
             body.searched .search-input {
+                left: 10%;
 
                 top: 10px;
+
+                width: 80%;
 
                 font-size: 14px;
 
                 height: 38px;
+
+                padding:
+                    0
+                    28px;
             }
 
 
-            body.searched .mic-btn,
+            body.searched .mic-btn {
+                left: 5%;
+
+                top: 14px;
+
+                width: 30px;
+
+                height: 30px;
+
+                font-size: 0.9rem;
+            }
+
+
             body.searched .search-btn {
+                right: 5%;
 
                 top: 14px;
 
@@ -1379,7 +1349,6 @@
         @media (max-width: 380px) {
 
             body {
-
                 padding-left: 8px;
 
                 padding-right: 8px;
@@ -1387,14 +1356,12 @@
 
 
             .top-nav {
-
                 right: 8px;
             }
 
 
             .nav-btn,
             .account-btn {
-
                 padding:
                     6px
                     9px;
@@ -1404,7 +1371,6 @@
 
 
             h1 {
-
                 font-size: 2.4rem;
 
                 letter-spacing: 3px;
@@ -1412,7 +1378,6 @@
 
 
             .subtitle {
-
                 font-size: 0.62rem;
 
                 letter-spacing: 1.2px;
@@ -1420,13 +1385,42 @@
 
 
             .search-box {
-
                 height: 76px;
             }
 
 
-            .video-container {
+            .search-input {
+                left: 8%;
 
+                width: 84%;
+
+                top: 18px;
+
+                height: 40px;
+
+                font-size: 14px;
+
+                padding:
+                    0
+                    30px;
+            }
+
+
+            .mic-btn {
+                left: 6%;
+
+                top: 21px;
+            }
+
+
+            .search-btn {
+                right: 6%;
+
+                top: 21px;
+            }
+
+
+            .video-container {
                 width: 115px;
 
                 height: 115px;
@@ -1434,8 +1428,39 @@
 
 
             body.searched h1 {
-
                 font-size: 1.12rem;
+            }
+
+
+            body.searched .search-box {
+                height: 56px;
+            }
+
+
+            body.searched .search-input {
+                left: 8%;
+
+                width: 84%;
+
+                top: 8px;
+
+                height: 36px;
+
+                font-size: 13px;
+            }
+
+
+            body.searched .mic-btn {
+                left: 3%;
+
+                top: 13px;
+            }
+
+
+            body.searched .search-btn {
+                right: 3%;
+
+                top: 13px;
             }
 
         }
@@ -1474,15 +1499,10 @@
 
 
     <!-- ==========================================
-         TOP RIGHT
-         ACCOUNT
-         CREATE WEBSITE
+         TOP NAVIGATION
     ========================================== -->
 
     <div class="top-nav">
-
-
-        <!-- ACCOUNT -->
 
         <button
             class="account-btn"
@@ -1494,8 +1514,6 @@
         </button>
 
 
-        <!-- CREATE WEBSITE -->
-
         <button
             class="nav-btn"
             onclick="openWebsiteBuilder()">
@@ -1503,7 +1521,6 @@
             🌐 Create Website
 
         </button>
-
 
     </div>
 
@@ -1543,93 +1560,28 @@
 
 
             <!-- ==================================
-                 CLOUD SEARCH BOX
+                 MEYYEE CLOUD SEARCH BOX
             =================================== -->
 
             <div class="search-box">
 
 
-                <!-- =================================
-                     COMPLETE MEYYEE CLOUD SVG
-                     DO NOT ADD ANOTHER SVG HERE
-                ================================== -->
+                <!--
+                    IMPORTANT:
+                    Use ONLY the uploaded cloud image.
+                    File name:
+                    meyyee-cloud.png
 
-                <svg
+                    This replaces the broken SVG.
+                -->
+
+                <img
+                    src="/meyyee-cloud.png"
                     class="cloud-outline"
-                    viewBox="0 0 620 100"
-                    preserveAspectRatio="none"
-                    aria-hidden="true">
+                    alt=""
+                    aria-hidden="true"
+                >
 
-                    <defs>
-
-                        <linearGradient
-                            id="cloudGradient"
-                            x1="0%"
-                            y1="0%"
-                            x2="100%"
-                            y2="0%"
-                        >
-
-                            <stop
-                                offset="0%"
-                                stop-color="#ef4444"
-                            />
-
-                            <stop
-                                offset="25%"
-                                stop-color="#f59e0b"
-                            />
-
-                            <stop
-                                offset="50%"
-                                stop-color="#2563eb"
-                            />
-
-                            <stop
-                                offset="75%"
-                                stop-color="#4f46e5"
-                            />
-
-                            <stop
-                                offset="100%"
-                                stop-color="#7c3aed"
-                            />
-
-                        </linearGradient>
-
-                    </defs>
-
-
-                    <!-- COMPLETE CLOUD PATH -->
-
-                    <path
-                        d="
-                            M 38 49
-
-                            C 58 45, 62 28, 82 24
-                            C 105 19, 122 35, 143 30
-                            C 165 25, 178 14, 204 17
-                            C 225 19, 231 34, 253 34
-                            C 276 34, 285 19, 310 20
-                            C 336 21, 342 38, 365 38
-                            C 388 38, 398 21, 423 22
-                            C 447 23, 455 39, 478 39
-                            C 503 39, 514 24, 538 29
-                            C 557 33, 563 48, 584 49
-
-                            C 563 54, 558 69, 538 73
-                            C 515 78, 503 62, 478 63
-                            C 455 64, 447 80, 423 79
-                            C 398 78, 388 62, 365 62
-                            C 342 62, 336 79, 310 80
-                            C 285 81, 276 66, 253 66
-                            C 231 66, 225 81, 204 83
-                           <img
-    src="/meyyee-cloud.png"
-    class="cloud-outline"
-    alt=""
-    aria-hidden="true"
->
 
                 <!-- VOICE -->
 
@@ -1833,7 +1785,6 @@
 
     <!-- ==========================================
          ACCOUNT MODAL
-         GOOGLE + GUEST ONLY
     ========================================== -->
 
     <div
@@ -1862,14 +1813,10 @@
             </p>
 
 
-            <!-- ==================================
-                 LOGGED OUT
-            =================================== -->
+            <!-- LOGGED OUT -->
 
             <div id="loggedOutSection">
 
-
-                <!-- GOOGLE -->
 
                 <button
                     class="account-option google-option"
@@ -1880,8 +1827,6 @@
 
                 </button>
 
-
-                <!-- GUEST -->
 
                 <button
                     class="account-option guest-option"
@@ -1916,9 +1861,7 @@
             </div>
 
 
-            <!-- ==================================
-                 LOGGED IN
-            =================================== -->
+            <!-- LOGGED IN -->
 
             <div
                 id="loggedInSection"
@@ -1996,11 +1939,8 @@
 
         const supabaseClient =
             window.supabase.createClient(
-
                 SUPABASE_URL,
-
                 SUPABASE_PUBLISHABLE_KEY
-
             );
 
 
@@ -2014,7 +1954,6 @@
         window.addEventListener(
             "load",
             async function() {
-
 
                 setTimeout(function() {
 
@@ -2043,7 +1982,6 @@
 
 
                 await checkUser();
-
 
             }
         );
@@ -2271,12 +2209,6 @@
 
             try {
 
-
-                /*
-                   If already Guest,
-                   connect Guest account to Google.
-                */
-
                 if (currentUser) {
 
                     const isGuest =
@@ -2321,8 +2253,6 @@
 
                 }
 
-
-                /* NORMAL GOOGLE LOGIN */
 
                 const {
                     error
@@ -2370,12 +2300,6 @@
         async function continueAsGuest() {
 
             try {
-
-
-                /*
-                   Already Guest?
-                   Keep same account.
-                */
 
                 if (currentUser) {
 
@@ -2489,12 +2413,6 @@
 
         function openWebsiteBuilder() {
 
-
-            /*
-              Login இல்லாமல் Create Website
-              click செய்தால் Account popup.
-            */
-
             if (!currentUser) {
 
                 openAccountModal();
@@ -2543,7 +2461,6 @@
         ========================================== */
 
         function generateUserWebsite() {
-
 
             if (!currentUser) {
 
@@ -2818,11 +2735,7 @@
             }
 
 
-            /*
-               Empty search:
-               Search button / Enter மட்டும்
-               action எடுத்தால் தான் இது வரும்.
-            */
+            /* EMPTY SEARCH */
 
             if (query === "") {
 
@@ -2862,10 +2775,7 @@
                 query.includes("search truth")
             ) {
 
-
                 resultContainer.innerHTML = `
-
-                    <!-- KURAL 1 -->
 
                     <div class="result-box">
 
@@ -2901,8 +2811,6 @@
                     </div>
 
 
-                    <!-- KURAL 2 -->
-
                     <div class="result-box">
 
                         <div class="board-title">
@@ -2936,8 +2844,6 @@
 
                     </div>
 
-
-                    <!-- KURAL 3 -->
 
                     <div class="result-box">
 
