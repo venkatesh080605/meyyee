@@ -96,6 +96,7 @@
 
         .nav-btn:hover {
             background: #e2e8f0;
+
             border-color: #94a3b8;
         }
 
@@ -257,9 +258,15 @@
 
             max-width: 620px;
 
-            height: 100px;
+            /*
+               Increased cloud height.
+               Old: 100px
+               New: 125px
+            */
 
-            margin-bottom: 30px;
+            height: 125px;
+
+            margin-bottom: 25px;
 
             transition: all 0.3s ease;
 
@@ -267,20 +274,9 @@
         }
 
 
-        body.searched .search-box {
-            max-width: 500px;
-
-            height: 100px;
-
-            margin-bottom: 0;
-        }
-
-
-        /*
-           IMPORTANT:
-           Only ONE cloud image.
-           Do NOT put SVG/path inside here.
-        */
+        /* ==========================================
+           CLOUD IMAGE
+        ========================================== */
 
         .cloud-outline {
             position: absolute;
@@ -312,7 +308,12 @@
 
             left: 12%;
 
-            top: 25px;
+            /*
+               Cloud is 125px high.
+               Input moved to vertical center.
+            */
+
+            top: 37px;
 
             width: 76%;
 
@@ -380,14 +381,22 @@
         .mic-btn {
             left: 10%;
 
-            top: 30px;
+            /*
+               Centered inside 125px cloud.
+            */
+
+            top: 42px;
         }
 
 
         .search-btn {
             right: 10%;
 
-            top: 30px;
+            /*
+               Centered inside 125px cloud.
+            */
+
+            top: 42px;
         }
 
 
@@ -397,12 +406,25 @@
         }
 
 
+        /* ==========================================
+           SEARCHED DESKTOP
+        ========================================== */
+
+        body.searched .search-box {
+            max-width: 500px;
+
+            height: 100px;
+
+            margin-bottom: 0;
+        }
+
+
         body.searched .search-input {
             top: 25px;
 
-            font-size: 0.95rem;
-
             height: 40px;
+
+            font-size: 0.95rem;
         }
 
 
@@ -1082,9 +1104,15 @@
 
                 max-width: 620px;
 
-                height: 82px;
+                /*
+                   Increased mobile cloud height.
+                   Old: 82px
+                   New: 105px
+                */
 
-                margin-bottom: 25px;
+                height: 105px;
+
+                margin-bottom: 20px;
             }
 
 
@@ -1098,7 +1126,7 @@
 
 
             .search-input {
-                top: 20px;
+                top: 31px;
 
                 left: 10%;
 
@@ -1117,7 +1145,7 @@
             .mic-btn {
                 left: 8%;
 
-                top: 23px;
+                top: 35px;
 
                 width: 35px;
 
@@ -1130,7 +1158,7 @@
             .search-btn {
                 right: 8%;
 
-                top: 23px;
+                top: 35px;
 
                 width: 35px;
 
@@ -1384,8 +1412,10 @@
             }
 
 
+            /* VERY SMALL PHONE CLOUD */
+
             .search-box {
-                height: 76px;
+                height: 95px;
             }
 
 
@@ -1394,7 +1424,7 @@
 
                 width: 84%;
 
-                top: 18px;
+                top: 28px;
 
                 height: 40px;
 
@@ -1409,14 +1439,14 @@
             .mic-btn {
                 left: 6%;
 
-                top: 21px;
+                top: 32px;
             }
 
 
             .search-btn {
                 right: 6%;
 
-                top: 21px;
+                top: 32px;
             }
 
 
@@ -1567,12 +1597,10 @@
 
 
                 <!--
-                    IMPORTANT:
-                    Use ONLY the uploaded cloud image.
-                    File name:
-                    meyyee-cloud.png
+                    ONLY ONE CLOUD IMAGE
 
-                    This replaces the broken SVG.
+                    File:
+                    /meyyee-cloud.png
                 -->
 
                 <img
@@ -1665,7 +1693,7 @@
 
         <!-- ======================================
              RESULTS
-        ======================================= -->
+        ====================================== -->
 
         <div id="resultContainer"></div>
 
@@ -1818,6 +1846,8 @@
             <div id="loggedOutSection">
 
 
+                <!-- GOOGLE -->
+
                 <button
                     class="account-option google-option"
                     id="googleLoginButton"
@@ -1827,6 +1857,8 @@
 
                 </button>
 
+
+                <!-- GUEST -->
 
                 <button
                     class="account-option guest-option"
@@ -2735,7 +2767,9 @@
             }
 
 
-            /* EMPTY SEARCH */
+            /* ======================================
+               EMPTY SEARCH
+            ====================================== */
 
             if (query === "") {
 
@@ -2777,6 +2811,8 @@
 
                 resultContainer.innerHTML = `
 
+                    <!-- KURAL 1 -->
+
                     <div class="result-box">
 
                         <div class="board-title">
@@ -2811,6 +2847,8 @@
                     </div>
 
 
+                    <!-- KURAL 2 -->
+
                     <div class="result-box">
 
                         <div class="board-title">
@@ -2844,6 +2882,8 @@
 
                     </div>
 
+
+                    <!-- KURAL 3 -->
 
                     <div class="result-box">
 
