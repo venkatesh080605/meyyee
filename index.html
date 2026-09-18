@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="UTF-8">
@@ -302,6 +301,8 @@
             height: 100%;
 
             pointer-events: none;
+
+            display: block;
         }
 
 
@@ -831,7 +832,7 @@
 
             width: 100%;
 
-            height: 50px;
+            height: 48px;
 
             border-radius: 8px;
 
@@ -844,14 +845,6 @@
             margin-bottom: 12px;
 
             transition: 0.2s;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap: 10px;
         }
 
 
@@ -868,8 +861,6 @@
         .google-option:hover {
 
             background: #f8fafc;
-
-            border-color: #94a3b8;
         }
 
 
@@ -1130,9 +1121,7 @@
             }
 
 
-            /* ======================================
-               MOBILE CLOUD
-            ====================================== */
+            /* MOBILE CLOUD */
 
             .search-box {
 
@@ -1302,9 +1291,7 @@
             }
 
 
-            /* ======================================
-               SEARCHED MOBILE
-            ====================================== */
+            /* SEARCHED MOBILE */
 
             body.searched .search-section {
 
@@ -1357,8 +1344,6 @@
                 height: 60px;
 
                 margin-bottom: 0;
-
-                min-width: 0;
             }
 
 
@@ -1490,10 +1475,14 @@
 
     <!-- ==========================================
          TOP RIGHT
+         ACCOUNT
+         CREATE WEBSITE
     ========================================== -->
 
     <div class="top-nav">
 
+
+        <!-- ACCOUNT -->
 
         <button
             class="account-btn"
@@ -1504,6 +1493,8 @@
 
         </button>
 
+
+        <!-- CREATE WEBSITE -->
 
         <button
             class="nav-btn"
@@ -1559,8 +1550,8 @@
 
 
                 <!-- =================================
-                     MEYYEE CLOUD
-                     CORRECTED CLOUD SHAPE
+                     COMPLETE MEYYEE CLOUD SVG
+                     DO NOT ADD ANOTHER SVG HERE
                 ================================== -->
 
                 <svg
@@ -1569,7 +1560,6 @@
                     preserveAspectRatio="none"
                     aria-hidden="true">
 
-
                     <defs>
 
                         <linearGradient
@@ -1577,38 +1567,80 @@
                             x1="0%"
                             y1="0%"
                             x2="100%"
-                            y2="0%">
+                            y2="0%"
+                        >
 
                             <stop
                                 offset="0%"
-                                stop-color="#ef4444"/>
+                                stop-color="#ef4444"
+                            />
 
                             <stop
                                 offset="25%"
-                                stop-color="#f59e0b"/>
+                                stop-color="#f59e0b"
+                            />
 
                             <stop
                                 offset="50%"
-                                stop-color="#2563eb"/>
+                                stop-color="#2563eb"
+                            />
 
                             <stop
                                 offset="75%"
-                                stop-color="#4f46e5"/>
+                                stop-color="#4f46e5"
+                            />
 
                             <stop
                                 offset="100%"
-                                stop-color="#7c3aed"/>
+                                stop-color="#7c3aed"
+                            />
 
                         </linearGradient>
 
                     </defs>
 
 
-                    <!-- =================================
-                         CLOUD SHAPE
-                    ================================== -->
+                    <!-- COMPLETE CLOUD PATH -->
 
-                    
+                    <path
+                        d="
+                            M 38 49
+
+                            C 58 45, 62 28, 82 24
+                            C 105 19, 122 35, 143 30
+                            C 165 25, 178 14, 204 17
+                            C 225 19, 231 34, 253 34
+                            C 276 34, 285 19, 310 20
+                            C 336 21, 342 38, 365 38
+                            C 388 38, 398 21, 423 22
+                            C 447 23, 455 39, 478 39
+                            C 503 39, 514 24, 538 29
+                            C 557 33, 563 48, 584 49
+
+                            C 563 54, 558 69, 538 73
+                            C 515 78, 503 62, 478 63
+                            C 455 64, 447 80, 423 79
+                            C 398 78, 388 62, 365 62
+                            C 342 62, 336 79, 310 80
+                            C 285 81, 276 66, 253 66
+                            C 231 66, 225 81, 204 83
+                            C 178 86, 165 75, 143 70
+                            C 122 65, 105 81, 82 76
+                            C 62 72, 58 55, 38 49
+
+                            Z
+                        "
+
+                        fill="none"
+
+                        stroke="url(#cloudGradient)"
+
+                        stroke-width="3"
+
+                        stroke-linecap="round"
+
+                        stroke-linejoin="round"
+                    />
 
                 </svg>
 
@@ -1624,47 +1656,7 @@
                     🎤
 
                 </button>
-<path
-    d="
-      M 48 50
 
-      C 48 39, 58 31, 72 31
-      C 91 28, 107 40, 126 32
-      C 145 23, 166 23, 184 32
-      C 202 41, 215 25, 235 26
-      C 255 27, 266 41, 284 32
-      C 304 22, 326 23, 344 32
-      C 363 41, 376 25, 397 26
-      C 418 27, 430 41, 448 32
-      C 467 23, 489 26, 505 34
-      C 522 43, 536 31, 552 34
-      C 568 37, 578 43, 578 50
-
-      C 578 57, 568 63, 552 66
-      C 536 69, 522 57, 505 66
-      C 489 74, 467 77, 448 68
-      C 430 59, 418 73, 397 74
-      C 376 75, 363 59, 344 68
-      C 326 77, 304 78, 284 68
-      C 266 59, 255 73, 235 74
-      C 215 75, 202 59, 184 68
-      C 166 77, 145 77, 126 68
-      C 107 60, 91 72, 72 69
-      C 58 67, 48 59, 48 50
-
-      Z
-    "
-
-    fill="none"
-
-    stroke="url(#cloudGradient)"
-
-    stroke-width="3"
-
-    stroke-linecap="round"
-
-    stroke-linejoin="round"
-/>
 
                 <!-- SEARCH INPUT -->
 
@@ -1856,7 +1848,6 @@
     <!-- ==========================================
          ACCOUNT MODAL
          GOOGLE + GUEST ONLY
-         NO PASSWORD
     ========================================== -->
 
     <div
@@ -1899,11 +1890,7 @@
                     id="googleLoginButton"
                     onclick="continueWithGoogle()">
 
-                    <span style="font-size:20px;">
-                        G
-                    </span>
-
-                    Continue with Google
+                    🌐 Continue with Google
 
                 </button>
 
@@ -1945,7 +1932,7 @@
 
             <!-- ==================================
                  LOGGED IN
-            ================================== -->
+            =================================== -->
 
             <div
                 id="loggedInSection"
@@ -2142,10 +2129,6 @@
                     error
                 );
 
-                currentUser = null;
-
-                updateAccountUI();
-
             }
 
         }
@@ -2165,26 +2148,6 @@
 
             }
         );
-
-
-        /* ==========================================
-           CHECK GUEST
-        ========================================== */
-
-        function isGuestUser(user) {
-
-            if (!user) {
-                return false;
-            }
-
-
-            return (
-                user.is_anonymous === true ||
-                user.app_metadata?.provider ===
-                    "anonymous"
-            );
-
-        }
 
 
         /* ==========================================
@@ -2256,11 +2219,13 @@
             }
 
 
-            const guest =
-                isGuestUser(currentUser);
+            const isGuest =
+                currentUser.is_anonymous === true ||
+                currentUser.app_metadata?.provider ===
+                    "anonymous";
 
 
-            if (guest) {
+            if (isGuest) {
 
                 accountType.textContent =
                     "👤 Guest Account";
@@ -2322,56 +2287,56 @@
 
 
                 /*
-                   If current account is Guest,
-                   try to LINK the Guest account
-                   with Google.
-
-                   This helps preserve the same
-                   Supabase user/data.
+                   If already Guest,
+                   connect Guest account to Google.
                 */
 
-                if (
-                    currentUser &&
-                    isGuestUser(currentUser)
-                ) {
+                if (currentUser) {
+
+                    const isGuest =
+                        currentUser.is_anonymous === true ||
+                        currentUser.app_metadata?.provider ===
+                            "anonymous";
 
 
-                    const {
-                        error
-                    } =
-                        await supabaseClient.auth
-                            .linkIdentity({
+                    if (isGuest) {
 
-                                provider: "google",
+                        const {
+                            error
+                        } =
+                            await supabaseClient.auth
+                                .linkIdentity({
 
-                                options: {
+                                    provider: "google",
 
-                                    redirectTo:
-                                        window.location.origin
+                                    options: {
 
-                                }
+                                        redirectTo:
+                                            window.location.origin
 
-                            });
+                                    }
+
+                                });
 
 
-                    if (!error) {
+                        if (!error) {
 
-                        return;
+                            return;
+
+                        }
+
+
+                        console.error(
+                            "Guest linking failed:",
+                            error
+                        );
 
                     }
-
-
-                    console.error(
-                        "Guest linking failed:",
-                        error
-                    );
 
                 }
 
 
-                /*
-                   Normal Google login
-                */
+                /* NORMAL GOOGLE LOGIN */
 
                 const {
                     error
@@ -2400,10 +2365,7 @@
 
             } catch (error) {
 
-                console.error(
-                    "Google login error:",
-                    error
-                );
+                console.error(error);
 
 
                 alert(
@@ -2425,25 +2387,28 @@
 
 
                 /*
-                   If already Guest,
-                   keep same account.
+                   Already Guest?
+                   Keep same account.
                 */
 
-                if (
-                    currentUser &&
-                    isGuestUser(currentUser)
-                ) {
+                if (currentUser) {
 
-                    closeAccountModal();
+                    const isGuest =
+                        currentUser.is_anonymous === true ||
+                        currentUser.app_metadata?.provider ===
+                            "anonymous";
 
-                    return;
+
+                    if (isGuest) {
+
+                        closeAccountModal();
+
+                        return;
+
+                    }
 
                 }
 
-
-                /*
-                   Create Anonymous Guest
-                */
 
                 const {
                     data,
@@ -2461,7 +2426,7 @@
 
 
                 currentUser =
-                    data.user || null;
+                    data.user;
 
 
                 updateAccountUI();
@@ -2520,10 +2485,7 @@
 
             } catch (error) {
 
-                console.error(
-                    "Logout error:",
-                    error
-                );
+                console.error(error);
 
 
                 alert(
@@ -2872,8 +2834,8 @@
 
             /*
                Empty search:
-               Search button / Enter
-               action எடுத்தால் மட்டும்.
+               Search button / Enter மட்டும்
+               action எடுத்தால் தான் இது வரும்.
             */
 
             if (query === "") {
@@ -3280,5 +3242,4 @@
     </script>
 
 </body>
-
 </html>
