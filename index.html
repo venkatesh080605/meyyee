@@ -259,12 +259,13 @@
             max-width: 620px;
 
             /*
-               Increased cloud height.
-               Old: 100px
-               New: 125px
+               FINAL DESKTOP CLOUD HEIGHT
+
+               Old: 125px
+               New: 165px
             */
 
-            height: 125px;
+            height: 165px;
 
             margin-bottom: 25px;
 
@@ -282,9 +283,11 @@
             position: absolute;
 
             left: 0;
+
             top: 0;
 
             width: 100%;
+
             height: 100%;
 
             display: block;
@@ -309,11 +312,17 @@
             left: 12%;
 
             /*
-               Cloud is 125px high.
-               Input moved to vertical center.
+               FINAL VERTICAL CENTER
+
+               Cloud height = 165px
+               Input height = 50px
+               Center = (165 - 50) / 2
+                      = 57.5px
+
+               Using 57px.
             */
 
-            top: 37px;
+            top: 57px;
 
             width: 76%;
 
@@ -382,10 +391,10 @@
             left: 10%;
 
             /*
-               Centered inside 125px cloud.
+               Centered inside 165px cloud.
             */
 
-            top: 42px;
+            top: 62px;
         }
 
 
@@ -393,10 +402,10 @@
             right: 10%;
 
             /*
-               Centered inside 125px cloud.
+               Centered inside 165px cloud.
             */
 
-            top: 42px;
+            top: 62px;
         }
 
 
@@ -510,9 +519,11 @@
             position: fixed;
 
             top: 0;
+
             left: 0;
 
             width: 100%;
+
             height: 100%;
 
             background-color: #ffffff;
@@ -535,6 +546,7 @@
             position: relative;
 
             width: 300px;
+
             height: 350px;
 
             display: flex;
@@ -551,6 +563,7 @@
             position: absolute;
 
             width: 150px;
+
             height: 150px;
 
             background-image:
@@ -570,6 +583,7 @@
 
         .piece-tl {
             top: 0;
+
             left: 0;
 
             background-position: 0 0;
@@ -582,6 +596,7 @@
 
         .piece-tr {
             top: 0;
+
             right: 0;
 
             background-position: -150px 0;
@@ -594,6 +609,7 @@
 
         .piece-bl {
             bottom: 50px;
+
             left: 0;
 
             background-position: 0 -150px;
@@ -606,6 +622,7 @@
 
         .piece-br {
             bottom: 50px;
+
             right: 0;
 
             background-position: -150px -150px;
@@ -678,9 +695,11 @@
             position: fixed;
 
             top: 0;
+
             left: 0;
 
             width: 100%;
+
             height: 100%;
 
             background: rgba(0, 0, 0, 0.5);
@@ -1096,7 +1115,7 @@
 
 
             /* ======================================
-               MOBILE CLOUD
+               FINAL MOBILE CLOUD
             ====================================== */
 
             .search-box {
@@ -1105,12 +1124,13 @@
                 max-width: 620px;
 
                 /*
-                   Increased mobile cloud height.
-                   Old: 82px
-                   New: 105px
+                   FINAL MOBILE CLOUD HEIGHT
+
+                   Old: 105px
+                   New: 135px
                 */
 
-                height: 105px;
+                height: 135px;
 
                 margin-bottom: 20px;
             }
@@ -1126,7 +1146,11 @@
 
 
             .search-input {
-                top: 31px;
+                /*
+                   Centered inside 135px cloud.
+                */
+
+                top: 46px;
 
                 left: 10%;
 
@@ -1145,7 +1169,7 @@
             .mic-btn {
                 left: 8%;
 
-                top: 35px;
+                top: 51px;
 
                 width: 35px;
 
@@ -1158,7 +1182,7 @@
             .search-btn {
                 right: 8%;
 
-                top: 35px;
+                top: 51px;
 
                 width: 35px;
 
@@ -1412,10 +1436,12 @@
             }
 
 
-            /* VERY SMALL PHONE CLOUD */
+            /* ======================================
+               VERY SMALL PHONE CLOUD
+            ====================================== */
 
             .search-box {
-                height: 95px;
+                height: 120px;
             }
 
 
@@ -1424,7 +1450,7 @@
 
                 width: 84%;
 
-                top: 28px;
+                top: 38px;
 
                 height: 40px;
 
@@ -1439,14 +1465,14 @@
             .mic-btn {
                 left: 6%;
 
-                top: 32px;
+                top: 43px;
             }
 
 
             .search-btn {
                 right: 6%;
 
-                top: 32px;
+                top: 43px;
             }
 
 
@@ -1657,7 +1683,7 @@
 
         <!-- ======================================
              WELCOME
-        ======================================= -->
+        ====================================== -->
 
         <div id="welcomeSection">
 
